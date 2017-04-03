@@ -1,31 +1,34 @@
 ;; === Proxy settings to make use of package archives==========================
-...
+;...
 ;; ============================================================================
 
 
 ;; === Repository settings and packages =======================================
 
 ; list the packages you want
-(setq package-list '(
-					tabbar
-					neotree
-					linum-relative
-					auto-complete
-					git-gutter-fringe
-					minimap
-					highlight-indent-guides
-					adaptive-wrap
-					sublime-themes
-					solarized-theme
-                    auto-highlight-symbol
-                    ;flycheck
-                    magit
-                    projectile
-                    ))
+(setq package-list '(tabbar
+		                        neotree
+                                linum-relative
+                                auto-complete
+                                git-gutter-fringe
+                                minimap
+                                highlight-indent-guides
+                                adaptive-wrap
+                                sublime-themes
+                                solarized-theme
+                                auto-highlight-symbol
+                                flycheck
+                                magit
+                                projectile
+                                helm
+                                undo-tree
+                                yasnippet
+                                bind-key
+ ))
 
 ; list the repositories containing them
 (setq package-archives '(;("elpa" . "http://tromey.com/elpa/")
-						 ("melpa" . "https://melpa.org/packages/")
+			 ("melpa" . "https://melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 
@@ -41,13 +44,12 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (neotree tabbar))))
+ '(package-selected-packages (quote (helm neotree tabbar))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -67,6 +69,10 @@
 
 	;; no alarm bell
 		(setq ring-bell-function 'ignore)
+
+	;; highlight current line
+	    ;(global-hl-line-mode 1)
+	    ;(set-face-foreground 'highlight nil)
 
 	;; Remove trailing white spaces
 		(add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -89,8 +95,11 @@
     ;; Detect file changes and reload file
         (global-auto-revert-mode t)
 
+    ;; Use spaces instead of tabs
+         (setq-default indent-tabs-mode nil)
+
     ;; Make emacs save backups at one place
-        (setq backup-directory-alist `(("." . "~/.saves")))
+        (setq backup-directory-alist `(("." . "~/.emacs_saves")))
         (setq backup-by-copying t)
         (setq delete-old-versions t
             kept-new-versions 6
@@ -105,13 +114,21 @@
         ;(require 'evil)
         ;(evil-mode t)
 
-    ;; Use fuzzy file search on start up
-        ;(require 'helm-config)
-        ;(helm-mode 1)
+    ;; Use fuzzy file search on start up ; <---------------------------------------------------------------------------
+        (add-to-list 'load-path "~/.emacs.d/helm")
+        (require 'helm-config)
+        (with-eval-after-load "helm.el"
+           ;(define-key helm-map (kbd "<tab>") 'helm-execute-persistant-action)
+            (global-set-key (kbd "C-x b") helm-buffers-list)
+            ;(global-set-key (kbd "C-x r b") helm-bookmarks)
+            (global-set-key (kbd "M-y") helm-M-x)
+            ;(global-set-key (kbd "M-y") helm-show-kill-ring)
+            (global-set-key (kbd "C-x C-f") helm-find-files))
+        (helm-mode 1)
 
     ;; Turn on tabbar-mode on start up
         (require 'tabbar)
-        (tabbar-mode t)
+        ;(tabbar-mode t)
 
     ;; Turn on neotree on start up
         (require 'neotree)
@@ -149,10 +166,47 @@
 		(load-theme 'spolsky t)
 
 	;; find aspell and hunspell automatically
+        ;(setq flyspell-issue-welcome-flag nil)
+        ;(if (eq system-type 'darwin)
+        ;(setq-default ispell-program-name "/usr/local/bin/aspell")
+        ;(setq-default ispell-program-name "/usr/bin/aspell"))
+        ;(setq-default ispell-list-command "list")
 
     ;; Auto highlight words under cursor
         (auto-highlight-symbol-mode t)
 
+    ;; Use undo-tree to show history of changes
+        (global-undo-tree-mode t)
+
     ;; use flycheck to check code against coding standards
-        ;(global-flycheck-mode)
+        (require 'flycheck)
+        (global-flycheck-mode)
+
+    ;; use yasnippet
+        (require 'yasnippet)
+        (yas-global-mode 1)
+
+    ;; wrap words
+        (require 'adaptive-wrap)
+        (adaptive-wrap-prefix-mode t)
 ;; ============================================================================
+
+
+;; === Key bindings =======================================================;;
+
+    ;; set key bindings
+       ; (bind-keys*
+;;     ("C-o" . other-window)
+)
+
+    ;; Windows movement
+        (global-set-key (kbd "C-x <up>") 'windmove-up)
+        (global-set-key (kbd "C-x <down>") 'windmove-down)
+        (global-set-key (kbd "C-x <left>") 'windmove-left)
+        (global-set-key (kbd "C-x <right>") 'windmove-right)
+
+    ;; Comment or uncomment
+        (global-set-key (kbd "C-,") 'comment-line)
+
+    ;; Check magit status
+        (global-set-key (kbd "C-x g") 'magit-status)
