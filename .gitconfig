@@ -1,0 +1,15 @@
+[core]
+	excludesfile = /Users/sebastian/.gitignore_global
+[user]
+	name = Sebastian Sonntag
+	email = se.bastian.sonntag@hotmail.com
+[color]
+	ui = true
+[pack]
+	threads = 0
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit

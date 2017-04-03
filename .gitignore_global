@@ -1,0 +1,75 @@
+#**********************************************************************************************
+# Title: .gitignore
+# Description: List with files that should be ignored when versioning with git
+# Author: Sebastian Sonntag
+# Date: 2016-06-06
+# License: 
+#**********************************************************************************************
+
+
+### ROOT files
+*.root
+*.ROOT
+
+
+### LaTeX files #
+*.aux
+*.xcf
+
+
+### Images #
+*.png
+*.jpeg
+*.jpg
+
+
+### Documents #
+*.dvi
+*.ps
+*.pdf
+
+
+### Backup files #
+*~
+*#
+
+
+### Compiled source #
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+
+
+#### Packages #
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+
+### Logs and databases #
+*.log
+*.sql
+*.sqlite
+
+
+### OS generated files #
+.DS_Store
+.DS_Store?
+.directory
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db

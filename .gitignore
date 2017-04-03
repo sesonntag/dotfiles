@@ -1,0 +1,71 @@
+≈#**********************************************************************************************
+# Title: .gitignore
+# Description: List with files that should be ignored when versioning with git
+# Author: Sebastian Sonntag
+# Date: 2016-06-10
+# License: 
+#**********************************************************************************************
+
+.anyconnect
+.atom/.apm/
+.atom/.node-gyp/
+.atom/blob-store/
+.atom/compile-code/
+.atom/storage/
+.atom/packages/
+.atom/split-diff/
+.atom/git-time-machine/
+.CFUserTextEncoding
+.cisco/
+.DS_Store
+.Trash
+.bash_history
+.bash_sessions
+.cache
+.config
+.cups
+directory_history
+.dropbox
+.oh-my-zsh/
+.oracle_jre_usage
+.pylint.d/
+.ssh
+.stCommitMsg
+.viminfo
+.vim/bundle/*
+.vscode
+.zcompdump-Sebastians MacBook Air-5.0.8
+.zsh-update
+.zsh_history
+Aktuelles
+Arbeit
+Auto
+Desktop
+Documents
+Dokumente
+Downloads
+Dropbox
+Library
+Movies
+Music
+Pictures
+Programmieren
+Public
+Schiesssport
+Segeln
+System
+Uni
+iCloud Drive
+
+
+
+.anaconda/
+.android/
+.conda/
+.continuum/
+.emacs.d/
+.local/
+.matplotlib/
+.subversion/
+Dokumente
+Schreibtisch
