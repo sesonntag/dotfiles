@@ -1,5 +1,6 @@
 ;; === Proxy settings to make use of package archives==========================
-;...
+
+; ..
 ;; ============================================================================
 
 
@@ -24,6 +25,7 @@
                                 undo-tree
                                 yasnippet
                                 bind-key
+                                rainbow-delimiters
  ))
 
 ; list the repositories containing them
@@ -61,6 +63,9 @@
 
 ;; === Global settings ========================================================
 
+    ;; set default dir for emacs
+        ;(setq default-directory "C:/Documents and Settings/USER_NAME/Desktop/")
+
 	;; scroll three lines with mouse, and one line with keyboard
 		(setq mouse-wheel-scroll-amount '(3 ((shift) . 1)))
 		(setq mouse-wheel-progressive-speed nil)
@@ -69,10 +74,6 @@
 
 	;; no alarm bell
 		(setq ring-bell-function 'ignore)
-
-	;; highlight current line
-	    ;(global-hl-line-mode 1)
-	    ;(set-face-foreground 'highlight nil)
 
 	;; Remove trailing white spaces
 		(add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -86,6 +87,10 @@
 	;; Show matching parens
 		(show-paren-mode 1)
 
+    ;; Show pairs in colors
+        (require 'rainbow-delimiters)
+        ;(rainbow-delimiters-mode t)
+
 	;; Auto pair brackets and others
 	 	(electric-pair-mode 1)
 
@@ -94,9 +99,6 @@
 
     ;; Detect file changes and reload file
         (global-auto-revert-mode t)
-
-    ;; Use spaces instead of tabs
-         (setq-default indent-tabs-mode nil)
 
     ;; Make emacs save backups at one place
         (setq backup-directory-alist `(("." . "~/.emacs_saves")))
@@ -109,26 +111,6 @@
 
 
 ;; === Package settings =======================================================
-
-    ;; Turn on evil-mode on start up
-        ;(require 'evil)
-        ;(evil-mode t)
-
-    ;; Use fuzzy file search on start up ; <---------------------------------------------------------------------------
-        (add-to-list 'load-path "~/.emacs.d/helm")
-        (require 'helm-config)
-        (with-eval-after-load "helm.el"
-           ;(define-key helm-map (kbd "<tab>") 'helm-execute-persistant-action)
-            (global-set-key (kbd "C-x b") helm-buffers-list)
-            ;(global-set-key (kbd "C-x r b") helm-bookmarks)
-            (global-set-key (kbd "M-y") helm-M-x)
-            ;(global-set-key (kbd "M-y") helm-show-kill-ring)
-            (global-set-key (kbd "C-x C-f") helm-find-files))
-        (helm-mode 1)
-
-    ;; Turn on tabbar-mode on start up
-        (require 'tabbar)
-        ;(tabbar-mode t)
 
     ;; Turn on neotree on start up
         (require 'neotree)
@@ -145,32 +127,21 @@
     ;; Use git gutter
     	(require 'git-gutter-fringe)
     	(global-git-gutter-mode +1)
+        (set-face-foreground 'git-gutter-fr:modified "yellow")
+        (set-face-foreground 'git-gutter-fr:added    "green")
+        (set-face-foreground 'git-gutter-fr:deleted  "red")
 
     ;; Use minimap
     	(require 'minimap)
 		;(minimap-mode 1)
 
-	;; Automatically indent wrapped lines accordingly
-	 	(when (fboundp 'adaptive-wrap-prefix-mode)
-            (defun my-activate-adaptive-wrap-prefix-mode ()
-                "Toggle `visual-line-mode' and `adaptive-wrap-prefix-mode' simultaneously."
-                (adaptive-wrap-prefix-mode (if visual-line-mode 1 -1)))
-            (add-hook 'visual-line-mode-hook 'my-activate-adaptive-wrap-prefix-mode))
-
 	;; Highlight indent guides
-		(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-		(setq highlight-indent-guides-method 'character)
+		;(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+		;(setq highlight-indent-guides-method 'character)
 
 	;; Use colorscheme correct
   		(set-frame-parameter nil 'background-mode 'dark)
 		(load-theme 'spolsky t)
-
-	;; find aspell and hunspell automatically
-        ;(setq flyspell-issue-welcome-flag nil)
-        ;(if (eq system-type 'darwin)
-        ;(setq-default ispell-program-name "/usr/local/bin/aspell")
-        ;(setq-default ispell-program-name "/usr/bin/aspell"))
-        ;(setq-default ispell-list-command "list")
 
     ;; Auto highlight words under cursor
         (auto-highlight-symbol-mode t)
@@ -187,17 +158,24 @@
         (yas-global-mode 1)
 
     ;; wrap words
-        (require 'adaptive-wrap)
-        (adaptive-wrap-prefix-mode t)
+        (defun turn-on-adaptive-wrap-prefix-mode (&optional arg)
+            (interactive)
+            (adaptive-wrap-prefix-mode (or arg 1)))
+        (defun turn-off-adaptive-wrap-prefix-mode (&optional arg)
+            (interactive)
+            (adaptive-wrap-prefix-mode (or arg -1)))
+        (defun adaptive-wrap-initialize ()
+            (unless (minibufferp)
+            (progn
+                (adaptive-wrap-prefix-mode 1)
+                (setq word-wrap t))))
+        (define-globalized-minor-mode adaptive-wrap-mode
+            adaptive-wrap-prefix-mode adaptive-wrap-initialize)
+        (adaptive-wrap-mode)
 ;; ============================================================================
 
 
-;; === Key bindings =======================================================;;
-
-    ;; set key bindings
-       ; (bind-keys*
-;;     ("C-o" . other-window)
-)
+;; === Key bindings =========================================================;;
 
     ;; Windows movement
         (global-set-key (kbd "C-x <up>") 'windmove-up)
@@ -210,3 +188,42 @@
 
     ;; Check magit status
         (global-set-key (kbd "C-x g") 'magit-status)
+;; ============================================================================
+
+
+;; === ToDo =================================================================;;
+
+	;; find aspell and hunspell automatically
+        ;(setq flyspell-issue-welcome-flag nil)
+        ;(if (eq system-type 'darwin)
+        ;(setq-default ispell-program-name "/usr/local/bin/aspell")
+        ;(setq-default ispell-program-name "/usr/bin/aspell"))
+        ;(setq-default ispell-list-command "list")
+
+        ;; Use fuzzy file search on start up ;
+        ;(add-to-list 'load-path "~/.emacs.d/helm")
+        ;(require 'helm-config)
+        ;(with-eval-after-load "helm.el"
+           ;(define-key helm-map (kbd "<tab>") 'helm-execute-persistant-action)
+            ;(global-set-key (kbd "C-x b") helm-buffers-list)
+            ;(global-set-key (kbd "C-x r b") helm-bookmarks)
+            ;(global-set-key (kbd "M-y") helm-M-x)
+            ;(global-set-key (kbd "M-y") helm-show-kill-ring)
+            ;(global-set-key (kbd "C-x C-f") helm-find-files))
+        ;(helm-mode 1)
+;; ============================================================================
+
+
+;; === Unused packages/settings =============================================;;
+
+	;; highlight current line (Setting)
+	    ;(global-hl-line-mode 1)
+	    ;(set-face-foreground 'highlight nil)
+
+    ;; Turn on evil-mode on start up (package)
+        ;(require 'evil)
+        ;(evil-mode t)
+
+    ;; Turn on tabbar-mode on start up (package)
+        (require 'tabbar)
+        ;(tabbar-mode t)

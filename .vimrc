@@ -24,8 +24,13 @@ set nocompatible
 filetype off
 
 " Set the runtime path to include Vundle and initialize
-set rtp+=$HOME/.vim/bundle/Vundle.vim/
-call vundle#begin()
+if has ("gui_win32")
+    set rtp+=%USERPROFILE%/vimfiles/bundle/Vundle.vim/
+    call vundle#begin('C:\Users\desonnse\vimfiles\bundle\')
+else
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
 Plugin 'VundleVim/Vundle.vim'"
 
 
@@ -105,9 +110,26 @@ Plugin 'ntpeters/vim-better-whitespace'
 "Plugin for graphical undo history
 Plugin 'sjl/gundo.vim'
 
-"..
+" Plugin for tab completion of search strings
 Plugin 'vim-scripts/SearchComplete'
 
+" Plugin for correct folding of code
+Plugin 'tmhedberg/SimpylFold'
+
+" Plugin for code intelligent completion
+Plugin 'valloric/youcompleteme'
+
+" Plugin for making tables
+Plugin 'godlygeek/tabular'
+
+" Plugin to autosave and autoload files
+"Plugin 'xolox/vim-session'
+
+" Plugin for setting and navigating marks
+Plugin 'kshenoy/vim-signature'
+
+" Plugin for octave/matlab syntax highlighting from GitHub repo
+Plugin 'jvirtanen/vim-octave'
 
 
 " All of your Plugins must be added before the following line
@@ -140,11 +162,14 @@ let g:mapleader = ","
 "let g:syntastic_check_on_open = 1
 
 " Set hight of the syntastic error pane
-let g:syntastic_loc_list_height=5
+let g:syntastic_loc_list_height=3
 
 " Set relative line numbers
 set relativenumber
 set number
+
+" Highlight current line
+set cursorline
 
 " Always show the status line
 set laststatus=2
@@ -163,13 +188,13 @@ let g:airline_theme='dark'
 set autoread
 
 " Use system clipboard for copy and paste in whole system
-"set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 " Fast saving
 nmap <leader>w :w!<cr>
 
 " Fast quitting
-nnoremap <leader>qq :wq!<cr>
+"nnoremap <leader>qq :wq!<cr>
 
 " Word completion with tab
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -249,12 +274,19 @@ map <C-n> :NERDTreeToggle<CR>
 set autochdir
 let NERDTreeChDirMode=2
 
+" Save current session and reload files
+"let g:session_autosave = 'yes'
+"let g:session_autoload = 'yes'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
+
+" Detect markdown language and activate syntax highlighting
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -290,9 +322,9 @@ endif
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -321,6 +353,12 @@ set wrap
 if has("gui_running")
     set breakindent
 endif
+
+" Enable code folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+let g:SimpylFold_docstring_preview=1
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -387,18 +425,18 @@ autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
-" Remember info about open buffers on close
 
+" Remember info about open buffers on close
 set viminfo^=%
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Deactivate arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+"noremap <Up> <Nop>
+"noremap <Down> <Nop>
+"noremap <Left> <Nop>
+"noremap <Right> <Nop>
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -426,15 +464,6 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -445,6 +474,38 @@ function! FixLastSpellingError()
   normal! mm[s1z=`m"
 endfunction
 nnoremap <leader>sp :call FixLastSpellingError()<cr>
+
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+   let l:currentBufNum = bufnr("%")
+   let l:alternateBufNum = bufnr("#")
+
+   if buflisted(l:alternateBufNum)
+     buffer #
+   else
+     bnext
+   endif
+
+   if bufnr("%") == l:currentBufNum
+     new
+   endif
+
+   if buflisted(l:currentBufNum)
+     execute("bdelete! ".l:currentBufNum)
+   endif
+endfunction
 
 
 "function! CmdLine(str)
@@ -483,25 +544,3 @@ nnoremap <leader>sp :call FixLastSpellingError()<cr>
     "en
     "return ''
 "endfunction
-
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
