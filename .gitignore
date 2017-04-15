@@ -6,33 +6,34 @@
 # License: 
 #**********************************************************************************************
 
-.anyconnect
-.atom/.apm/
-.atom/.node-gyp/
-.atom/blob-store/
-.atom/compile-code/
-.atom/storage/
-.atom/packages/
-.atom/split-diff/
-.atom/git-time-machine/
 .CFUserTextEncoding
-.cisco/
 .DS_Store
 .Trash
+.anaconda/
+.android/
+.anyconnect
+.atom/*
 .bash_history
 .bash_sessions
 .cache
+.cisco/
+.conda/
 .config
+.continuum/
 .cups
-directory_history
 .dropbox
+.emacs.d/
+.local/
+.matplotlib/
 .oh-my-zsh/
 .oracle_jre_usage
 .pylint.d/
 .ssh
 .stCommitMsg
-.viminfo
+.subversion/
+.tmux/
 .vim/*
+.viminfo
 .vscode
 .zcompdump-Sebastians MacBook Air-5.0.8
 .zsh-update
@@ -43,6 +44,7 @@ Auto
 Desktop
 Documents
 Dokumente
+Dokumente
 Downloads
 Dropbox
 Library
@@ -52,20 +54,9 @@ Pictures
 Programmieren
 Public
 Schiesssport
+Schreibtisch
 Segeln
 System
 Uni
+directory_history
 iCloud Drive
-
-
-.tmux/
-.anaconda/
-.android/
-.conda/
-.continuum/
-.emacs.d/
-.local/
-.matplotlib/
-.subversion/
-Dokumente
-Schreibtisch
