@@ -32,7 +32,7 @@ directory_history
 .ssh
 .stCommitMsg
 .viminfo
-.vim/bundle/*
+.vim/*
 .vscode
 .zcompdump-Sebastians MacBook Air-5.0.8
 .zsh-update

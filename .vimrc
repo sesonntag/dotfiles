@@ -43,7 +43,7 @@ Plugin 'chriskempson/base16-vim'
 " Plugin for color schemes(s) from GitHub repo
 Plugin 'notpratheek/vim-sol'
 
-"Plugin for color schemes(s) from GitHub repo
+" Plugin for color schemes(s) from GitHub repo
 Plugin 'jonathanfilip/vim-lucius'
 
 " Plugin for color schemes(s) from GitHub repo
@@ -83,7 +83,7 @@ Plugin 'kien/ctrlp.vim'
 " Plugin for sourrunding commands from GitHub repo
 Plugin 'tpope/vim-surround'
 
-"Plugin for easy moving in documents with motions from GitHub repo
+" Plugin for easy moving in documents with motions from GitHub repo
 Plugin 'easymotion/vim-easymotion'
 
 " Plugin for git commands working in the command line of vim from GitHub repo
@@ -98,16 +98,16 @@ Plugin 'airblade/vim-gitgutter'
 " Plugin for showing indent lines from GitHub repo
 Plugin 'yggdroot/indentline'
 
-"Plugin for automatically inserting brackets, quotation marks, ... from GitHub repo
+" Plugin for automatically inserting brackets, quotation marks, ... from GitHub repo
 Plugin 'jiangmiao/auto-pairs'
 
-"Plugin for displaying a minimap on the right side from GitHub repo
+" Plugin for displaying a minimap on the right side from GitHub repo
 Plugin 'severin-lemaignan/vim-minimap'
 
-"Plugin for showing and deleting trailing white spaces
+" Plugin for showing and deleting trailing white spaces
 Plugin 'ntpeters/vim-better-whitespace'
 
-"Plugin for graphical undo history
+" Plugin for graphical undo history
 Plugin 'sjl/gundo.vim'
 
 " Plugin for tab completion of search strings
@@ -130,6 +130,9 @@ Plugin 'kshenoy/vim-signature'
 
 " Plugin for octave/matlab syntax highlighting from GitHub repo
 Plugin 'jvirtanen/vim-octave'
+
+" Plugin for org mode
+Plugin 'jceb/vim-orgmode'
 
 
 " All of your Plugins must be added before the following line
