@@ -23,6 +23,7 @@
 .cups
 .dropbox
 .emacs.d/
+.ipython
 .local/
 .matplotlib/
 .oh-my-zsh/

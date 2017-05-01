@@ -142,10 +142,7 @@ filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets default font and font size
-"set guifont=Monospace:h14
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto load .vimrc after saving
 autocmd! bufwritepost .vimrc source %
 
@@ -272,15 +269,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Load Nerdtree on Ctrl+n and load path of the actual file
-map <C-n> :NERDTreeToggle<CR>
-set autochdir
-let NERDTreeChDirMode=2
-
-" Save current session and reload files
-"let g:session_autosave = 'yes'
-"let g:session_autoload = 'yes'
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -315,16 +303,16 @@ if has ("gui_win32")
     set guifont=Consolas:h10.5:cANSI
 endif
 
-" Set bigger font (still Menlo but +1) in OS X
+" Set bigger font (still Menlo but with different size) in OS X
 if has ("gui_macvim")
-    set guifont=Menlo:h12
+    set guifont=Menlo:h11
 endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
+" Define dirs for undo, backup and swap
 set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
@@ -360,8 +348,9 @@ endif
 " Enable code folding
 set foldmethod=indent
 set foldlevel=99
-nnoremap <space> za
+nnoremap <leader> f
 let g:SimpylFold_docstring_preview=1
+
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -433,7 +422,7 @@ autocmd BufReadPost *
 set viminfo^=%
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
+" => Editing mappings / additional mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Deactivate arrow keys
 "noremap <Up> <Nop>
@@ -444,7 +433,7 @@ set viminfo^=%
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Map the ESC key sequence to jj for faster leaving the insert mode
+" Map the ESC key sequence to jk for faster leaving the insert mode
 imap jk <Esc>
 
 " Map the underscore to unhighlight after searching
@@ -469,9 +458,21 @@ endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Addon specific
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Load Nerdtree on Ctrl+n and load path of the actual file
+map <C-n> :NERDTreeToggle<CR>
+set autochdir
+let NERDTreeChDirMode=2
+
+" Save current session and reload files
+"let g:session_autosave = 'yes'
+"let g:session_autoload = 'yes'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Correct spell errors:
 function! FixLastSpellingError()
   normal! mm[s1z=`m"
