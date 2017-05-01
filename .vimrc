@@ -33,36 +33,8 @@ else
 endif
 Plugin 'VundleVim/Vundle.vim'"
 
-
-" Plugin for color scheme(s) from GitHub repo
-Plugin 'pkukulak/idle'
-
-" Plugin for color schemes(s) from GitHub repo
-Plugin 'chriskempson/base16-vim'
-
-" Plugin for color schemes(s) from GitHub repo
-Plugin 'notpratheek/vim-sol'
-
-" Plugin for color schemes(s) from GitHub repo
-Plugin 'jonathanfilip/vim-lucius'
-
-" Plugin for color schemes(s) from GitHub repo
-Plugin 'tomsik68/vim-crystallite'
-
-" Plugin for color schemes(s) from GitHub repo
-Plugin 'evgenyzinoviev/vim-vendetta'
-
-" Plugin for color schemes(s) from GitHub repo
-Plugin 'blerins/flattown'
-
 " Plugin for color schemes(s) from GitHub repo
 Plugin 'tomasr/molokai'
-
-" Plugin for color schemes(s) from GitHub repo
-Plugin 'wimstefan/Lightning'
-
-" Plugin for color schemes(s) from GitHub repo
-Plugin 'flazz/vim-colorschemes'
 
 " Plugin for nerdtree from GitHub repo
 Plugin 'scrooloose/nerdtree'
@@ -80,7 +52,7 @@ Plugin 'scrooloose/nerdcommenter'
 " Plugin for fuzzy search of files from GitHub repo
 Plugin 'kien/ctrlp.vim'
 
-" Plugin for sourrunding commands from GitHub repo
+" Plugin for surrounding commands from GitHub repo
 Plugin 'tpope/vim-surround'
 
 " Plugin for easy moving in documents with motions from GitHub repo
@@ -108,16 +80,13 @@ Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'ntpeters/vim-better-whitespace'
 
 " Plugin for graphical undo history
-Plugin 'sjl/gundo.vim'
+Plugin 'mbbill/undotree'
 
 " Plugin for tab completion of search strings
 Plugin 'vim-scripts/SearchComplete'
 
 " Plugin for correct folding of code
 Plugin 'tmhedberg/SimpylFold'
-
-" Plugin for code intelligent completion
-Plugin 'valloric/youcompleteme'
 
 " Plugin for making tables
 Plugin 'godlygeek/tabular'
@@ -134,6 +103,9 @@ Plugin 'jvirtanen/vim-octave'
 " Plugin for org mode
 Plugin 'jceb/vim-orgmode'
 
+" Plugin for snippets
+Plugin 'SirVer/ultisnips' "engine for snippets
+Plugin 'honza/vim-snippets' "actual snippets
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -197,7 +169,7 @@ nmap <leader>w :w!<cr>
 "nnoremap <leader>qq :wq!<cr>
 
 " Word completion with tab
-let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Wordcompletion in list
 set completeopt=longest,menuone
@@ -269,6 +241,8 @@ set novisualbell
 set t_vb=
 set tm=500
 
+set completeopt=longest,menuone
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -313,9 +287,10 @@ endif
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Define dirs for undo, backup and swap
-set undodir=~/.vim/.undo//
-set backupdir=~/.vim/.backup//
-set directory=~/.vim/.swp//
+set undodir=~/.vim/.undo/
+set undofile
+set backupdir=~/.vim/.backup/
+set directory=~/.vim/.swp/
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -348,7 +323,7 @@ endif
 " Enable code folding
 set foldmethod=indent
 set foldlevel=99
-nnoremap <leader> f
+nnoremap <leader>f
 let g:SimpylFold_docstring_preview=1
 
 
@@ -361,7 +336,7 @@ vnoremap <silent> # :call VisualSelection('f')<CR>
 vnoremap <silent> * :call VisualSelection('b')<CR>
 
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+nnoremap <silent> <leader><cr> :noh<cr>
 
 " Make indentations for the whole selected paragraph working
 vnoremap < <gv
@@ -372,38 +347,36 @@ vnoremap > <gv
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+nnoremap j gj
+nnoremap k gk
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" Toggle graphical undo
-nnoremap <C-u> :GundoToggle<CR>
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>
+nnoremap <leader>bd :Bclose<cr>
 
 " Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
+nnoremap <leader>ba :1,1000 bd!<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>pt <esc>:tabprevious<CR>
-map <leader>nt <esc>:tabnext<CR>
+nnoremap <leader>tn :tabnew<cr>
+nnoremap <leader>to :tabonly<cr>
+nnoremap <leader>tc :tabclose<cr>
+nnoremap <leader>tm :tabmove
+nnoremap <leader>pt <esc>:tabprevious<CR>
+nnoremap <leader>nt <esc>:tabnext<CR>
+nnoremap <leader>oo :only<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
 try
@@ -431,10 +404,10 @@ set viminfo^=%
 "noremap <Right> <Nop>
 
 " Remap VIM 0 to first non-blank character
-map 0 ^
+nnoremap 0 ^
 
 " Map the ESC key sequence to jk for faster leaving the insert mode
-imap jk <Esc>
+inoremap jk <Esc>
 
 " Map the underscore to unhighlight after searching
 nnoremap <silent> _ :nohl<CR>
@@ -444,16 +417,16 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <M-j> mz:m+<cr>`z
+nnoremap <M-k> mz:m-2<cr>`z
+vnoremap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vnoremap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
+  nnoremap <D-j> <M-j>
+  nnoremap <D-k> <M-k>
+  vnoremap <D-j> <M-j>
+  vnoremap <D-k> <M-k>
 endif
 
 
@@ -461,13 +434,24 @@ endif
 " => Addon specific
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Load Nerdtree on Ctrl+n and load path of the actual file
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 set autochdir
 let NERDTreeChDirMode=2
+
+" Toggle undo tree
+nnoremap <leader>uh :UndotreeToggle<cr>
 
 " Save current session and reload files
 "let g:session_autosave = 'yes'
 "let g:session_autoload = 'yes'
+
+" Trigger configuration for snippets. No use of <tab> if you use completement engine
+let g:UltiSnipsExpandTrigger='<leader>us'
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="vertical"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -480,36 +464,37 @@ endfunction
 nnoremap <leader>sp :call FixLastSpellingError()<cr>
 
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" Delete trailing white space on save for the relevant file types
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
+autocmd BufWrite *.md :call DeleteTrailingWS()
+autocmd BufWrite *.m :call DeleteTrailingWS()
 
 
 " Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
+"command! Bclose call <SID>BufcloseCloseIt()
+"function! <SID>BufcloseCloseIt()
+   "let l:currentBufNum = bufnr("%")
+   "let l:alternateBufNum = bufnr("#")
 
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
+   "if buflisted(l:alternateBufNum)
+     "buffer #
+   "else
+     "bnext
+   "endif
 
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
+   "if bufnr("%") == l:currentBufNum
+     "new
+   "endif
 
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
+   "if buflisted(l:currentBufNum)
+     "execute("bdelete! ".l:currentBufNum)
+   "endif
+"endfunction
 
 
 "function! CmdLine(str)
