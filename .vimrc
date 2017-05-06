@@ -321,9 +321,10 @@ if has("gui_running")
 endif
 
 " Enable code folding
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=99
-nnoremap <leader>f
+nnoremap <leader>fc zc
+nnoremap <leader>fo zo
 let g:SimpylFold_docstring_preview=1
 
 
@@ -334,9 +335,6 @@ let g:SimpylFold_docstring_preview=1
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> # :call VisualSelection('f')<CR>
 vnoremap <silent> * :call VisualSelection('b')<CR>
-
-" Disable highlight when <leader><cr> is pressed
-nnoremap <silent> <leader><cr> :noh<cr>
 
 " Make indentations for the whole selected paragraph working
 vnoremap < <gv
@@ -453,6 +451,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
 
+" Highlight searches
+nnoremap <silent> n n:call HLNext(0.4)<cr>
+nnoremap <silent> N N:call HLNext(0.4)<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -473,6 +475,18 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.md :call DeleteTrailingWS()
 autocmd BufWrite *.m :call DeleteTrailingWS()
+
+
+" Highlight the match in red
+function! HLNext (blinktime)
+  let [bufnum, lnum, col, off] = getpos('.')
+  let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/)) let target_pat = '\c\%#'.@/
+  let ring = matchadd('WhiteOnRed', target_pat, 101)
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  call matchdelete(ring)
+  redraw
+endfunction
 
 
 " Don't close window, when deleting a buffer
