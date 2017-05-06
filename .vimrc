@@ -107,6 +107,9 @@ Plugin 'jceb/vim-orgmode'
 Plugin 'SirVer/ultisnips' "engine for snippets
 Plugin 'honza/vim-snippets' "actual snippets
 
+" Plugin to copy to the system clipboard
+Plugin 'christoomey/vim-system-copy'
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
@@ -158,9 +161,6 @@ let g:airline_theme='dark'
 
 " Set to auto read when a file is changed from the outside
 set autoread
-
-" Use system clipboard for copy and paste in whole system
-set clipboard^=unnamed,unnamedplus
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -287,10 +287,10 @@ endif
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Define dirs for undo, backup and swap
-set undodir=~/.vim/.undo/
+set undodir=~/.vim/.undo//
 set undofile
-set backupdir=~/.vim/.backup/
-set directory=~/.vim/.swp/
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -355,7 +355,7 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 
 " Close the current buffer
-nnoremap <leader>bd :Bclose<cr>
+nnoremap <leader>bd :bd<cr>
 
 " Close all the buffers
 nnoremap <leader>ba :1,1000 bd!<cr>
@@ -450,6 +450,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
+
+" Make Ctrlp start from the current dir
+let g:ctrlp_working_path_mode = 'c'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
