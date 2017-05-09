@@ -27,7 +27,7 @@ alias wetter_in_schorndorf='curl http://wttr\.in/Schorndorf'
 
 # alias for running macvim from terminal
 #alias mvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
-#alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias vim='mvim -v'
 
 
 # path to icloud drive
