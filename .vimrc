@@ -68,7 +68,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter'
 
 " Plugin for showing indent lines from GitHub repo
-Plugin 'yggdroot/indentline'
+Plugin 'Yggdroot/indentLine'
 
 " Plugin for automatically inserting brackets, quotation marks, ... from GitHub repo
 Plugin 'jiangmiao/auto-pairs'
