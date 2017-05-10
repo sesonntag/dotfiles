@@ -168,9 +168,6 @@ nmap <leader>w :w!<cr>
 " Fast quitting
 "nnoremap <leader>qq :wq!<cr>
 
-" Word completion with tab
-"let g:SuperTabDefaultCompletionType = "<c-n>"
-
 " Wordcompletion in list
 set completeopt=longest,menuone
 
@@ -241,7 +238,7 @@ set novisualbell
 set t_vb=
 set tm=500
 
-set completeopt=longest,menuone
+set completeopt=menuone
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -323,8 +320,6 @@ endif
 " Enable code folding
 set foldmethod=syntax
 set foldlevel=99
-nnoremap <leader>fc zc
-nnoremap <leader>fo zo
 let g:SimpylFold_docstring_preview=1
 
 
@@ -444,9 +439,20 @@ nnoremap <leader>uh :UndotreeToggle<cr>
 "let g:session_autoload = 'yes'
 
 " Trigger configuration for snippets. No use of <tab> if you use completement engine
-let g:UltiSnipsExpandTrigger='<leader>us'
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsExpandTrigger='<leader>us'
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" YouCompleteMe and UltiSnips compatibility, with the helper of supertab
+" (via http://stackoverflow.com/a/22253548/1626737)
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+let g:SuperTabCrMapping=1
+"let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
