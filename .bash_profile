@@ -21,6 +21,3 @@ alias wetter_in_schorndorf='curl http://wttr\.in/Schorndorf'
 
 # path to icloud drive
 alias cd_iCloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
-
-# added by Anaconda3 4.3.1 installer
-export PATH="/anaconda/bin:$PATH"
