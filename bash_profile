@@ -20,4 +20,7 @@ alias wetter_in_winterbach='curl http://wttr\.in/Winterbach,+Germany'
 alias wetter_in_schorndorf='curl http://wttr\.in/Schorndorf'
 
 # path to icloud drive
-alias cd_iCloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+#alias cd_iCloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+
+# alias for macvim
+alias vim='mvim -v'
