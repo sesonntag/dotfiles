@@ -400,7 +400,7 @@ set viminfo^=%
 nnoremap 0 ^
 
 " Map the ESC key sequence to jk for faster leaving the insert mode
-inoremap jk <Esc>
+inoremap kj <Esc>
 
 " Map the underscore to unhighlight after searching
 nnoremap <silent> _ :nohl<CR>
