@@ -472,16 +472,13 @@ nnoremap <leader>sp :call FixLastSpellingError()<cr>
 
 
 " Delete trailing white space on save for the relevant file types
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.md :call DeleteTrailingWS()
-autocmd BufWrite *.m :call DeleteTrailingWS()
-
-
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " Don't close window, when deleting a buffer
 "command! Bclose call <SID>BufcloseCloseIt()
 "function! <SID>BufcloseCloseIt()
