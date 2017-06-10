@@ -1,0 +1,11 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.tabCompletion": true,
+    "editor.lineNumbers": "relative",
+    "editor.rulers": [80],
+    "editor.glyphMargin": true,
+    "editor.detectIndentation": false,
+    "window.reopenFolders": "none",
+    "files.trimTrailingWhitespace": true
+}
