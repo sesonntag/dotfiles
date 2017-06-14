@@ -130,8 +130,8 @@ setlocal spell spelllang=en_us
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = " "
+let g:mapleader = " "
 
 " Check with syntastic when open document
 "let g:syntastic_check_on_open = 1
