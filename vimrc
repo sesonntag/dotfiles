@@ -110,6 +110,9 @@ Plugin 'honza/vim-snippets' "actual snippets
 " Plugin to copy to the system clipboard
 Plugin 'christoomey/vim-system-copy'
 
+" Plugin for python mode
+Plugin 'python-mode/python-mode'
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
@@ -133,12 +136,6 @@ setlocal spell spelllang=en_us
 let mapleader = " "
 let g:mapleader = " "
 
-" Check with syntastic when open document
-"let g:syntastic_check_on_open = 1
-
-" Set hight of the syntastic error pane
-let g:syntastic_loc_list_height=3
-
 " Set relative line numbers
 set relativenumber
 set number
@@ -155,10 +152,6 @@ au BufNewFile,BufRead *.* set list listchars=eol:¬,tab:\▸\ ,trail:~,extends:>
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
-" Define powerline theme from airline extension
-let g:airline_theme='dark'
-"let g:airline_theme='solarized'
-
 " Set to auto read when a file is changed from the outside
 set autoread
 
@@ -170,21 +163,6 @@ nmap <leader>w :w!<cr>
 
 " Wordcompletion in list
 set completeopt=longest,menuone
-
-" Set options for syntastic code checker
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Have always the gutter-bar activate
-let g:gitgutter_sign_column_always = 1
-
-" Define the |-character for use as indent line
-let g:indentLine_char = '¦'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -312,10 +290,9 @@ set ai
 set si
 
 " Wrap lines and indent to same depth (works only in gui)
-set wrap
-if has("gui_running")
-    set breakindent
-endif
+set wrap linebreak nolist
+set breakindent
+
 
 " Enable code folding
 set foldmethod=syntax
@@ -342,6 +319,8 @@ vnoremap > <gv
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
 nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
 
 " Smart way to move between windows
 nnoremap <C-j> <C-W>j
@@ -459,6 +438,34 @@ let g:SuperTabCrMapping=1
 
 " Make Ctrlp start from the current dir
 let g:ctrlp_working_path_mode = 'c'
+
+" Check with syntastic when open document
+"let g:syntastic_check_on_open = 1
+
+" Set hight of the syntastic error pane
+let g:syntastic_loc_list_height=3
+
+" Set options for syntastic code checker
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Define powerline theme from airline extension
+let g:airline_theme='dark'
+"let g:airline_theme='solarized'
+
+" Have always the gutter-bar activate
+let g:gitgutter_sign_column_always = 1
+
+" Define the |-character for use as indent line
+let g:indentLine_char = '¦'
+
+" Deactivate llinting in python-mode since this is done with syntastic
+let g:pymode_lint = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
