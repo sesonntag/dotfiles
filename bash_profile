@@ -21,6 +21,3 @@ alias weather_in_schorndorf='curl http://wttr\.in/Schorndorf'
 
 # alias for macvim
 alias vim='mvim -v'
-
-# load zsh as default shell
-zsh
