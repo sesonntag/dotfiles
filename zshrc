@@ -2,7 +2,7 @@
 export ZSH=/Users/sebastian/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="honukai" # bira josh ys
+ZSH_THEME="bira" # bira josh ys
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -58,7 +58,7 @@ alias lt='ls -althG'
 
 
 # alias for content of folder recursively
-alias inhalt='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
+alias content='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
 
 
 # Rsync scripts
