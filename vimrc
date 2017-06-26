@@ -375,6 +375,9 @@ set viminfo^=%
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings / additional mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Select whole Line
+nnoremap vv ^v$
+
 " Deactivate arrow keys
 "noremap <Up> <Nop>
 "noremap <Down> <Nop>
@@ -530,3 +533,4 @@ nnoremap <leader>f :call FoldColumnToggle()<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sandbox area for testing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap vv ^v$
