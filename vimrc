@@ -104,8 +104,12 @@ Plugin 'jvirtanen/vim-octave'
 Plugin 'jceb/vim-orgmode'
 
 " Plugin for snippets
-Plugin 'SirVer/ultisnips' "engine for snippets
-Plugin 'honza/vim-snippets' "actual snippets
+if has ("gui_win32")
+    "...
+else
+    Plugin 'SirVer/ultisnips' "engine for snippets
+    Plugin 'honza/vim-snippets' "actual snippets
+endif
 
 " Plugin to copy to the system clipboard
 Plugin 'christoomey/vim-system-copy'
@@ -262,10 +266,17 @@ endif
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Define dirs for undo, backup and swap
-set undodir=~/.vim/.undo//
-set undofile
-set backupdir=~/.vim/.backup//
-set directory=~/.vim/.swp//
+if has ("gui_win32")
+    set undodir=~/vimfiles/undo//
+    set undofile
+    set backupdir=~/vimfiles/backup//
+    set directory=~/vimfiles/swp//
+else
+    set undodir=~/.vim/.undo//
+    set undofile
+    set backupdir=~/.vim/.backup//
+    set directory=~/.vim/.swp//
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -316,12 +327,6 @@ vnoremap > <gv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Treat long lines as break lines (useful when moving around in them)
-nnoremap j gj
-nnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-
 " Smart way to move between windows
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
@@ -424,17 +429,31 @@ nnoremap <leader>uh :UndotreeToggle<cr>
 
 " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
 " (via http://stackoverflow.com/a/22253548/1626737)
-let g:SuperTabDefaultCompletionType    = '<C-n>'
-let g:SuperTabCrMapping                = 0
-let g:UltiSnipsExpandTrigger           = '<tab>'
-let g:UltiSnipsJumpForwardTrigger      = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
-let g:SuperTabCrMapping=1
-"let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-
-" If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
+if has ("gui_win32")
+    "let g:"SuperTabDefaultCompletionType    = '<C-n>'
+    "let g:SuperTabCrMapping                = 0
+    "let g:UltiSnipsExpandTrigger           = '<tab>'
+    "let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+    "let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+    "let g:SuperTabCrMapping=1
+    "let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+    "let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+    
+    " If you want :UltiSnipsEdit to split your window.
+    " let g:UltiSnipsEditSplit="vertical"
+else
+    let g:SuperTabDefaultCompletionType    = '<C-n>'
+    let g:SuperTabCrMapping                = 0
+    let g:UltiSnipsExpandTrigger           = '<tab>'
+    let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+    let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+    let g:SuperTabCrMapping=1
+    "let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+    "let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+    
+    " If you want :UltiSnipsEdit to split your window.
+    " let g:UltiSnipsEditSplit="vertical"
+endif
 
 " Make Ctrlp start from the current dir
 let g:ctrlp_working_path_mode = 'c'
