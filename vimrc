@@ -533,4 +533,3 @@ nnoremap <leader>f :call FoldColumnToggle()<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sandbox area for testing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap vv ^v$
