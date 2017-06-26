@@ -371,6 +371,7 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings / additional mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -406,6 +407,13 @@ if has("mac") || has("macunix")
   vnoremap <D-k> <M-k>
 endif
 
+" make p in Visual mode replace the selected text with the yank register
+vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
+
+
+" Complete whole filenames/lines with a quicker shortcut key in insert mode
+inoremap <C-f> <C-x><C-f>
+inoremap <C-l> <C-x><C-l>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Addon specific
@@ -505,3 +513,20 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+
+function! FoldColumnToggle()
+    if &foldcolumn
+        let g:last_fold_column_width = &foldcolumn
+        setlocal foldcolumn=0
+    else
+        let &l:foldcolumn = g:last_fold_column_width
+    endif
+endfunction
+let g:last_fold_column_width = 4  " Pick a sane default for the foldcolumn
+nnoremap <leader>f :call FoldColumnToggle()<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Sandbox area for testing
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
