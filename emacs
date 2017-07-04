@@ -15,8 +15,6 @@
                                 minimap
                                 highlight-indent-guides
                                 adaptive-wrap
-                                sublime-themes
-                                solarized-theme
                                 auto-highlight-symbol
                                 flycheck
                                 magit
@@ -26,6 +24,7 @@
                                 yasnippet
                                 bind-key
                                 rainbow-delimiters
+                                molokai-theme
  ))
 
 ; list the repositories containing them
@@ -141,7 +140,7 @@
 
 	;; Use colorscheme correct
   		(set-frame-parameter nil 'background-mode 'dark)
-		(load-theme 'spolsky t)
+		(load-theme 'molokai t)
 
     ;; Auto highlight words under cursor
         (auto-highlight-symbol-mode t)
