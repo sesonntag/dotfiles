@@ -449,7 +449,7 @@ if has ("gui_win32")
     "let g:SuperTabCrMapping=1
     "let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
     "let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-    
+
     " If you want :UltiSnipsEdit to split your window.
     " let g:UltiSnipsEditSplit="vertical"
 else
@@ -461,7 +461,7 @@ else
     let g:SuperTabCrMapping=1
     "let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
     "let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-    
+
     " If you want :UltiSnipsEdit to split your window.
     " let g:UltiSnipsEditSplit="vertical"
 endif
