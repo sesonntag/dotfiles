@@ -14,10 +14,11 @@ alias rsync_wd_2000_to_core_750='chmod +x ~/System/Apple/macOS/Skripte/rsync_wd_
 # aliases for weather news
 alias weather='curl http://wttr\.in/'
 alias weather_in_siegen='curl http://wttr\.in/Siegen'
-alias weather_in_mudersbach='curl http://wttr\.in/Mudersbach'
 alias weather_in_stavoren='curl http://wttr\.in/Stavoren'
-alias weather_in_winterbach='curl http://wttr\.in/Winterbach,+Germany'
-alias weather_in_schorndorf='curl http://wttr\.in/Schorndorf'
+alias weather_in_hebsack='curl http://wttr\.in/Hebsack'
 
 # alias for macvim
 alias vim='mvim -v'
+
+# aliases for keeping brew clean
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
