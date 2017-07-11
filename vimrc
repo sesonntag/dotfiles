@@ -168,6 +168,9 @@ nmap <leader>w :w!<cr>
 " Wordcompletion in list
 set completeopt=longest,menuone
 
+" Activare mouse suuport
+set mouse=a
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
