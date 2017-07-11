@@ -162,9 +162,6 @@ set autoread
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" Fast quitting
-"nnoremap <leader>qq :wq!<cr>
-
 " Wordcompletion in list
 set completeopt=longest,menuone
 
@@ -275,10 +272,10 @@ if has ("gui_win32")
     set backupdir=~/vimfiles/backup//
     set directory=~/vimfiles/swp//
 else
-    set undodir=~/.vim/.undo//
+    set undodir=~/.vim/undo//
     set undofile
-    set backupdir=~/.vim/.backup//
-    set directory=~/.vim/.swp//
+    set backupdir=~/.vim/backup//
+    set directory=~/.vim/swp//
 endif
 
 
@@ -378,15 +375,6 @@ set viminfo^=%
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings / additional mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Select whole Line
-nnoremap vv ^v$
-
-" Deactivate arrow keys
-"noremap <Up> <Nop>
-"noremap <Down> <Nop>
-"noremap <Left> <Nop>
-"noremap <Right> <Nop>
-
 " Remap VIM 0 to first non-blank character
 nnoremap 0 ^
 
@@ -444,17 +432,7 @@ nnoremap <leader>uh :UndotreeToggle<cr>
 " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
 " (via http://stackoverflow.com/a/22253548/1626737)
 if has ("gui_win32")
-    "let g:"SuperTabDefaultCompletionType    = '<C-n>'
-    "let g:SuperTabCrMapping                = 0
-    "let g:UltiSnipsExpandTrigger           = '<tab>'
-    "let g:UltiSnipsJumpForwardTrigger      = '<tab>'
-    "let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
-    "let g:SuperTabCrMapping=1
-    "let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-    "let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-
-    " If you want :UltiSnipsEdit to split your window.
-    " let g:UltiSnipsEditSplit="vertical"
+    " continue
 else
     let g:SuperTabDefaultCompletionType    = '<C-n>'
     let g:SuperTabCrMapping                = 0
