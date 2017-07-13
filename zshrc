@@ -46,26 +46,8 @@ plugins=(git osx terminalapp sudo web-search extract colored-man-pages cp)
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# source the oh-my-zsh file for the fancy stuff
 source $ZSH/oh-my-zsh.sh
 
-# ls)
-alias ls='ls -G'
-alias la='ls -AG'
-alias ll='ls -alhG'
-alias lt='ls -althG'
-
-# alias for content of folder recursively
-alias content='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
-
-# aliases for backing up my home dir and my external hard drive
-alias rsync_home_to_wd_2000='chmod +x ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh && . ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh && chmod -x ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh'
-alias rsync_wd_2000_to_core_750='chmod +x ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh && . ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh && chmod -x ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh'
-
-# aliases for weather news
-alias weather='curl http://wttr\.in/'
-alias weather_in_siegen='curl http://wttr\.in/Siegen'
-alias weather_in_stavoren='curl http://wttr\.in/Stavoren'
-alias weather_in_schorndorf='curl http://wttr\.in/Schorndorf'
-
-# alias for macvim
-alias vim='mvim -v'
+# source bash_profile for the common stuff
+source .bash_profile
