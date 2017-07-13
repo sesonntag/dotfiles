@@ -418,7 +418,7 @@ set autochdir
 let NERDTreeChDirMode=2
 
 " Toggle undo tree
-nnoremap <leader>uh :UndotreeToggle<cr>
+nnoremap <leader>u :UndotreeToggle<cr>
 
 " Save current session and reload files
 "let g:session_autosave = 'yes'
