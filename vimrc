@@ -304,12 +304,13 @@ set si
 set wrap linebreak nolist
 set breakindent
 
-
 " Enable code folding
 set foldmethod=syntax
 set foldlevel=99
 let g:SimpylFold_docstring_preview=1
 
+" Match angle brackets...
+set matchpairs+=<:>
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
