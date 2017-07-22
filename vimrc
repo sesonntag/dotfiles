@@ -61,8 +61,8 @@ Plugin 'easymotion/vim-easymotion'
 " Plugin for git commands working in the command line of vim from GitHub repo
 Plugin 'tpope/vim-fugitive'
 
-" Plugin for syntastic code checking from GitHub repo
-Plugin 'scrooloose/syntastic'
+" Plugin for asynchronous code checking from GitHub repo
+Plugin 'w0rp/ale'
 
 " Plugin for showing vim changes in the gutter from GitHub repo
 Plugin 'airblade/vim-gitgutter'
@@ -450,20 +450,13 @@ endif
 " Make Ctrlp start from the current dir
 let g:ctrlp_working_path_mode = 'c'
 
-" Check with syntastic when open document
-"let g:syntastic_check_on_open = 1
+" B
+" ale settings for linting
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+"nmap <silent> <C-"k> <Plug>(ale_previous_wrap)
+"nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-" Set hight of the syntastic error pane
-let g:syntastic_loc_list_height=3
-
-" Set options for syntastic code checker
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " Define powerline theme from airline extension
 let g:airline_theme='dark'
@@ -475,7 +468,7 @@ let g:gitgutter_sign_column_always = 1
 " Define the |-character for use as indent line
 let g:indentLine_char = '¦'
 
-" Deactivate llinting in python-mode since this is done with syntastic
+" Deactivate linting in python-mode since this is done with ale
 let g:pymode_lint = 0
 
 
