@@ -20,5 +20,8 @@ alias weather_in_hebsack='curl http://wttr\.in/Hebsack'
 # alias for macvim
 alias vim='mvim -v'
 
+# export editor variable
+export EDITOR='vim'
+
 # aliases for keeping brew clean
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
