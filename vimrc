@@ -111,9 +111,6 @@ else
     Plugin 'honza/vim-snippets' "actual snippets
 endif
 
-" Plugin to copy to the system clipboard
-Plugin 'christoomey/vim-system-copy'
-
 " Plugin for python mode
 Plugin 'python-mode/python-mode'
 
@@ -130,6 +127,9 @@ autocmd! bufwritepost .vimrc source %
 
 " Sets how many lines of history VIM has to remember
 set history=1000
+
+" Use system clipboard for copying
+set clipboard^=unnamed,unnamedplus
 
 " Sets spellchecking for german/english
 setlocal spell spelllang=en_us
@@ -274,6 +274,7 @@ if has ("gui_win32")
 else
     set undodir=~/.vim/undo//
     set undofile
+    set undolevels=100
     set backupdir=~/.vim/backup//
     set directory=~/.vim/swp//
 endif
@@ -441,8 +442,6 @@ else
     let g:UltiSnipsJumpForwardTrigger      = '<tab>'
     let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
     let g:SuperTabCrMapping=1
-    "let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-    "let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
     " If you want :UltiSnipsEdit to split your window.
     " let g:UltiSnipsEditSplit="vertical"
@@ -451,13 +450,11 @@ endif
 " Make Ctrlp start from the current dir
 let g:ctrlp_working_path_mode = 'c'
 
-" B
 " ale settings for linting
 let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
 "nmap <silent> <C-"k> <Plug>(ale_previous_wrap)
 "nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
 
 " Define powerline theme from airline extension
 let g:airline_theme='dark'
@@ -484,7 +481,7 @@ nnoremap <leader>sp :call FixLastSpellingError()<cr>
 
 
 " Delete trailing white space on save for the relevant file types
-fun! <SID>StripTrailingWhitespaces()
+function! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
     %s/\s\+$//e
