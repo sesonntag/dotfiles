@@ -323,7 +323,7 @@ vnoremap <silent> * :call VisualSelection('b')<CR>
 
 " Make indentations for the whole selected paragraph working
 vnoremap < <gv
-vnoremap > <gv
+vnoremap > >gv
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
