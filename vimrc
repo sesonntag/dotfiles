@@ -117,6 +117,9 @@ endif
 " Plugin for python mode
 Plugin 'python-mode/python-mode'
 
+" Plugin for search ans replace functionality across multiple files
+Plugin 'brooth/far.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
