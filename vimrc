@@ -33,47 +33,47 @@ else
 endif
 Plugin 'VundleVim/Vundle.vim'"
 
-" Plugin for color schemes(s) from GitHub repo
+" Plugin for color schemes(s)
 Plugin 'tomasr/molokai'
 
-" Plugin for nerdtree from GitHub repo
+" Plugin for nerdtree
 Plugin 'scrooloose/nerdtree'
 
-" Plugin for airline and themes from GitHub repo
+" Plugin for airline and themes
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" Plugin for tab completion from GitHub repo
+" Plugin for tab completion
 Plugin 'ervandew/supertab'
 
-" Plugin for commenting from GitHub repo
+" Plugin for commenting
 Plugin 'scrooloose/nerdcommenter'
 
-" Plugin for fuzzy search of files from GitHub repo
+" Plugin for fuzzy search of files
 Plugin 'kien/ctrlp.vim'
 
-" Plugin for surrounding commands from GitHub repo
+" Plugin for surrounding commands
 Plugin 'tpope/vim-surround'
 
-" Plugin for easy moving in documents with motions from GitHub repo
+" Plugin for easy moving in documents with motions
 Plugin 'easymotion/vim-easymotion'
 
-" Plugin for git commands working in the command line of vim from GitHub repo
+" Plugin for git commands working in the command line of vim
 Plugin 'tpope/vim-fugitive'
 
-" Plugin for asynchronous code checking from GitHub repo
+" Plugin for asynchronous code checking
 Plugin 'w0rp/ale'
 
-" Plugin for showing vim changes in the gutter from GitHub repo
+" Plugin for showing vim changes in the gutter
 Plugin 'airblade/vim-gitgutter'
 
-" Plugin for showing indent lines from GitHub repo
+" Plugin for showing indent lines
 Plugin 'Yggdroot/indentLine'
 
-" Plugin for automatically inserting brackets, quotation marks, ... from GitHub repo
+" Plugin for automatically inserting brackets, quotation marks, ...
 Plugin 'jiangmiao/auto-pairs'
 
-" Plugin for displaying a minimap on the right side from GitHub repo
+" Plugin for displaying a minimap on the right side
 Plugin 'severin-lemaignan/vim-minimap'
 
 " Plugin for showing and deleting trailing white spaces
@@ -97,11 +97,14 @@ Plugin 'godlygeek/tabular'
 " Plugin for setting and navigating marks
 Plugin 'kshenoy/vim-signature'
 
-" Plugin for octave/matlab syntax highlighting from GitHub repo
+" Plugin for octave/matlab syntax highlighting
 Plugin 'jvirtanen/vim-octave'
 
 " Plugin for org mode
 Plugin 'jceb/vim-orgmode'
+
+" Plugin for context aware pasting
+Plugin 'sickill/vim-pasta'
 
 " Plugin for snippets
 if has ("gui_win32")
