@@ -120,6 +120,9 @@ Plugin 'python-mode/python-mode'
 " Plugin for search ans replace functionality across multiple files
 Plugin 'brooth/far.vim'
 
+" Plugin for running code tests (e.g. pytest, rspec, ...)
+Plugin 'janko-m/vim-test'
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
@@ -469,14 +472,14 @@ let g:airline_theme='dark'
 "let g:airline_theme='solarized'
 
 " Have always the gutter-bar activate
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 
 " Define the |-character for use as indent line
 let g:indentLine_char = '¦'
 
 " Deactivate linting in python-mode since this is done with ale
 let g:pymode_lint = 0
-
+let g:pymode_options_colorcolumn = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
