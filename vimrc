@@ -477,9 +477,10 @@ set signcolumn=yes
 " Define the |-character for use as indent line
 let g:indentLine_char = '¦'
 
-" Deactivate linting in python-mode since this is done with ale
+" Deactivate linting in python-mode since this is done with ale and use py3
 let g:pymode_lint = 0
 let g:pymode_options_colorcolumn = 0
+"let g:pymode_python = 'python3' # "deactivated since macvim comes with py2 only
 
 " Define key mappings for vim-test
 nmap <silent> <leader>t :TestNearest<CR>
