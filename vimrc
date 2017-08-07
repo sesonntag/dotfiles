@@ -31,7 +31,7 @@ else
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
 endif
-Plugin 'VundleVim/Vundle.vim'"
+Plugin 'VundleVim/Vundle.vim'
 
 " Plugin for color schemes(s)
 Plugin 'tomasr/molokai'
@@ -353,12 +353,12 @@ nnoremap <leader>bd :bd<cr>
 nnoremap <leader>ba :1,1000 bd!<cr>
 
 " Useful mappings for managing tabs
-nnoremap <leader>tn :tabnew<cr>
+nnoremap <leader>tt :tabnew<cr>
 nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>tm :tabmove
-nnoremap <leader>pt <esc>:tabprevious<CR>
-nnoremap <leader>nt <esc>:tabnext<CR>
+nnoremap <leader>tN <esc>:tabprevious<CR>
+nnoremap <leader>tn <esc>:tabnext<CR>
 nnoremap <leader>oo :only<cr>
 
 " Opens a new tab with the current buffer's path
