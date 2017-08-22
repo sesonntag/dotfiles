@@ -95,7 +95,7 @@ Plugin 'godlygeek/tabular'
 "Plugin 'xolox/vim-session'
 
 " Plugin for setting and navigating marks
-Plugin 'kshenoy/vim-signature'
+"Plugin 'kshenoy/vim-signature'
 
 " Plugin for octave/matlab syntax highlighting
 Plugin 'jvirtanen/vim-octave'
@@ -122,6 +122,12 @@ Plugin 'brooth/far.vim'
 
 " Plugin for running code tests (e.g. pytest, rspec, ...)
 Plugin 'janko-m/vim-test'
+
+" Plugin for jellybeans color scheme
+Plugin 'nanotech/jellybeans.vim'
+
+" Plugin to use the silver seacher
+Plugin 'mileszs/ack.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -231,6 +237,9 @@ set tm=500
 
 set completeopt=menuone
 
+" Use Silver Searcher instead of grep
+set grepprg=ag
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -252,7 +261,9 @@ endif
 let base16colorspace=256
 set t_Co=256
 set background=dark
-colorscheme molokai
+"colorscheme molokai
+colorscheme jellybeans
+let g:jellybeans_use_term_italics = 1
 
 " Set utf8 as standard encoding
 set encoding=utf8
@@ -271,7 +282,8 @@ if has ("gui_macvim")
 endif
 
 " Apply a colorcolumn in light grey from of the 81st column
-let &colorcolumn=join(range(81,999),",")
+"let &colorcolumn=join(range(81,999),",")
+let &colorcolumn='80,120'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -422,6 +434,13 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 inoremap <C-f> <C-x><C-f>
 inoremap <C-l> <C-x><C-l>
 
+" Fix "spelling" errors
+cnoremap Q q
+cnoremap Q! q!
+cnoremap W w
+cnoremap Wq wq
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Addon specific
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -521,6 +540,8 @@ endfunction
 let g:last_fold_column_width = 4  " Pick a sane default for the foldcolumn
 nnoremap <leader>f :call FoldColumnToggle()<cr>
 
+" Don't automatically continue comments after newline (from Ben Orenstein)
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sandbox area for testing
