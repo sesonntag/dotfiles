@@ -140,6 +140,14 @@ let g:mapleader = " "
 " Set relative line numbers
 set relativenumber
 set number
+set numberwidth=5
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Always use vertical diffs
+set diffopt+=vertical
 
 " Highlight current line
 set cursorline
