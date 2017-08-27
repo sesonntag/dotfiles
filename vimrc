@@ -33,9 +33,6 @@ else
 endif
 Plugin 'VundleVim/Vundle.vim'
 
-" Plugin for color schemes(s)
-Plugin 'tomasr/molokai'
-
 " Plugin for nerdtree
 Plugin 'scrooloose/nerdtree'
 
@@ -54,9 +51,6 @@ Plugin 'kien/ctrlp.vim'
 
 " Plugin for surrounding commands
 Plugin 'tpope/vim-surround'
-
-" Plugin for easy moving in documents with motions
-Plugin 'easymotion/vim-easymotion'
 
 " Plugin for git commands working in the command line of vim
 Plugin 'tpope/vim-fugitive'
@@ -85,23 +79,11 @@ Plugin 'mbbill/undotree'
 " Plugin for tab completion of search strings
 Plugin 'vim-scripts/SearchComplete'
 
-" Plugin for correct folding of code
-Plugin 'tmhedberg/SimpylFold'
-
 " Plugin for making tables
 Plugin 'godlygeek/tabular'
 
-" Plugin to autosave and autoload files
-"Plugin 'xolox/vim-session'
-
-" Plugin for setting and navigating marks
-"Plugin 'kshenoy/vim-signature'
-
 " Plugin for octave/matlab syntax highlighting
 Plugin 'jvirtanen/vim-octave'
-
-" Plugin for org mode
-Plugin 'jceb/vim-orgmode'
 
 " Plugin for context aware pasting
 Plugin 'sickill/vim-pasta'
@@ -285,6 +267,7 @@ endif
 "let &colorcolumn=join(range(81,999),",")
 let &colorcolumn='80,120'
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -331,10 +314,10 @@ set breakindent
 " Enable code folding
 set foldmethod=syntax
 set foldlevel=99
-let g:SimpylFold_docstring_preview=1
 
 " Match angle brackets...
-set matchpairs+=<:>
+set matchpairs+=<:> "
+
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -452,10 +435,6 @@ let NERDTreeChDirMode=2
 " Toggle undo tree
 nnoremap <leader>u :UndotreeToggle<cr>
 
-" Save current session and reload files
-"let g:session_autosave = 'yes'
-"let g:session_autoload = 'yes'
-
 " Trigger configuration for snippets. No use of <tab> if you use completement engine
 "let g:UltiSnipsExpandTrigger='<leader>us'
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -487,8 +466,9 @@ let g:airline#extensions#ale#enabled = 1
 "nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Define powerline theme from airline extension
-let g:airline_theme='dark'
-"let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline_theme='dark'
+let g:airline_theme='jellybeans'
 
 " Have always the gutter-bar activate
 set signcolumn=yes
