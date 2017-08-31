@@ -149,9 +149,6 @@ set splitright
 " Always use vertical diffs
 set diffopt+=vertical
 
-" Highlight current line
-set cursorline
-
 " Always show the status line
 set laststatus=2
 
