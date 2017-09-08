@@ -55,6 +55,9 @@ Plugin 'tpope/vim-surround'
 " Plugin for git commands working in the command line of vim
 Plugin 'tpope/vim-fugitive'
 
+" Plugin to show detailed information about git repos
+Plugin 'junegunn/gv.vim'
+
 " Plugin for asynchronous code checking
 Plugin 'w0rp/ale'
 
