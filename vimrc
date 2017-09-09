@@ -73,6 +73,9 @@ Plugin 'jiangmiao/auto-pairs'
 " Plugin for displaying a minimap on the right side
 Plugin 'severin-lemaignan/vim-minimap'
 
+" Plugin which makes vim ready for LaTeX
+Plugin 'lervag/vimtex'
+
 " Plugin for showing and deleting trailing white spaces
 Plugin 'ntpeters/vim-better-whitespace'
 
