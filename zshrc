@@ -51,3 +51,6 @@ export EDITOR='vim'
 
 # aliases for keeping brew clean
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+
+# alias to use ctags from Homebrew
+alias ctags='alias ctags=`brew --prefix`/bin/ctags'
