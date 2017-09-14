@@ -117,6 +117,14 @@ Plugin 'nanotech/jellybeans.vim'
 " Plugin to use the silver seacher
 Plugin 'mileszs/ack.vim'
 
+" Plugin for using ctags
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+
+" Plugin for showing tags on the right side bar
+Plugin 'majutsushi/tagbar'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
@@ -397,6 +405,9 @@ set viminfo^=%
 " Remap VIM 0 to first non-blank character
 nnoremap 0 ^
 
+" Use ü to go to tag definition
+nnoremap ü <C-]>
+
 " Map the ESC key sequence to jk for faster leaving the insert mode
 inoremap kj <Esc>
 
@@ -436,12 +447,21 @@ cnoremap Wq wq
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Addon specific
+" => Plugin specific
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Load Nerdtree on Ctrl+n and load path of the actual file
 nnoremap <C-n> :NERDTreeToggle<CR>
 set autochdir
 let NERDTreeChDirMode=2
+
+" Make easytags to work asynchronously
+let g:easytags_async = 1
+
+" Make easytags to work on save
+"let g:easytags_events = ['BufWritePost']
+
+" Toggle the tagbar
+nmap <leader>ct :TagbarToggle<CR>
 
 " Toggle undo tree
 nnoremap <leader>u :UndotreeToggle<cr>
