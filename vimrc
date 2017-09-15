@@ -18,6 +18,30 @@
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Install Vundle in case it is not installed already
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+if !filereadable(vundle_readme)
+  echo "Installing Vundle.."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  let iCanHazVundle=0
+endif
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#rc()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+if iCanHazVundle == 0
+  echo "Installing Bundles, please ignore key map error messages"
+  echo ""
+  :PluginInstall
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
@@ -58,6 +82,9 @@ Plugin 'tpope/vim-fugitive'
 " Plugin to show detailed information about git repos
 Plugin 'junegunn/gv.vim'
 
+" Plugin to navigate in vim and tmux without further actions
+Plugin 'christoomey/vim-tmux-navigator'
+
 " Plugin for asynchronous code checking
 Plugin 'w0rp/ale'
 
@@ -75,6 +102,9 @@ Plugin 'severin-lemaignan/vim-minimap'
 
 " Plugin which makes vim ready for LaTeX
 Plugin 'lervag/vimtex'
+
+" Plugin for a fancy startscreen
+Plugin 'mhinz/vim-startify'
 
 " Plugin for showing and deleting trailing white spaces
 Plugin 'ntpeters/vim-better-whitespace'
@@ -113,6 +143,9 @@ Plugin 'janko-m/vim-test'
 
 " Plugin for jellybeans color scheme
 Plugin 'nanotech/jellybeans.vim'
+
+" Plugin for managing to-do lists
+Plugin 'aserebryakov/vim-todo-lists'
 
 " Plugin to use the silver seacher
 Plugin 'mileszs/ack.vim'
@@ -354,12 +387,6 @@ vnoremap > >gv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Smart way to move between windows
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-h> <C-W>h
-nnoremap <C-l> <C-W>l
-
 " Close the current buffer
 nnoremap <leader>bd :bd<cr>
 
