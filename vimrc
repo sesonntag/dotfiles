@@ -20,26 +20,29 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Install Vundle in case it is not installed already
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
-if !filereadable(vundle_readme)
-  echo "Installing Vundle.."
-  echo ""
-  silent !mkdir -p ~/.vim/bundle
-  silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  let iCanHazVundle=0
-endif
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+if has("hui_win32")
+    " continue
+else
+    let iCanHazVundle=1
+    let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+    if !filereadable(vundle_readme)
+        echo "Installing Vundle.."
+        echo ""
+        silent !mkdir -p ~/.vim/bundle
+        silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+        let iCanHazVundle=0
+    endif
+    set rtp+=~/.vim/bundle/Vundle.vim/
+    call vundle#rc()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-if iCanHazVundle == 0
-  echo "Installing Bundles, please ignore key map error messages"
-  echo ""
-  :PluginInstall
+    " let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
+    if iCanHazVundle == 0
+        echo "Installing Bundles, please ignore key map error messages"
+        echo ""
+        :PluginInstall
+    endif
 endif
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle
