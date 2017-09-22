@@ -45,8 +45,8 @@ alias weather_in_hebsack='curl http://wttr\.in/Hebsack'
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # aliases for rsync scripts
-    alias rsync_home_to_wd_2000'chmod +x ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh && . ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh && chmod -x ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh'
-    alias rsync_wd_1999_to_core_750='chmod +x ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh && . ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh && chmod -x ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh'
+    alias rsync_home_to_wd_2000='chmod +x ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh && . ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh && chmod -x ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh'
+    alias rsync_wd_2000_to_core_750='chmod +x ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh && . ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh && chmod -x ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh'
 
     # alias for macvim
     alias vim='mvim -v'
