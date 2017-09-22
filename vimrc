@@ -20,7 +20,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Install Vundle in case it is not installed already
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("hui_win32")
+if has("gui_win32")
     " continue
 else
     let iCanHazVundle=1
