@@ -1,5 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sections:
+"    -> Base installation
 "    -> Vundle
 "    -> General
 "    -> VIM user interface
@@ -9,10 +10,9 @@
 "    -> Visual mode related
 "    -> Moving around, tabs and buffers
 "    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
+"    -> Plugin specific
 "    -> Helper functions
+"    -> Sandbox area for testing
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
