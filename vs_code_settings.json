@@ -1,0 +1,20 @@
+// Place your settings in this file to overwrite the default settings
+{
+    // Editor
+    "editor.tabCompletion": false,
+    "editor.lineNumbers": "relative",
+    "editor.rulers": [81, 121],
+    "editor.wordWrap": "on",
+
+    // Workbench
+    "workbench.commandPalette.history": 100,
+    "workbench.startupEditor": "newUntitledFile",
+
+    // Windows
+    "window.restoreWindows": "one",
+
+    // Files
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": false,
+    "files.autoSave": "afterDelay"
+}
