@@ -88,6 +88,9 @@ Plugin 'Shougo/vinarise.vim'
 " Plugin to show detailed information about git repos
 Plugin 'junegunn/gv.vim'
 
+" Plugin to show line numbers only in current window
+Plugin 'auwsmit/vim-active-numbers'
+
 " Plugin to navigate in vim and tmux without further actions
 Plugin 'christoomey/vim-tmux-navigator'
 
