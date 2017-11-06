@@ -82,6 +82,9 @@ Plugin 'tpope/vim-surround'
 " Plugin for git commands working in the command line of vim
 Plugin 'tpope/vim-fugitive'
 
+" Plugin to add hex editing features
+Plugin 'Shougo/vinarise.vim'
+
 " Plugin to show detailed information about git repos
 Plugin 'junegunn/gv.vim'
 
@@ -159,6 +162,9 @@ Plugin 'xolox/vim-easytags'
 
 " Plugin for showing tags on the right side bar
 Plugin 'majutsushi/tagbar'
+
+" Plugin to close all buffer except the current one
+Plugin 'vim-scripts/BufOnly.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -548,6 +554,9 @@ nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
+
+" Remap to close all buffers but the currently displayed one
+cnoremap cab BufOnly
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
