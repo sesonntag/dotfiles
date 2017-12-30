@@ -166,6 +166,9 @@ Plugin 'majutsushi/tagbar'
 " Plugin to close all buffer except the current one
 Plugin 'vim-scripts/BufOnly.vim'
 
+" Plugin for markdown formatting
+Plugin 'SidOfc/mkdx'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()
