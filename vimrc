@@ -112,9 +112,6 @@ Plugin 'severin-lemaignan/vim-minimap'
 " Plugin which makes vim ready for LaTeX
 Plugin 'lervag/vimtex'
 
-" Plugin for a fancy startscreen
-Plugin 'mhinz/vim-startify'
-
 " Plugin for showing and deleting trailing white spaces
 Plugin 'ntpeters/vim-better-whitespace'
 
