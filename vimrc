@@ -147,8 +147,8 @@ Plugin 'brooth/far.vim'
 " Plugin for running code tests (e.g. pytest, rspec, ...)
 Plugin 'janko-m/vim-test'
 
-" Plugin for jellybeans color scheme
-Plugin 'nanotech/jellybeans.vim'
+" Plugin for molokai color scheme
+Plugin 'tomasr/molokai'
 
 " Plugin for managing to-do lists
 Plugin 'aserebryakov/vim-todo-lists'
@@ -307,9 +307,7 @@ endif
 let base16colorspace=256
 set t_Co=256
 set background=dark
-"colorscheme molokai
-colorscheme jellybeans
-let g:jellybeans_use_term_italics = 1
+colorscheme molokai
 
 " Set utf8 as standard encoding
 set encoding=utf8
@@ -328,7 +326,7 @@ if has ("gui_macvim")
 endif
 
 " Apply a colorcolumn in light grey from of the 81st column
-"let &colorcolumn=join(range(81,999),",")
+"let &colorcolumn=join(range(81,9999),",")
 let &colorcolumn='80,120'
 
 
@@ -537,8 +535,7 @@ let g:airline#extensions#ale#enabled = 1
 
 " Define powerline theme from airline extension
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline_theme='dark'
-let g:airline_theme='jellybeans'
+let g:airline_theme='dark'
 
 " Have always the gutter-bar activate
 set signcolumn=yes
