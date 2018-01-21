@@ -373,7 +373,8 @@ set breakindent
 
 " Enable code folding
 set foldmethod=syntax
-set foldlevel=99
+"set foldlevel=99
+set foldlevel=1
 
 " Match angle brackets...
 set matchpairs+=<:> "
