@@ -163,6 +163,9 @@ Plugin 'xolox/vim-easytags'
 " Plugin for showing tags on the right side bar
 Plugin 'majutsushi/tagbar'
 
+" Plugin to toggle spell checking
+Plugin 'leifdenby/vim-spellcheck-toggle'
+
 " Plugin to close all buffer except the current one
 Plugin 'vim-scripts/BufOnly.vim'
 
@@ -373,7 +376,6 @@ set breakindent
 
 " Enable code folding
 set foldmethod=syntax
-"set foldlevel=99
 set foldlevel=1
 
 " Match angle brackets...
