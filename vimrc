@@ -325,10 +325,8 @@ if has ("gui_macvim")
     set guifont=Menlo:h11
 endif
 
-" Apply a colorcolumn in light grey from of the 81st column
-"let &colorcolumn=join(range(81,9999),",")
-let &colorcolumn='80,120'
-
+" Apply a colorcolumn in light grey in the 81st and from 121st column on
+let &colorcolumn="81,".join(range(121,9999),",")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
