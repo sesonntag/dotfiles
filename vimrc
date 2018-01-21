@@ -204,6 +204,9 @@ set relativenumber
 set number
 set numberwidth=5
 
+" Set cursorline
+set cursorline
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
