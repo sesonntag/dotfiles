@@ -423,6 +423,9 @@ nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
+" Close means close all
+nnoremap q :qa
+
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
