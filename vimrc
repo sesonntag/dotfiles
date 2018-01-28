@@ -172,6 +172,9 @@ Plugin 'vim-scripts/BufOnly.vim'
 " Plugin for markdown formatting
 Plugin 'SidOfc/mkdx'
 
+" Plugin which handles closing buffers and tabs
+Plugin 'Asheq/close-buffers.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -423,9 +426,6 @@ nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Close means close all
-nnoremap q :qa
-
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
@@ -503,6 +503,9 @@ let g:easytags_async = 1
 
 " Make easytags to work on save
 "let g:easytags_events = ['BufWritePost']
+
+" delete all open buffers except this
+nnoremap <leader>qb :CloseOtherBuffers<cr>
 
 " Toggle the tagbar
 nmap <leader>ct :TagbarToggle<CR>
