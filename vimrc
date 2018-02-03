@@ -138,9 +138,6 @@ else
     Plugin 'honza/vim-snippets' "actual snippets
 endif
 
-" Plugin for python mode
-Plugin 'python-mode/python-mode'
-
 " Plugin for search ans replace functionality across multiple files
 Plugin 'brooth/far.vim'
 
@@ -553,20 +550,12 @@ set signcolumn=yes
 " Define the |-character for use as indent line
 let g:indentLine_char = '¦'
 
-" Deactivate linting in python-mode since this is done with ale and use py3
-let g:pymode_lint = 0
-let g:pymode_options_colorcolumn = 0
-"let g:pymode_python = 'python3' # "deactivated since macvim comes with py2 only
-
 " Define key mappings for vim-test
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
-
-" Remap to close all buffers but the currently displayed one
-cnoremap cab BufOnly
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
