@@ -53,7 +53,7 @@ filetype off
 " Set the runtime path to include Vundle and initialize
 if has ("gui_win32")
     set rtp+=%USERPROFILE%/vimfiles/bundle/Vundle.vim/
-    call vundle#begin('C:\Users\desonnse\vimfiles\bundle\')
+    call vundle#begin('%USERPROFILE%/vimfiles\bundle\')
 else
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
@@ -168,6 +168,9 @@ Plugin 'vim-scripts/BufOnly.vim'
 
 " Plugin for markdown formatting
 Plugin 'SidOfc/mkdx'
+
+" Plugin for asynchronous completion
+Plugin 'maralla/completor.vim'
 
 " Plugin which handles closing buffers and tabs
 Plugin 'Asheq/close-buffers.vim'
@@ -475,7 +478,6 @@ endif
 " make p in Visual mode replace the selected text with the yank register
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
-
 " Complete whole filenames/lines with a quicker shortcut key in insert mode
 inoremap <C-f> <C-x><C-f>
 inoremap <C-l> <C-x><C-l>
@@ -497,7 +499,6 @@ let NERDTreeChDirMode=2
 
 " Make easytags to work asynchronously
 let g:easytags_async = 1
-
 " Make easytags to work on save
 "let g:easytags_events = ['BufWritePost']
 
