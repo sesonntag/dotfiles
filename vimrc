@@ -503,7 +503,7 @@ let g:easytags_async = 1
 "let g:easytags_events = ['BufWritePost']
 
 " delete all open buffers except this
-nnoremap <leader>qb :CloseOtherBuffers<cr>
+nnoremap <leader>cb :CloseOtherBuffers<cr>
 
 " Toggle the tagbar
 nmap <leader>ct :TagbarToggle<CR>
