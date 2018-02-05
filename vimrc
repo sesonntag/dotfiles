@@ -63,9 +63,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin for nerdtree
 Plugin 'scrooloose/nerdtree'
 
-" Plugin for python IDE like completion (requires jedi via pip to be installed)
-Plugin 'davidhalter/jedi-vim'
-
 " Plugin for airline and themes
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
