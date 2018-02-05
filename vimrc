@@ -172,9 +172,6 @@ Plugin 'SidOfc/mkdx'
 " Plugin for asynchronous completion
 Plugin 'maralla/completor.vim'
 
-" Plugin which handles closing buffers and tabs
-Plugin 'Asheq/close-buffers.vim'
-
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -503,7 +500,7 @@ let g:easytags_async = 1
 "let g:easytags_events = ['BufWritePost']
 
 " delete all open buffers except this
-nnoremap <leader>cb :CloseOtherBuffers<cr>
+nnoremap <leader>cb :bufdo bd<cr>
 
 " Toggle the tagbar
 nmap <leader>ct :TagbarToggle<CR>
