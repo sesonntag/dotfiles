@@ -150,9 +150,6 @@ Plugin 'tomasr/molokai'
 " Plugin for managing to-do lists
 Plugin 'aserebryakov/vim-todo-lists'
 
-" Plugin to use the silver seacher
-Plugin 'mileszs/ack.vim'
-
 " Plugin for using ctags
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
