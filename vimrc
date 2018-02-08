@@ -224,7 +224,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 set autoread
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>w :w!<CR>
 
 " Wordcompletion in list
 set completeopt=longest,menuone
@@ -399,26 +399,26 @@ vnoremap > >gv
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Close the current buffer
-nnoremap <leader>bd :bd<cr>
+nnoremap <leader>bd :bd<CR>
 
 " Close all the buffers
-nnoremap <leader>ba :1,1000 bd!<cr>
+nnoremap <leader>ba :1,1000 bd!<CR>
 
 " Useful mappings for managing tabs
-nnoremap <leader>tt :tabnew<cr>
-nnoremap <leader>to :tabonly<cr>
-nnoremap <leader>tc :tabclose<cr>
+nnoremap <leader>tt :tabnew<CR>
+nnoremap <leader>to :tabonly<CR>
+nnoremap <leader>tc :tabclose<CR>
 nnoremap <leader>tm :tabmove
 nnoremap <leader>tN <esc>:tabprevious<CR>
 nnoremap <leader>tn <esc>:tabnext<CR>
-nnoremap <leader>oo :only<cr>
+nnoremap <leader>oo :only<CR>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
-nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<CR>/
 
 " Switch CWD to the directory of the open buffer
-nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Specify the behavior when switching between buffers
 try
@@ -457,10 +457,10 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nnoremap <M-j> mz:m+<cr>`z
-nnoremap <M-k> mz:m-2<cr>`z
-vnoremap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vnoremap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <M-j> mz:m+<CR>`z
+nnoremap <M-k> mz:m-2<CR>`z
+vnoremap <M-j> :m'>+<CR>`<my`>mzgv`yo`z
+vnoremap <M-k> :m'<-2<CR>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
   nnoremap <D-j> <M-j>
@@ -497,13 +497,13 @@ let g:easytags_async = 1
 "let g:easytags_events = ['BufWritePost']
 
 " delete all open buffers except this
-nnoremap <leader>cb :bufdo bd<cr>
+nnoremap <leader>cb :bufdo bd<CR>
 
 " Toggle the tagbar
 nmap <leader>ct :TagbarToggle<CR>
 
 " Toggle undo tree
-nnoremap <leader>u :UndotreeToggle<cr>
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " Trigger configuration for snippets. No use of <tab> if you use completement engine
 "let g:UltiSnipsExpandTrigger='<leader>us'
@@ -560,7 +560,7 @@ nmap <silent> <leader>g :TestVisit<CR>
 function! FixLastSpellingError()
   normal! mm[s1z=`m"
 endfunction
-nnoremap <leader>sp :call FixLastSpellingError()<cr>
+nnoremap <leader>sp :call FixLastSpellingError()<CR>
 
 
 " Delete trailing white space on save for the relevant file types
@@ -582,7 +582,7 @@ function! FoldColumnToggle()
     endif
 endfunction
 let g:last_fold_column_width = 4  " Pick a sane default for the foldcolumn
-nnoremap <leader>f :call FoldColumnToggle()<cr>
+nnoremap <leader>f :call FoldColumnToggle()<CR>
 
 " Don't automatically continue comments after newline (from Ben Orenstein)
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
