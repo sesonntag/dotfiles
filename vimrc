@@ -160,9 +160,6 @@ Plugin 'majutsushi/tagbar'
 " Plugin to toggle spell checking
 Plugin 'leifdenby/vim-spellcheck-toggle'
 
-" Plugin to close all buffer except the current one
-Plugin 'vim-scripts/BufOnly.vim'
-
 " Plugin for markdown formatting
 Plugin 'SidOfc/mkdx'
 
@@ -497,7 +494,7 @@ let g:easytags_async = 1
 "let g:easytags_events = ['BufWritePost']
 
 " delete all open buffers except this
-nnoremap <leader>cb :bufdo bd<CR>
+nnoremap <leader>bo :bufdo bd<CR>
 
 " Toggle the tagbar
 nmap <leader>ct :TagbarToggle<CR>
