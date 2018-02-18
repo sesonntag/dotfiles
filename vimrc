@@ -130,14 +130,6 @@ Plugin 'jvirtanen/vim-octave'
 " Plugin for context aware pasting
 Plugin 'sickill/vim-pasta'
 
-" Plugin for snippets
-if has ("gui_win32")
-    "...
-else
-    Plugin 'SirVer/ultisnips' "engine for snippets
-    Plugin 'honza/vim-snippets' "actual snippets
-endif
-
 " Plugin for search ans replace functionality across multiple files
 Plugin 'brooth/far.vim'
 
@@ -163,8 +155,17 @@ Plugin 'leifdenby/vim-spellcheck-toggle'
 " Plugin for markdown formatting
 Plugin 'SidOfc/mkdx'
 
-" Plugin for asynchronous completion
-Plugin 'maralla/completor.vim'
+" Plugins only working in specific OS
+if has ("gui_win32")
+    "...
+else
+    " Plugins for snippets
+    Plugin 'SirVer/ultisnips' "engine for snippets
+    Plugin 'honza/vim-snippets' "actual snippets
+
+    " Plugin for asynchronous completion
+    Plugin 'maralla/completor.vim'
+endif
 
 
 " All of your Plugins must be added before the following line
