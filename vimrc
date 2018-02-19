@@ -1,18 +1,18 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sections:
-"    -> Base installation
-"    -> Vundle
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Editing mappings
-"    -> Plugin specific
-"    -> Helper functions
-"    -> Sandbox area for testing
+"   -> Base installation
+"   -> Vundle
+"   -> General
+"   -> VIM user interface
+"   -> Colors and Fonts
+"   -> Files and backups
+"   -> Text, tab and indent related
+"   -> Visual mode related
+"   -> Moving around, tabs and buffers
+"   -> Editing mappings
+"   -> Plugin specific
+"   -> Helper functions
+"   -> Sandbox area for testing
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -58,115 +58,52 @@ else
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
 endif
+
+" Main Vundle programm
 Plugin 'VundleVim/Vundle.vim'
 
-" Plugin for nerdtree
-Plugin 'scrooloose/nerdtree'
-
-" Plugin for airline and themes
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-" Plugin for tab completion
-Plugin 'ervandew/supertab'
-
-" Plugin for commenting
-Plugin 'scrooloose/nerdcommenter'
-
-" Plugin for fuzzy search of files
-Plugin 'kien/ctrlp.vim'
-
-" Plugin for surrounding commands
-Plugin 'tpope/vim-surround'
-
-" Plugin for git commands working in the command line of vim
-Plugin 'tpope/vim-fugitive'
-
-" Plugin to add hex editing features
-Plugin 'Shougo/vinarise.vim'
-
-" Plugin to show detailed information about git repos
-Plugin 'junegunn/gv.vim'
-
-" Plugin to show line numbers only in current window
-Plugin 'auwsmit/vim-active-numbers'
-
-" Plugin to navigate in vim and tmux without further actions
-Plugin 'christoomey/vim-tmux-navigator'
-
-" Plugin for asynchronous code checking
-Plugin 'w0rp/ale'
-
-" Plugin for showing vim changes in the gutter
-Plugin 'airblade/vim-gitgutter'
-
-" Plugin for showing indent lines
-Plugin 'Yggdroot/indentLine'
-
-" Plugin for automatically inserting brackets, quotation marks, ...
-Plugin 'jiangmiao/auto-pairs'
-
-" Plugin for displaying a minimap on the right side
-Plugin 'severin-lemaignan/vim-minimap'
-
-" Plugin which makes vim ready for LaTeX
-Plugin 'lervag/vimtex'
-
-" Plugin for showing and deleting trailing white spaces
-Plugin 'ntpeters/vim-better-whitespace'
-
-" Plugin for graphical undo history
-Plugin 'mbbill/undotree'
-
-" Plugin for tab completion of search strings
-Plugin 'vim-scripts/SearchComplete'
-
-" Plugin for making tables
-Plugin 'godlygeek/tabular'
-
-" Plugin for octave/matlab syntax highlighting
-Plugin 'jvirtanen/vim-octave'
-
-" Plugin for context aware pasting
-Plugin 'sickill/vim-pasta'
-
-" Plugin for search ans replace functionality across multiple files
-Plugin 'brooth/far.vim'
-
-" Plugin for running code tests (e.g. pytest, rspec, ...)
-Plugin 'janko-m/vim-test'
-
-" Plugin for molokai color scheme
-Plugin 'tomasr/molokai'
-
-" Plugin for managing to-do lists
-Plugin 'aserebryakov/vim-todo-lists'
-
-" Plugin for using ctags
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-
-" Plugin for showing tags on the right side bar
-Plugin 'majutsushi/tagbar'
-
-" Plugin to toggle spell checking
-Plugin 'leifdenby/vim-spellcheck-toggle'
-
-" Plugin for markdown formatting
-Plugin 'SidOfc/mkdx'
+Plugin 'scrooloose/nerdtree'             " file and folder tree on the left side
+Plugin 'vim-airline/vim-airline'         " adding the airline
+Plugin 'vim-airline/vim-airline-themes'  " set of themes for airline
+Plugin 'ervandew/supertab'               " tab completion
+Plugin 'scrooloose/nerdcommenter'        " commenting lines in and out
+Plugin 'kien/ctrlp.vim'                  " fuzzy file search
+Plugin 'tpope/vim-surround'              " surrounding commands
+Plugin 'tpope/vim-fugitive'              " git commands working in the command line of vim
+Plugin 'Shougo/vinarise.vim'             " hex editing features
+Plugin 'junegunn/gv.vim'                 " show detailed information about git repos
+Plugin 'auwsmit/vim-active-numbers'      " show line numbers only in current window
+Plugin 'christoomey/vim-tmux-navigator'  " navigate in vim and tmux without further actions
+Plugin 'w0rp/ale'                        " asynchronous code checking
+Plugin 'airblade/vim-gitgutter'          " showing  changes in the gutter
+Plugin 'Yggdroot/indentLine'             " showing indent lines
+Plugin 'jiangmiao/auto-pairs'            " automatically inserting brackets, quotation marks, ...
+Plugin 'severin-lemaignan/vim-minimap'   " displaying a minimap on the right side
+Plugin 'lervag/vimtex'                   " adding LaTeX features
+Plugin 'ntpeters/vim-better-whitespace'  " showing and deleting trailing white spaces
+Plugin 'mbbill/undotree'                 " graphical undo history
+Plugin 'vim-scripts/SearchComplete'      " tab completion of search strings
+Plugin 'godlygeek/tabular'               " arranging tables
+Plugin 'jvirtanen/vim-octave'            " octave/matlab syntax highlighting
+Plugin 'sickill/vim-pasta'               " context aware pasting
+Plugin 'brooth/far.vim'                  " search ans replace functionality across multiple files
+Plugin 'janko-m/vim-test'                " running code tests (e.g. pytest, rspec, ...)
+Plugin 'tomasr/molokai'                  " molokai color scheme
+Plugin 'aserebryakov/vim-todo-lists'     " managing to-do lists
+Plugin 'xolox/vim-misc'                  " using ctags
+Plugin 'xolox/vim-easytags'              " using ctags
+Plugin 'majutsushi/tagbar'               " display tags on the right side bar
+Plugin 'leifdenby/vim-spellcheck-toggle' " toggle spell checking
+Plugin 'SidOfc/mkdx'                     " markdown formatting
 
 " Plugins only working in specific OS
 if has ("gui_win32")
     "...
 else
-    " Plugins for snippets
-    Plugin 'SirVer/ultisnips' "engine for snippets
-    Plugin 'honza/vim-snippets' "actual snippets
-
-    " Plugin for asynchronous completion
-    Plugin 'maralla/completor.vim'
+    Plugin 'SirVer/ultisnips' "Plugin which is the engine for snippets
+    Plugin 'honza/vim-snippets' "Plugin wich contains the actual snippets
+    Plugin 'maralla/completor.vim' " asynchronous completion
 endif
-
 
 " All of your Plugins must be added before the following line
 call vundle#end()
