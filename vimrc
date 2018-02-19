@@ -90,7 +90,7 @@ Plugin 'brooth/far.vim'                  " search ans replace functionality acro
 Plugin 'janko-m/vim-test'                " running code tests (e.g. pytest, rspec, ...)
 Plugin 'tomasr/molokai'                  " molokai color scheme
 Plugin 'aserebryakov/vim-todo-lists'     " managing to-do lists
-Plugin 'xolox/vim-misc'                  " using ctags
+Plugin 'xolox/vim-misc'                  " backend engine for using ctags and co
 Plugin 'xolox/vim-easytags'              " using ctags
 Plugin 'majutsushi/tagbar'               " display tags on the right side bar
 Plugin 'leifdenby/vim-spellcheck-toggle' " toggle spell checking
