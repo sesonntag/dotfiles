@@ -263,7 +263,7 @@ if has ("gui_macvim")
 endif
 
 " Apply a colorcolumn in light grey in the 81st and from 121st column on
-let &colorcolumn="81,".join(range(121,9999),",")
+"let &colorcolumn="81,".join(range(121,9999),",")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
