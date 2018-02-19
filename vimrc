@@ -102,7 +102,6 @@ if has ("gui_win32")
 else
     Plugin 'SirVer/ultisnips' "Plugin which is the engine for snippets
     Plugin 'honza/vim-snippets' "Plugin wich contains the actual snippets
-    Plugin 'maralla/completor.vim' " asynchronous completion
 endif
 
 " All of your Plugins must be added before the following line
