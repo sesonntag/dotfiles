@@ -160,6 +160,9 @@ set autoread
 " Fast saving
 nmap <leader>w :w!<CR>
 
+" Fast quitting
+nmap <leader>x :x<CR>
+
 " Wordcompletion in list
 set completeopt=longest,menuone
 
