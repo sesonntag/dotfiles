@@ -11,7 +11,22 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Load following plugins. Add wisely, as too many plugins slow down shell startup.
-plugins=(adb git osx terminalapp sudo web-search extract colored-man-pages cp tmux history dirhistory)
+plugins=(
+adb
+colored-man-pages
+colorize
+command-not-found
+cp
+dirhistory
+extract
+git
+history
+osx
+sudo
+terminalapp
+tmux
+web-search
+)
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin"
