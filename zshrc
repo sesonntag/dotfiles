@@ -35,9 +35,9 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/
 source $ZSH/oh-my-zsh.sh
 
 
-######################
-# bash_profile stuff #
-######################
+##############################
+# bash_profile general stuff #
+##############################
 
 # Generals
 # aliases to extend the ls command
@@ -49,13 +49,11 @@ alias lt='ls -althG'
 # alias for content of folder recursively
 alias content='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
 
-# aliases for weather news
-alias weather='curl http://wttr\.in/'
-alias weather_in_siegen='curl http://wttr\.in/Siegen'
-alias weather_in_stavoren='curl http://wttr\.in/Stavoren'
-alias weather_in_hebsack='curl http://wttr\.in/Hebsack'
 
-# os specific parts
+###################################
+# operating system  realted stuff #
+###################################
+
 # mac os specific parts
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
