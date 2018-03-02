@@ -96,8 +96,6 @@ Plugin 'majutsushi/tagbar'                  " display tags on the right side bar
 Plugin 'leifdenby/vim-spellcheck-toggle'    " toggle spell checking
 Plugin 'SidOfc/mkdx'                        " markdown formatting
 
-Plugin 'Dru89/vim-adventurous'
-
 " Plugins only working in specific OS
 if has ("gui_win32")
     "...
@@ -249,8 +247,7 @@ endif
 "let base16colorspace=256
 set t_Co=256
 set background=dark
-"colorscheme molokai
-colorscheme adventurous
+colorscheme molokai
 
 " Set utf8 as standard encoding
 set encoding=utf8
@@ -315,8 +312,8 @@ set wrap linebreak nolist
 set breakindent
 
 " Enable code folding
-set foldmethod=syntax
-set foldlevel=1
+set foldmethod=indent "syntax
+set foldlevel=0
 
 " Match angle brackets...
 set matchpairs+=<:> "
