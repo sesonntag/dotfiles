@@ -96,6 +96,8 @@ Plugin 'majutsushi/tagbar'                  " display tags on the right side bar
 Plugin 'leifdenby/vim-spellcheck-toggle'    " toggle spell checking
 Plugin 'SidOfc/mkdx'                        " markdown formatting
 
+Plugin 'Dru89/vim-adventurous'
+
 " Plugins only working in specific OS
 if has ("gui_win32")
     "...
@@ -244,10 +246,11 @@ if has("gui_running")
 endif
 
 " Set color schemes
-let base16colorspace=256
+"let base16colorspace=256
 set t_Co=256
 set background=dark
-colorscheme molokai
+"colorscheme molokai
+colorscheme adventurous
 
 " Set utf8 as standard encoding
 set encoding=utf8
