@@ -312,8 +312,9 @@ set wrap linebreak nolist
 set breakindent
 
 " Enable code folding
-set foldmethod=indent "syntax
-set foldlevel=0
+autocmd Syntax c,cpp,ruby,vim,xml,html,xhtml setlocal foldmethod=syntax
+autocmd Syntax python setlocal foldmethod=indent
+set foldlevel=1
 
 " Match angle brackets...
 set matchpairs+=<:> "
