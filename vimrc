@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sections:
+" Sections
 "   -> Base installation
 "   -> Vundle
 "   -> Auto commands
@@ -76,7 +76,7 @@ Plugin 'junegunn/gv.vim'                    " show detailed information about gi
 Plugin 'auwsmit/vim-active-numbers'         " show line numbers only in current window
 Plugin 'christoomey/vim-tmux-navigator'     " navigate in vim and tmux without further actions
 Plugin 'w0rp/ale'                           " asynchronous code checking
-Plugin 'airblade/vim-gitgutter'             " showing  changes in the gutter
+Plugin 'mhinz/vim-signify'                  " showing  changes in the gutter
 Plugin 'Yggdroot/indentLine'                " showing indent lines
 Plugin 'jiangmiao/auto-pairs'               " automatically inserting brackets, quotation marks, ...
 Plugin 'severin-lemaignan/vim-minimap'      " displaying a minimap on the right side
@@ -482,8 +482,21 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark'
 
-" Have always the gutter-bar activate
+" Have always the gutter-bar activated
 set signcolumn=yes
+
+" Signify - general
+let g:signify_realtime = 1
+
+" Signify - highlight lines in Sy and vimdiff etc.)
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+
+" Signify - highlight signs in Sy
+highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
+highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 
 " Define the |-character for use as indent line
 let g:indentLine_char = '¦'
