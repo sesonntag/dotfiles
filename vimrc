@@ -2,6 +2,7 @@
 " Sections:
 "   -> Base installation
 "   -> Vundle
+"   -> Auto commands
 "   -> General
 "   -> VIM user interface
 "   -> Colors and Fonts
@@ -59,7 +60,7 @@ else
     call vundle#begin()
 endif
 
-" Main Vundle programm
+" Main Vundle program
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'                " file and folder tree on the left side
@@ -90,7 +91,7 @@ Plugin 'brooth/far.vim'                     " search ans replace functionality a
 Plugin 'janko-m/vim-test'                   " running code tests (e.g. pytest, rspec, ...)
 Plugin 'tomasr/molokai'                     " molokai color scheme
 Plugin 'aserebryakov/vim-todo-lists'        " managing to-do lists
-Plugin 'xolox/vim-misc'                     " backend engine for using ctags and co
+Plugin 'xolox/vim-misc'                     " back end engine for using ctags and co
 Plugin 'xolox/vim-easytags'                 " using ctags
 Plugin 'majutsushi/tagbar'                  " display tags on the right side bar
 Plugin 'leifdenby/vim-spellcheck-toggle'    " toggle spell checking
@@ -101,7 +102,7 @@ if has ("gui_win32")
     "...
 else
     Plugin 'SirVer/ultisnips'               "Plugin which is the engine for snippets
-    Plugin 'honza/vim-snippets'             "Plugin wich contains the actual snippets
+    Plugin 'honza/vim-snippets'             "Plugin which contains the actual snippets
 endif
 
 " All of your Plugins must be added before the following line
@@ -110,18 +111,42 @@ filetype plugin indent on
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
+" => Auto commands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto load .vimrc after saving
 autocmd! bufwritepost .vimrc source %
 
+" Detect markdown language and activate syntax highlighting
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Enable code folding
+autocmd Syntax c,cpp,ruby,vim,xml,html,xhtml setlocal foldmethod=syntax
+autocmd Syntax python setlocal foldmethod=indent
+set foldlevel=1
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
+" Don't automatically continue comments after newline (from Ben Orenstein)
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+
+" Show trailing white spaces and eol signs, ...
+autocmd BufNewFile,BufRead *.* set list listchars=eol:¬,tab:\▸\ ,trail:~,extends:>,precedes:<
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=1000
 
 " Use system clipboard for copying
 set clipboard^=unnamed,unnamedplus
 
-" Sets spellchecking for german/english
+" Sets spellchecking for German/English
 setlocal spell spelllang=en_us
 "setlocal spell spelllang=de_de
 
@@ -148,9 +173,6 @@ set diffopt+=vertical
 " Always show the status line
 set laststatus=2
 
-" Show trailing white spaces and eol signs, ...
-au BufNewFile,BufRead *.* set list listchars=eol:¬,tab:\▸\ ,trail:~,extends:>,precedes:<
-
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
@@ -163,17 +185,17 @@ nmap <leader>w :w!<CR>
 " Fast quitting
 nmap <leader>x :x<CR>
 
-" Wordcompletion in list
+" Word completion in list
 set completeopt=longest,menuone
 
-" Activare mouse suuport
+" Activate mouse support
 set mouse=a
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn on the WiLd menu
+" Turn on the wild menu
 set wildmenu
 
 " Ignore compiled files
@@ -233,9 +255,6 @@ set grepprg=ag
 " Enable syntax highlighting
 syntax enable
 
-" Detect markdown language and activate syntax highlighting
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -265,7 +284,7 @@ if has ("gui_macvim")
     set guifont=Menlo:h11
 endif
 
-" Apply a colorcolumn in light grey in the 81st and from 121st column on
+" Apply a color column in light grey in the 81st and from 121st column on
 "let &colorcolumn="81,".join(range(121,9999),",")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -289,17 +308,14 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-set expandtab
-
-" Be smart when using tabs
-set smarttab
-
 " 1 tab == 4 spaces
-set shiftwidth=4
 set tabstop=4
+set shiftwidth=4
 set shiftround
 set softtabstop=4
+
+" Use spaces instead of tabs
+set expandtab
 
 " Auto indent
 set ai
@@ -310,11 +326,6 @@ set si
 " Wrap lines and indent to same depth (works only in gui)
 set wrap linebreak nolist
 set breakindent
-
-" Enable code folding
-autocmd Syntax c,cpp,ruby,vim,xml,html,xhtml setlocal foldmethod=syntax
-autocmd Syntax python setlocal foldmethod=indent
-set foldlevel=1
 
 " Match angle brackets...
 set matchpairs+=<:> "
@@ -365,12 +376,6 @@ try
 catch
 endtry
 
-" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
-
 " Remember info about open buffers on close
 set viminfo^=%
 
@@ -387,7 +392,7 @@ nnoremap ü <C-]>
 " Map the ESC key sequence to jk for faster leaving the insert mode
 inoremap kj <Esc>
 
-" Map the underscore to unhighlight after searching
+" Map the underscore to un-highlight after searching
 nnoremap <silent> _ :nohl<CR>
 
 " Map Ctrl-P to open fuzzy finder
@@ -522,8 +527,6 @@ endfunction
 let g:last_fold_column_width = 4  " Pick a sane default for the foldcolumn
 nnoremap <leader>f :call FoldColumnToggle()<CR>
 
-" Don't automatically continue comments after newline (from Ben Orenstein)
-autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sandbox area for testing
