@@ -124,6 +124,10 @@ autocmd Syntax c,cpp,ruby,vim,xml,html,xhtml setlocal foldmethod=syntax
 autocmd Syntax python setlocal foldmethod=indent
 set foldlevel=1
 
+" Enable tab/spaces settings
+autocmd Filetype c,cpp,markdown,latex,ruby,vim,xml,html,xhtml setlocal ts=2 sw=2 sts=0 expandtab
+autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
+
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -308,11 +312,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 1 tab == 4 spaces
-set tabstop=4
-set shiftwidth=4
+" enable rounding when doing shifts
 set shiftround
-set softtabstop=4
 
 " Use spaces instead of tabs
 set expandtab
