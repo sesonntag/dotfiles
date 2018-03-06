@@ -95,6 +95,7 @@ Plugin 'xolox/vim-easytags'                 " using ctags
 Plugin 'majutsushi/tagbar'                  " display tags on the right side bar
 Plugin 'leifdenby/vim-spellcheck-toggle'    " toggle spell checking
 Plugin 'SidOfc/mkdx'                        " markdown formatting
+Plugin 'gregsexton/gitv'                    " gitk like vim tool
 
 " Plugins only working in specific OS
 if has ("gui_win32")
