@@ -79,7 +79,6 @@ Plugin 'w0rp/ale'                           " asynchronous code checking
 Plugin 'mhinz/vim-signify'                  " showing  changes in the gutter
 Plugin 'Yggdroot/indentLine'                " showing indent lines
 Plugin 'jiangmiao/auto-pairs'               " automatically inserting brackets, quotation marks, ...
-Plugin 'severin-lemaignan/vim-minimap'      " displaying a minimap on the right side
 Plugin 'lervag/vimtex'                      " adding LaTeX features
 Plugin 'ntpeters/vim-better-whitespace'     " showing and deleting trailing white spaces
 Plugin 'mbbill/undotree'                    " graphical undo history
