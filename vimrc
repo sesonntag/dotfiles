@@ -483,6 +483,9 @@ let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "nmap <silent> <C-"k> <Plug>(ale_previous_wrap)
 "nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_linters = {
+  \ 'python': ['flake8'] ,
+  \ }
 
 " Define powerline theme from airline extension
 let g:airline#extensions#tabline#enabled = 1
