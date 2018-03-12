@@ -295,18 +295,11 @@ endif
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Define dirs for undo, backup and swap
-if has ("gui_win32")
-    set undodir=~/vimfiles/undo//
-    set undofile
-    set backupdir=~/vimfiles/backup//
-    set directory=~/vimfiles/swp//
-else
-    set undodir=~/.vim/undo//
-    set undofile
-    set undolevels=100
-    set backupdir=~/.vim/backup//
-    set directory=~/.vim/swp//
-endif
+set undodir=~/.vim/undo//
+set undofile
+set undolevels=1000
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
