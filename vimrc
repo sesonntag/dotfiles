@@ -91,7 +91,7 @@ Plugin 'janko-m/vim-test'                   " running code tests (e.g. pytest, r
 Plugin 'tomasr/molokai'                     " molokai color scheme
 Plugin 'aserebryakov/vim-todo-lists'        " managing to-do lists
 Plugin 'xolox/vim-misc'                     " back end engine for using ctags and co
-"Plugin 'xolox/vim-easytags'                 " using ctags
+" Plugin 'xolox/vim-easytags'                 " using ctags
 Plugin 'majutsushi/tagbar'                  " display tags on the right side bar
 Plugin 'leifdenby/vim-spellcheck-toggle'    " toggle spell checking
 Plugin 'SidOfc/mkdx'                        " markdown formatting
