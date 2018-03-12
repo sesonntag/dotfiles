@@ -53,8 +53,8 @@ filetype off
 
 " Set the runtime path to include Vundle and initialize
 if has ("gui_win32")
-    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-    call vundle#begin('$HOME/vimfiles\bundle\')
+    set rtp+=$HOME/.vim/bundle/Vundle.vim/
+    call vundle#begin('$HOME/.vim\bundle\')
 else
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
