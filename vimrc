@@ -98,7 +98,6 @@ Plugin 'MarcWeber/vim-addon-mw-utils'       " basic utils for addons -> used for
 Plugin 'tomtom/tlib_vim'                    " basic utils for addons -> used for snippets
 Plugin 'garbas/vim-snipmate'                " snippet engine
 Plugin 'honza/vim-snippets'                 " snippet collection
-
 Plugin 'ludovicchabant/vim-gutentags'       " using ctags
 Plugin 'pseewald/vim-anyfold'               " fold setup to work with various projects
 
