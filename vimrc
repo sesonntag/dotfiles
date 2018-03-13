@@ -90,8 +90,6 @@ Plugin 'brooth/far.vim'                     " search ans replace functionality a
 Plugin 'janko-m/vim-test'                   " running code tests (e.g. pytest, rspec, ...)
 Plugin 'tomasr/molokai'                     " molokai color scheme
 Plugin 'aserebryakov/vim-todo-lists'        " managing to-do lists
-"Plugin 'xolox/vim-misc'                     " back end engine for using ctags and co
-"Plugin 'xolox/vim-easytags'                 " using ctags
 Plugin 'majutsushi/tagbar'                  " display tags on the right side bar
 Plugin 'leifdenby/vim-spellcheck-toggle'    " toggle spell checking
 Plugin 'SidOfc/mkdx'                        " markdown formatting
@@ -438,6 +436,9 @@ nmap <leader>ct :TagbarToggle<CR>
 
 " Toggle undo tree
 nnoremap <leader>u :UndotreeToggle<CR>
+
+" gutentag statusline
+set statusline+=%{gutentags#statusline('[Generating...]')}
 
 " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
 " (via http://stackoverflow.com/a/22253548/1626737)
