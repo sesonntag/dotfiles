@@ -90,20 +90,18 @@ Plugin 'brooth/far.vim'                     " search ans replace functionality a
 Plugin 'janko-m/vim-test'                   " running code tests (e.g. pytest, rspec, ...)
 Plugin 'tomasr/molokai'                     " molokai color scheme
 Plugin 'aserebryakov/vim-todo-lists'        " managing to-do lists
-Plugin 'xolox/vim-misc'                     " back end engine for using ctags and co
-Plugin 'xolox/vim-easytags'                 " using ctags
+"Plugin 'xolox/vim-misc'                     " back end engine for using ctags and co
+"Plugin 'xolox/vim-easytags'                 " using ctags
 Plugin 'majutsushi/tagbar'                  " display tags on the right side bar
 Plugin 'leifdenby/vim-spellcheck-toggle'    " toggle spell checking
 Plugin 'SidOfc/mkdx'                        " markdown formatting
 Plugin 'gregsexton/gitv'                    " gitk like vim tool
+Plugin 'MarcWeber/vim-addon-mw-utils'       " basic utils for addons -> used for snippets
+Plugin 'tomtom/tlib_vim'                    " basic utils for addons -> used for snippets
+Plugin 'garbas/vim-snipmate'                " snippet engine
+Plugin 'honza/vim-snippets'                 " snippet collection
 
-" Plugins only working in specific OS
-if has ("gui_win32")
-    "...
-else
-    Plugin 'SirVer/ultisnips'               "Plugin which is the engine for snippets
-    Plugin 'honza/vim-snippets'             "Plugin which contains the actual snippets
-endif
+Plugin 'ludovicchabant/vim-gutentags'       " using ctags
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -329,7 +327,6 @@ set matchpairs+=<:> "
 " => Visual mode related
 """"""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
 vnoremap <silent> # :call VisualSelection('f')<CR>
 vnoremap <silent> * :call VisualSelection('b')<CR>
 
@@ -442,26 +439,21 @@ nmap <leader>ct :TagbarToggle<CR>
 " Toggle undo tree
 nnoremap <leader>u :UndotreeToggle<CR>
 
-" Trigger configuration for snippets. No use of <tab> if you use completement engine
-"let g:UltiSnipsExpandTrigger='<leader>us'
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
 " (via http://stackoverflow.com/a/22253548/1626737)
-if has ("gui_win32")
-    " continue
-else
-    let g:SuperTabDefaultCompletionType    = '<C-n>'
-    let g:SuperTabCrMapping                = 0
-    let g:UltiSnipsExpandTrigger           = '<tab>'
-    let g:UltiSnipsJumpForwardTrigger      = '<tab>'
-    let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
-    let g:SuperTabCrMapping=1
+" if has ("gui_win32")
+"     " continue
+" else
+"     let g:SuperTabDefaultCompletionType    = '<C-n>'
+"     let g:SuperTabCrMapping                = 0
+"     let g:UltiSnipsExpandTrigger           = '<tab>'
+"     let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+"     let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+"     let g:SuperTabCrMapping=1
 
-    " If you want :UltiSnipsEdit to split your window.
-    " let g:UltiSnipsEditSplit="vertical"
-endif
+"     " If you want :UltiSnipsEdit to split your window.
+"     " let g:UltiSnipsEditSplit="vertical"
+" endif
 
 " Make Ctrlp start from the current dir
 let g:ctrlp_working_path_mode = 'c'
