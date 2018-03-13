@@ -98,6 +98,7 @@ Plugin 'MarcWeber/vim-addon-mw-utils'       " basic utils for addons -> used for
 Plugin 'tomtom/tlib_vim'                    " basic utils for addons -> used for snippets
 Plugin 'garbas/vim-snipmate'                " snippet engine
 Plugin 'honza/vim-snippets'                 " snippet collection
+
 Plugin 'ludovicchabant/vim-gutentags'       " using ctags
 
 " All of your Plugins must be added before the following line
