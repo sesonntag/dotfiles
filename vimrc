@@ -99,6 +99,7 @@ Plugin 'tomtom/tlib_vim'                    " basic utils for addons -> used for
 Plugin 'garbas/vim-snipmate'                " snippet engine
 Plugin 'honza/vim-snippets'                 " snippet collection
 Plugin 'ludovicchabant/vim-gutentags'       " using ctags
+Plugin 'pseewald/vim-anyfold'               " fold setup to work with various projects
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -113,11 +114,6 @@ autocmd! bufwritepost .vimrc source %
 
 " Detect markdown language and activate syntax highlighting
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" Enable code folding
-autocmd Syntax c,cpp,ruby,vim,xml,html,xhtml setlocal foldmethod=syntax
-autocmd Syntax python setlocal foldmethod=indent
-set foldlevel=1
 
 " Enable tab/spaces settings
 autocmd Filetype c,cpp,markdown,latex,ruby,vim,xml,html,xhtml setlocal ts=2 sw=2 sts=0 expandtab
@@ -502,6 +498,10 @@ nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
+
+" set folding methods
+let anyfold_activate=1
+set foldlevel=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
