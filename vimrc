@@ -100,6 +100,7 @@ Plugin 'garbas/vim-snipmate'                " snippet engine
 Plugin 'honza/vim-snippets'                 " snippet collection
 Plugin 'ludovicchabant/vim-gutentags'       " using ctags
 Plugin 'pseewald/vim-anyfold'               " fold setup to work with various projects
+Plugin 'tell-k/vim-autopep8'                " rearrange python code to mee the pep8 standards
 
 " All of your Plugins must be added before the following line
 call vundle#end()
