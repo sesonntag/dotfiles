@@ -486,7 +486,7 @@ nmap <silent> <leader>g :TestVisit<CR>
 
 " set folding methods
 let anyfold_activate=1
-set foldlevel=0
+set foldlevel=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
