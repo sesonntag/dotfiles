@@ -1,7 +1,6 @@
 "*******************************************************************************
-" Title: install_cli_apps.sh
-" Description: Shell script to install and setup all cli apps on a new macOS 
-"              device
+" Title: .vimrc
+" Description: vim configuration file
 " Author: Sebastian Sonntag
 " Date: 2018-03-25
 " License:
@@ -250,7 +249,6 @@ if has("gui_running")
 endif
 
 " Set color schemes
-"let base16colorspace=256
 set t_Co=256
 set background=dark
 colorscheme molokai
