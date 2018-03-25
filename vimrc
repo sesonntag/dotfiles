@@ -91,6 +91,7 @@ Plugin 'ludovicchabant/vim-gutentags'       " using ctags
 Plugin 'pseewald/vim-anyfold'               " fold setup to work with various projects
 Plugin 'tell-k/vim-autopep8'                " rearrange python code to mee the pep8 standards
 Plugin 'jeetsukumaran/vim-buffergator'      " list open buffers and switch with directional keys
+Plugin 'nanotech/jellybeans.vim'            " ...
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -251,7 +252,7 @@ endif
 " Set color schemes
 set t_Co=256
 set background=dark
-colorscheme molokai
+colorscheme jellybeans
 
 " Set utf8 as standard encoding
 set encoding=utf8
@@ -445,7 +446,7 @@ let g:ale_linters = {
 " Define powerline theme from airline extension
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='dark'
+let g:airline_theme='jellybeans'
 
 " Have always the gutter-bar activated
 set signcolumn=yes
