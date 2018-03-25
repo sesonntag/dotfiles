@@ -1,3 +1,11 @@
+#*******************************************************************************
+# Title: bash_profile
+# Description: 
+# Author: Sebastian Sonntag
+# Date: 2018-03-25
+# License:
+#*******************************************************************************
+
 # aliases to extend the ls command
 alias ls='ls -G'
 alias la='ls -AG'

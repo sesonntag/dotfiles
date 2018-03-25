@@ -1,21 +1,11 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sections
-"   -> Base installation
-"   -> Vundle
-"   -> Auto commands
-"   -> General
-"   -> VIM user interface
-"   -> Colors and Fonts
-"   -> Files and backups
-"   -> Text, tab and indent related
-"   -> Visual mode related
-"   -> Moving around, tabs and buffers
-"   -> Editing mappings
-"   -> Plugin specific
-"   -> Helper functions
-"   -> Sandbox area for testing
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"*******************************************************************************
+" Title: install_cli_apps.sh
+" Description: Shell script to install and setup all cli apps on a new macOS 
+"              device
+" Author: Sebastian Sonntag
+" Date: 2018-03-25
+" License:
+"*******************************************************************************
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

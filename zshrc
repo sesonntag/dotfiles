@@ -1,3 +1,13 @@
+#!/bin/zsh
+#
+#*******************************************************************************
+# Title: .zshrc
+# Description: zsh configuration file
+# Author: Sebastian Sonntag
+# Date: 2018-03-25
+# License:
+#*******************************************************************************
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -58,8 +68,8 @@ alias content='for t in files links directories; do echo `find . -type ${t:0:1} 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # aliases for rsync scripts
-    alias rsync_home_to_wd_2000='chmod +x ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh && . ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh && chmod -x ~/System/Apple/macOS/Skripte/rsync_home_to_wd_2000.sh'
-    alias rsync_wd_2000_to_core_750='chmod +x ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh && . ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh && chmod -x ~/System/Apple/macOS/Skripte/rsync_wd_2000_to_core_750.sh'
+    alias rsync_home_to_wd_2000='chmod +x ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh && . ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh && chmod -x ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh'
+    alias rsync_wd_2000_to_core_750='chmod +x ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh && . ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh && chmod -x ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh'
 
     # alias for macvim
     alias vim='mvim -v'
