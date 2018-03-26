@@ -455,6 +455,8 @@ set signcolumn=yes
 
 " Signify - general
 let g:signify_realtime = 1
+let g:signify_cursorhold_normal = 0
+let g:signify_cursorhold_insert = 0
 
 " Signify - highlight lines in Sy and vimdiff etc.)
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
