@@ -92,7 +92,7 @@ Plugin 'pseewald/vim-anyfold'               " fold setup to work with various pr
 Plugin 'tell-k/vim-autopep8'                " rearrange python code to mee the pep8 standards
 Plugin 'jeetsukumaran/vim-buffergator'      " list open buffers and switch with directional keys
 Plugin 'nanotech/jellybeans.vim'            " jelly beans color scheme
-Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'               " python language agnostic completion
 
 
 " All of your Plugins must be added before the following line
