@@ -91,7 +91,9 @@ Plugin 'ludovicchabant/vim-gutentags'       " using ctags
 Plugin 'pseewald/vim-anyfold'               " fold setup to work with various projects
 Plugin 'tell-k/vim-autopep8'                " rearrange python code to mee the pep8 standards
 Plugin 'jeetsukumaran/vim-buffergator'      " list open buffers and switch with directional keys
-Plugin 'nanotech/jellybeans.vim'            " ...
+Plugin 'nanotech/jellybeans.vim'            " jelly beans color scheme
+Plugin 'davidhalter/jedi-vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -477,6 +479,9 @@ nmap <silent> <leader>g :TestVisit<CR>
 " set folding methods
 let anyfold_activate=1
 set foldlevel=1
+
+" Make jedi suggestions to pop up with supertab
+let g:SuperTabDefaultCompletionType = "context"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
