@@ -486,6 +486,8 @@ set foldlevel=1
 
 " Make jedi suggestions to pop up with supertab
 let g:SuperTabDefaultCompletionType = "context"
+let g:jedi#show_call_signatures = 2
+let g:jedi#force_py_version = 3
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
