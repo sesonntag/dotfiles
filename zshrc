@@ -4,7 +4,7 @@
 # Title: .zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-04-24
+# Date: 2018-04-26
 # License:
 #*******************************************************************************
 
@@ -78,7 +78,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export EDITOR='vim'
 
     # aliases for keeping brew clean
-    alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor; brew cask upgrade; brew cask cleanup; brew cask doctor'
+    alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor; brew cask upgrade; brew cask cleanup;'
 
     # alias to use ctags from Homebrew
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
