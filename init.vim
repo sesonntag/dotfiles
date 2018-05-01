@@ -182,9 +182,6 @@ autocmd BufNewFile,BufRead *.* set list listchars=eol:¬,tab:\▸\ ,trail:~,exte
 " Sets how many lines of history VIM has to remember
 set history=1000
 
-" Use system clipboard for copying
-set clipboard^=unnamed,unnamedplus
-
 " Sets spellchecking for German/English
 setlocal spell spelllang=en_us
 "setlocal spell spelllang=de_de
@@ -405,6 +402,18 @@ endtry
 
 " Remember info about open buffers on close
 set viminfo^=%
+
+" Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
