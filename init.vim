@@ -182,10 +182,6 @@ autocmd BufNewFile,BufRead *.* set list listchars=eol:¬,tab:\▸\ ,trail:~,exte
 " Sets how many lines of history VIM has to remember
 set history=1000
 
-" Sets spellchecking for German/English
-setlocal spell spelllang=en_us
-"setlocal spell spelllang=de_de
-
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = " "
@@ -210,7 +206,7 @@ set diffopt+=vertical
 set laststatus=2
 
 " Format the status line
-"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -326,11 +322,11 @@ endif
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Define dirs for undo, backup and swap
-set undodir=~/.vim/undo//
+set undodir=~/.config/nvim/undo//
 set undofile
 set undolevels=1000
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
+set backupdir=~/.config/nvim/backup//
+set directory=~/.config/nvim/swp//
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -552,6 +548,7 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -587,7 +584,7 @@ nnoremap <leader>f :call FoldColumnToggle()<CR>
 
 " Toggle spellchecking
 function! ToggleSpellCheck()
-  set spell!
+  setlocal spell! spelllang=en_us
   if &spell
     echo "Spellcheck ON"
   else
@@ -596,6 +593,7 @@ function! ToggleSpellCheck()
 endfunction
 
 nnoremap <silent> <Leader>s :call ToggleSpellCheck()<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sandbox area for testing
