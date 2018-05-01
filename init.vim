@@ -57,11 +57,11 @@ Plug 'scrooloose/nerdcommenter'
 
 " compeltions
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
 " add surroundings with vim style commands
-Plug 'tpope/vim-surround'                 " surrounding commands
+Plug 'tpope/vim-surround'
 
 " handle git repos from within neovim
 Plug 'tpope/vim-fugitive'
@@ -87,36 +87,63 @@ Plug 'mhinz/vim-signify'
 " jellybeans colorscheme
 Plug 'nanotech/jellybeans.vim'
 
+" showing indent lines
+Plug 'Yggdroot/indentLine'
 
+" add closing brackets, quotation marks, and co automatically
+Plug 'jiangmiao/auto-pairs'
 
-" === check line; above plugins are in my neovim setup; below packes have to be checked ===
-Plug 'Yggdroot/indentLine'                " showing indent lines
-Plug 'jiangmiao/auto-pairs'               " automatically inserting brackets, quotation marks, ...
-Plug 'lervag/vimtex'                      " adding LaTeX features
-Plug 'ntpeters/vim-better-whitespace'     " showing and deleting trailing white spaces
-Plug 'mbbill/undotree'                    " graphical undo history
-Plug 'vim-scripts/SearchComplete'         " tab completion of search strings
-Plug 'godlygeek/tabular'                  " arranging tables
-Plug 'jvirtanen/vim-octave'               " octave/matlab syntax highlighting
-Plug 'sickill/vim-pasta'                  " context aware pasting
-Plug 'brooth/far.vim'                     " search ans replace functionality across multiple files
-Plug 'janko-m/vim-test'                   " running code tests (e.g. pytest, rspec, ...)
-Plug 'tomasr/molokai'                     " molokai color scheme
-Plug 'aserebryakov/vim-todo-lists'        " managing to-do lists
-Plug 'majutsushi/tagbar'                  " display tags on the right side bar
-Plug 'leifdenby/vim-spellcheck-toggle'    " toggle spell checking
-Plug 'SidOfc/mkdx'                        " markdown formatting
-Plug 'gregsexton/gitv'                    " gitk like vim tool
-Plug 'MarcWeber/vim-addon-mw-utils'       " basic utils for addons -> used for snippets
-Plug 'tomtom/tlib_vim'                    " basic utils for addons -> used for snippets
-Plug 'garbas/vim-snipmate'                " snippet engine
-Plug 'honza/vim-snippets'                 " snippet collection
-Plug 'ludovicchabant/vim-gutentags'       " using ctags
-Plug 'pseewald/vim-anyfold'               " fold setup to work with various projects
-Plug 'tell-k/vim-autopep8'                " rearrange python code to mee the pep8 standards
-Plug 'jeetsukumaran/vim-buffergator'      " list open buffers and switch with directional keys
-Plug 'davidhalter/jedi-vim'               " python language agnostic completion
+" add indexing to search results
+Plug 'google/vim-searchindex'
 
+" adding latex features to neovim
+Plug 'lervag/vimtex'
+
+" highlighting trailling white spaces
+Plug 'ntpeters/vim-better-whitespace'
+
+" graphical undo tree
+Plug 'simnalamburt/vim-mundo'
+
+" tab completion on search
+Plug 'vim-scripts/SearchComplete'
+
+" octave/matlab syntax highlighting
+Plug 'jvirtanen/vim-octave'
+
+" indent araw pasting to not clutter the indentation depth
+Plug 'sickill/vim-pasta'
+
+" search and replace across multiple files
+Plug 'brooth/far.vim'
+
+" running code tests (e.g. pytest, rspec, ...)
+Plug 'janko-m/vim-test'
+
+" managing to-do lists
+Plug 'aserebryakov/vim-todo-lists'
+
+" display tags in the right side
+Plug 'majutsushi/tagbar'
+
+" gitk lik evim tool to dig into commits
+Plug 'gregsexton/gitv'
+
+" ctag support for neovim
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+
+" fold setup to work with various different languages
+Plug 'pseewald/vim-anyfold'
+
+" rearrange python code to meet the pep8 standards
+Plug 'tell-k/vim-autopep8'
+
+" list currently open buffers and cycle through them with the directional keys
+Plug 'jeetsukumaran/vim-buffergator'
+
+" python language agnostic tools (goto, completion, ...)
+Plug 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -126,8 +153,8 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Auto commands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Auto load .vimrc after saving
-autocmd! bufwritepost .vimrc source %
+" Auto load init.vim after saving
+autocmd! bufwritepost init.vim source $MYVIMRC
 
 " Detect markdown language and activate syntax highlighting
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -186,7 +213,7 @@ set diffopt+=vertical
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -435,17 +462,11 @@ let g:easytags_async = 1
 " Make easytags to work on save
 "let g:easytags_events = ['BufWritePost']
 
-" delete all open buffers except this
-nnoremap <leader>bo :bufdo bd<CR>
-
 " Toggle the tagbar
 nmap <leader>ct :TagbarToggle<CR>
 
 " Toggle undo tree
-nnoremap <leader>u :UndotreeToggle<CR>
-
-" gutentag statusline
-set statusline+=%{gutentags#statusline('[Generating...]')}
+nnoremap <leader>u :MundoToggle<CR>
 
 " Make Ctrlp start from the current dir
 let g:ctrlp_working_path_mode = 'c'
@@ -505,11 +526,22 @@ nmap <silent> <leader>g :TestVisit<CR>
 let anyfold_activate=1
 set foldlevel=1
 
-" Make jedi suggestions to pop up with supertab
-"let g:SuperTabDefaultCompletionType = "context"
-"let g:jedi#show_call_signatures = 2
-"let g:jedi#force_py_version = 3
+" jedi settings
+let g:jedi#show_call_signatures = 2
+let g:jedi#force_py_version = 3
 
+" deoplete and neosnippet settings
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -531,6 +563,7 @@ endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 
+" show foling depth on the left side
 function! FoldColumnToggle()
     if &foldcolumn
         let g:last_fold_column_width = &foldcolumn
@@ -542,6 +575,18 @@ endfunction
 let g:last_fold_column_width = 4  " Pick a sane default for the foldcolumn
 nnoremap <leader>f :call FoldColumnToggle()<CR>
 
+
+" Toggle spellchecking
+function! ToggleSpellCheck()
+  set spell!
+  if &spell
+    echo "Spellcheck ON"
+  else
+    echo "Spellcheck OFF"
+  endif
+endfunction
+
+nnoremap <silent> <Leader>s :call ToggleSpellCheck()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sandbox area for testing
