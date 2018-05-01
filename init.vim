@@ -8,34 +8,30 @@
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Install Vundle in case it is not installed already
+" => Install vim-plug in case it is not installed already
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"if has("gui_win32")
-    "" continue
-"else
-    "let iCanHazVundle=1
-    "let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
-    "if !filereadable(vundle_readme)
-        "echo "Installing Vundle.."
-        "echo ""
-        "silent !mkdir -p ~/.vim/bundle
-        "silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-        "let iCanHazVundle=0
-    "endif
-    "set rtp+=~/.vim/bundle/Vundle.vim/
-    "call vundle#rc()
+if has("gui_win32")
+    " continue
+else
+    let checkPluginManagerExistance=1
+    let file=expand('~/.local/share/nvim/site/autoload/plug.vim')
+    if !filereadable(file)
+        echo "Installing vim-plug..."
+        echo ""
+        silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        let checkPluginManagerExistance=0
+    endif
 
-    "" let Vundle manage Vundle, required
-    "Plugin 'VundleVim/Vundle.vim'
-    "if iCanHazVundle == 0
-        "echo "Installing Bundles, please ignore key map error messages"
-        "echo ""
-        ":PluginInstall
-    "endif
-"endif
+    " let Vundle manage Vundle, required
+    if checkPluginManagerExistance == 0
+        echo "Installing plugins, please ignore key map error messages"
+        echo ""
+        :PlugInstall
+    endif
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle
+" => vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
