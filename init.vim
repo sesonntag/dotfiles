@@ -10,60 +10,86 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Install vim-plug in case it is not installed already
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim-plug initialization
+" Avoid modify this section, unless you are very sure of what you are doing
+
 if has("gui_win32")
     " continue
 else
-    let checkPluginManagerExistance=1
-    let file=expand('~/.local/share/nvim/site/autoload/plug.vim')
-    if !filereadable(file)
-        echo "Installing vim-plug..."
-        echo ""
-        silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        let checkPluginManagerExistance=0
-    endif
+  let vim_plug_just_installed = 0
+  let vim_plug_path = expand('~/.config/nvim/autoload/plug.vim')
+  if !filereadable(vim_plug_path)
+      echo "Installing Vim-plug..."
+      echo ""
+      silent !mkdir -p ~/.config/nvim/autoload
+      silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      let vim_plug_just_installed = 1
+  endif
 
-    " let Vundle manage Vundle, required
-    if checkPluginManagerExistance == 0
-        echo "Installing plugins, please ignore key map error messages"
-        echo ""
-        :PlugInstall
+  " manually load vim-plug the first time
+  if vim_plug_just_installed
+      :execute 'source '.fnameescape(vim_plug_path)
     endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-filetype off
-
 " Set the runtime path to include Vundle and initialize
-"if has ("gui_win32")
-    "set rtp+=$HOME/.vim/bundle/Vundle.vim/
-    "call vundle#begin('$HOME/.vim\bundle\')
-"else
-    "set rtp+=~/.vim/bundle/Vundle.vim
-    "call vundle#begin()
-"endif
+if has ("gui_win32")
+    " ...
+else
+    call plug#begin('~/.config/nvim/plugged')
+endif
 
-call plug#begin('~/.local/share/nvim/plugged')
+" file and folder tree on the left side
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-" Main Vundle program
-Plug 'VundleVim/Vundle.vim'
+" fuzzy file search
+Plug 'kien/ctrlp.vim', { 'on':  'CtrlP' }
 
-Plug 'scrooloose/nerdtree'                " file and folder tree on the left side
-Plug 'vim-airline/vim-airline'            " adding the airline
-Plug 'vim-airline/vim-airline-themes'     " set of themes for airline
-Plug 'ervandew/supertab'                  " tab completion
-Plug 'scrooloose/nerdcommenter'           " commenting lines in and out
-Plug 'kien/ctrlp.vim'                     " fuzzy file search
+" adding airline engine and themes
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" commenting of lines or blocks
+Plug 'scrooloose/nerdcommenter'
+
+" compeltions
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" add surroundings with vim style commands
 Plug 'tpope/vim-surround'                 " surrounding commands
-Plug 'tpope/vim-fugitive'                 " git commands working in the command line of vim
-Plug 'Shougo/vinarise.vim'                " hex editing features
-Plug 'junegunn/gv.vim'                    " show detailed information about git repos
-Plug 'auwsmit/vim-active-numbers'         " show line numbers only in current window
-Plug 'christoomey/vim-tmux-navigator'     " navigate in vim and tmux without further actions
-Plug 'w0rp/ale'                           " asynchronous code checking
-Plug 'mhinz/vim-signify'                  " showing  changes in the gutter
+
+" handle git repos from within neovim
+Plug 'tpope/vim-fugitive'
+
+" hex features vor neovim
+Plug 'Shougo/vinarise.vim'
+
+" show detailed information about git repos
+Plug 'junegunn/gv.vim'
+
+" show line numbers only in current window
+Plug 'auwsmit/vim-active-numbers'
+
+" navigate in vim and tmux without further actions
+Plug 'christoomey/vim-tmux-navigator'
+
+" asynchronous linting engine
+Plug 'w0rp/ale'
+
+" showing file changes in the gutter in case it is handeld by vcs
+Plug 'mhinz/vim-signify'
+
+" jellybeans colorscheme
+Plug 'nanotech/jellybeans.vim'
+
+
+
+" === check line; above plugins are in my neovim setup; below packes have to be checked ===
 Plug 'Yggdroot/indentLine'                " showing indent lines
 Plug 'jiangmiao/auto-pairs'               " automatically inserting brackets, quotation marks, ...
 Plug 'lervag/vimtex'                      " adding LaTeX features
@@ -89,7 +115,6 @@ Plug 'ludovicchabant/vim-gutentags'       " using ctags
 Plug 'pseewald/vim-anyfold'               " fold setup to work with various projects
 Plug 'tell-k/vim-autopep8'                " rearrange python code to mee the pep8 standards
 Plug 'jeetsukumaran/vim-buffergator'      " list open buffers and switch with directional keys
-Plug 'nanotech/jellybeans.vim'            " jelly beans color scheme
 Plug 'davidhalter/jedi-vim'               " python language agnostic completion
 
 
@@ -370,10 +395,6 @@ inoremap kj <Esc>
 " Map the underscore to un-highlight after searching
 nnoremap <silent> _ :nohl<CR>
 
-" Map Ctrl-P to open fuzzy finder
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nnoremap <M-j> mz:m+<CR>`z
 nnoremap <M-k> mz:m-2<CR>`z
@@ -428,6 +449,8 @@ set statusline+=%{gutentags#statusline('[Generating...]')}
 
 " Make Ctrlp start from the current dir
 let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " ale settings for linting
 let g:ale_sign_column_always = 1
@@ -483,9 +506,9 @@ let anyfold_activate=1
 set foldlevel=1
 
 " Make jedi suggestions to pop up with supertab
-let g:SuperTabDefaultCompletionType = "context"
-let g:jedi#show_call_signatures = 2
-let g:jedi#force_py_version = 3
+"let g:SuperTabDefaultCompletionType = "context"
+"let g:jedi#show_call_signatures = 2
+"let g:jedi#force_py_version = 3
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
