@@ -2,7 +2,7 @@
 " Title: init.vim
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-05-01
+" Date: 2018-05-02
 " License:
 "*******************************************************************************
 
@@ -13,33 +13,29 @@
 " Vim-plug initialization
 " Avoid modify this section, unless you are very sure of what you are doing
 
-if has("gui_win32")
-    " continue
-else
+if has("mac") || has("macunix")
   let vim_plug_just_installed = 0
   let vim_plug_path = expand('~/.config/nvim/autoload/plug.vim')
   if !filereadable(vim_plug_path)
-      echo "Installing Vim-plug..."
-      echo ""
-      silent !mkdir -p ~/.config/nvim/autoload
-      silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      let vim_plug_just_installed = 1
+    echo "Installing Vim-plug..."
+    echo ""
+    silent !mkdir -p ~/.config/nvim/autoload
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    let vim_plug_just_installed = 1
   endif
 
   " manually load vim-plug the first time
   if vim_plug_just_installed
-      :execute 'source '.fnameescape(vim_plug_path)
-    endif
+    :execute 'source '.fnameescape(vim_plug_path)
+  endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set the runtime path to include Vundle and initialize
-if has ("gui_win32")
-    " ...
-else
-    call plug#begin('~/.config/nvim/plugged')
+if has("mac") || has("macunix")
+  call plug#begin('~/.config/nvim/plugged')
 endif
 
 " file and folder tree on the left side
@@ -287,13 +283,6 @@ set grepprg=ag
 " Enable syntax highlighting
 syntax enable
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set guitablabel=%M\ %t
-endif
-
 " Set color schemes
 set t_Co=256
 set background=dark
@@ -304,16 +293,6 @@ set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
-
-" Set nicer font in Windows GUI
-if has ("gui_win32")
-    set guifont=Consolas:h10.5:cANSI
-endif
-
-" Set bigger font (still Menlo but with different size) in OS X
-if has ("gui_macvim")
-    set guifont=Menlo:h11
-endif
 
 " Apply a color column in light grey in the 81st and from 121st column on
 "let &colorcolumn="81,".join(range(121,9999),",")
