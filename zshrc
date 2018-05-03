@@ -4,7 +4,7 @@
 # Title: .zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-04-26
+# Date: 2018-05-03
 # License:
 #*******************************************************************************
 
@@ -71,8 +71,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias rsync_home_to_wd_2000='chmod +x ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh && . ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh && chmod -x ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh'
     alias rsync_wd_2000_to_core_750='chmod +x ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh && . ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh && chmod -x ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh'
 
-    # alias for macvim
-    alias vim='mvim -v'
+    # alias for neovim
+    alias vim='nvim'
 
     # export editor variable
     export EDITOR='vim'
