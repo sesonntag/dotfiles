@@ -2,7 +2,7 @@
 " Title: init.vim
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-05-02
+" Date: 2018-05-07
 " License:
 "*******************************************************************************
 
@@ -63,7 +63,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 
 " hex features vor neovim
-Plug 'Shougo/vinarise.vim'
+Plug 'Shougo/vinarise.vim', { 'for': 'hex' }
 
 " show detailed information about git repos
 Plug 'junegunn/gv.vim'
@@ -93,7 +93,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'google/vim-searchindex'
 
 " adding latex features to neovim
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'latex' }
 
 " highlighting trailling white spaces
 Plug 'ntpeters/vim-better-whitespace'
@@ -105,7 +105,7 @@ Plug 'simnalamburt/vim-mundo'
 Plug 'vim-scripts/SearchComplete'
 
 " octave/matlab syntax highlighting
-Plug 'jvirtanen/vim-octave'
+Plug 'jvirtanen/vim-octave', { 'for': ['octave', 'matlab'] }
 
 " indent araw pasting to not clutter the indentation depth
 Plug 'sickill/vim-pasta'
@@ -133,13 +133,13 @@ Plug 'xolox/vim-easytags'
 Plug 'pseewald/vim-anyfold'
 
 " rearrange python code to meet the pep8 standards
-Plug 'tell-k/vim-autopep8'
+Plug 'tell-k/vim-autopep8', { 'for': 'python' }
 
 " list currently open buffers and cycle through them with the directional keys
 Plug 'jeetsukumaran/vim-buffergator'
 
 " python language agnostic tools (goto, completion, ...)
-Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " All of your Plugins must be added before the following line
 call plug#end()
