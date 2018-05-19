@@ -2,7 +2,7 @@
 " Title: init.vim
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-05-07
+" Date: 2018-05-19
 " License:
 "*******************************************************************************
 
@@ -126,8 +126,7 @@ Plug 'majutsushi/tagbar'
 Plug 'gregsexton/gitv'
 
 " ctag support for neovim
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
+Plug 'ludovicchabant/vim-gutentags'
 
 " fold setup to work with various different languages
 Plug 'pseewald/vim-anyfold'
@@ -440,11 +439,6 @@ cnoremap Wq wq
 nnoremap <C-n> :NERDTreeToggle<CR>
 set autochdir
 let NERDTreeChDirMode=2
-
-" Make easytags to work asynchronously
-let g:easytags_async = 1
-" Make easytags to work on save
-"let g:easytags_events = ['BufWritePost']
 
 " Toggle the tagbar
 nmap <leader>ct :TagbarToggle<CR>
