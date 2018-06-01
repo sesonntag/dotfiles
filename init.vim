@@ -2,7 +2,7 @@
 " Title: init.vim
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-05-19
+" Date: 2018-06-01
 " License:
 "*******************************************************************************
 
