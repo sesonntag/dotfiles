@@ -72,7 +72,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias rsync_wd_2000_to_core_750='chmod +x ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh && . ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh && chmod -x ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh'
 
     # alias for neovim
-    alias vim='nvim'
+    alias vim='mvim -v'
 
     # export editor variable
     export EDITOR='vim'
