@@ -87,6 +87,9 @@ Plug 'mhinz/vim-signify'
 " jellybeans colorscheme
 Plug 'nanotech/jellybeans.vim'
 
+" one dark colorscheme
+Plug 'joshdick/onedark.vim'
+
 " showing indent lines
 Plug 'Yggdroot/indentLine'
 
@@ -532,6 +535,9 @@ set foldlevel=1
 " jedi settings
 let g:jedi#show_call_signatures = 2
 let g:jedi#force_py_version = 3
+
+" load deoplete completion engine on start up
+let g:deoplete#enable_at_startup = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
