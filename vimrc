@@ -2,101 +2,150 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-03-25
+" Date: 2018-06-01
 " License:
 "*******************************************************************************
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Install Vundle in case it is not installed already
+" => Install vim-plug in case it is not installed already
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_win32")
-    " continue
-else
-    let iCanHazVundle=1
-    let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
-    if !filereadable(vundle_readme)
-        echo "Installing Vundle.."
-        echo ""
-        silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-        let iCanHazVundle=0
-    endif
-    set rtp+=~/.vim/bundle/Vundle.vim/
-    call vundle#rc()
+" Vim-plug initialization
+" Avoid modify this section, unless you are very sure of what you are doing
 
-    " let Vundle manage Vundle, required
-    Plugin 'VundleVim/Vundle.vim'
-    if iCanHazVundle == 0
-        echo "Installing Bundles, please ignore key map error messages"
-        echo ""
-        :PluginInstall
-    endif
+if has("mac") || has("macunix")
+  let vim_plug_just_installed = 0
+  let vim_plug_path = expand('~/.vim/autoload/plug.vim')
+  if !filereadable(vim_plug_path)
+    echo "Installing Vim-plug..."
+    echo ""
+    silent !mkdir -p ~/.vim/autoload
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    let vim_plug_just_installed = 1
+  endif
+
+  " manually load vim-plug the first time
+  if vim_plug_just_installed
+    :execute 'source '.fnameescape(vim_plug_path)
+  endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle
+" => vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-filetype off
-
-" Set the runtime path to include Vundle and initialize
-if has ("gui_win32")
-    set rtp+=$HOME/.vim/bundle/Vundle.vim/
-    call vundle#begin('$HOME/.vim\bundle\')
-else
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
+" Set the runtime path to include Vim-plug and initialize
+if has("mac") || has("macunix")
+  call plug#begin('~/.vim/plugged')
 endif
 
-" Main Vundle program
-Plugin 'VundleVim/Vundle.vim'
+" file and folder tree on the left side
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-Plugin 'scrooloose/nerdtree'                " file and folder tree on the left side
-Plugin 'vim-airline/vim-airline'            " adding the airline
-Plugin 'vim-airline/vim-airline-themes'     " set of themes for airline
-Plugin 'ervandew/supertab'                  " tab completion
-Plugin 'scrooloose/nerdcommenter'           " commenting lines in and out
-Plugin 'kien/ctrlp.vim'                     " fuzzy file search
-Plugin 'tpope/vim-surround'                 " surrounding commands
-Plugin 'tpope/vim-fugitive'                 " git commands working in the command line of vim
-Plugin 'Shougo/vinarise.vim'                " hex editing features
-Plugin 'junegunn/gv.vim'                    " show detailed information about git repos
-Plugin 'auwsmit/vim-active-numbers'         " show line numbers only in current window
-Plugin 'christoomey/vim-tmux-navigator'     " navigate in vim and tmux without further actions
-Plugin 'w0rp/ale'                           " asynchronous code checking
-Plugin 'mhinz/vim-signify'                  " showing  changes in the gutter
-Plugin 'Yggdroot/indentLine'                " showing indent lines
-Plugin 'jiangmiao/auto-pairs'               " automatically inserting brackets, quotation marks, ...
-Plugin 'lervag/vimtex'                      " adding LaTeX features
-Plugin 'ntpeters/vim-better-whitespace'     " showing and deleting trailing white spaces
-Plugin 'mbbill/undotree'                    " graphical undo history
-Plugin 'vim-scripts/SearchComplete'         " tab completion of search strings
-Plugin 'godlygeek/tabular'                  " arranging tables
-Plugin 'jvirtanen/vim-octave'               " octave/matlab syntax highlighting
-Plugin 'sickill/vim-pasta'                  " context aware pasting
-Plugin 'brooth/far.vim'                     " search ans replace functionality across multiple files
-Plugin 'janko-m/vim-test'                   " running code tests (e.g. pytest, rspec, ...)
-Plugin 'tomasr/molokai'                     " molokai color scheme
-Plugin 'aserebryakov/vim-todo-lists'        " managing to-do lists
-Plugin 'majutsushi/tagbar'                  " display tags on the right side bar
-Plugin 'leifdenby/vim-spellcheck-toggle'    " toggle spell checking
-Plugin 'SidOfc/mkdx'                        " markdown formatting
-Plugin 'gregsexton/gitv'                    " gitk like vim tool
-Plugin 'MarcWeber/vim-addon-mw-utils'       " basic utils for addons -> used for snippets
-Plugin 'tomtom/tlib_vim'                    " basic utils for addons -> used for snippets
-Plugin 'garbas/vim-snipmate'                " snippet engine
-Plugin 'honza/vim-snippets'                 " snippet collection
-Plugin 'ludovicchabant/vim-gutentags'       " using ctags
-Plugin 'pseewald/vim-anyfold'               " fold setup to work with various projects
-Plugin 'tell-k/vim-autopep8'                " rearrange python code to mee the pep8 standards
-Plugin 'jeetsukumaran/vim-buffergator'      " list open buffers and switch with directional keys
-Plugin 'nanotech/jellybeans.vim'            " jelly beans color scheme
-Plugin 'davidhalter/jedi-vim'               " python language agnostic completion
+" fuzzy file search
+Plug 'kien/ctrlp.vim', { 'on':  'CtrlP' }
 
+" adding airline engine and themes
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" commenting of lines or blocks
+Plug 'scrooloose/nerdcommenter'
+
+" completions
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+" add surroundings with vim style commands
+Plug 'tpope/vim-surround'
+
+" handle git repos from within neovim
+Plug 'tpope/vim-fugitive'
+
+" hex features vor neovim
+Plug 'Shougo/vinarise.vim', { 'for': 'hex' }
+
+" show detailed information about git repos
+Plug 'junegunn/gv.vim'
+
+" show line numbers only in current window
+Plug 'auwsmit/vim-active-numbers'
+
+" navigate in vim and tmux without further actions
+Plug 'christoomey/vim-tmux-navigator'
+
+" asynchronous linting engine
+Plug 'w0rp/ale'
+
+" showing file changes in the gutter in case it is handeld by vcs
+Plug 'mhinz/vim-signify'
+
+" jellybeans colorscheme
+Plug 'nanotech/jellybeans.vim'
+
+" showing indent lines
+Plug 'Yggdroot/indentLine'
+
+" add closing brackets, quotation marks, and co automatically
+Plug 'jiangmiao/auto-pairs'
+
+" add indexing to search results
+Plug 'google/vim-searchindex'
+
+" adding latex features to neovim
+Plug 'lervag/vimtex', { 'for': 'latex' }
+
+" highlighting trailling white spaces
+Plug 'ntpeters/vim-better-whitespace'
+
+" graphical undo tree
+Plug 'simnalamburt/vim-mundo'
+
+" tab completion on search
+Plug 'vim-scripts/SearchComplete'
+
+" octave/matlab syntax highlighting
+Plug 'jvirtanen/vim-octave', { 'for': ['octave', 'matlab'] }
+
+" indent araw pasting to not clutter the indentation depth
+Plug 'sickill/vim-pasta'
+
+" search and replace across multiple files
+Plug 'brooth/far.vim'
+
+" running code tests (e.g. pytest, rspec, ...)
+Plug 'janko-m/vim-test'
+
+" managing to-do lists
+Plug 'aserebryakov/vim-todo-lists'
+
+" display tags in the right side
+Plug 'majutsushi/tagbar'
+
+" gitk lik evim tool to dig into commits
+Plug 'gregsexton/gitv'
+
+" ctag support for neovim
+Plug 'ludovicchabant/vim-gutentags'
+
+" fold setup to work with various different languages
+Plug 'pseewald/vim-anyfold'
+
+" rearrange python code to meet the pep8 standards
+Plug 'tell-k/vim-autopep8', { 'for': 'python' }
+
+" list currently open buffers and cycle through them with the directional keys
+Plug 'jeetsukumaran/vim-buffergator'
+
+" python language agnostic tools (goto, completion, ...)
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " All of your Plugins must be added before the following line
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
 
@@ -131,13 +180,6 @@ autocmd BufNewFile,BufRead *.* set list listchars=eol:¬,tab:\▸\ ,trail:~,exte
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=1000
-
-" Use system clipboard for copying
-set clipboard^=unnamed,unnamedplus
-
-" Sets spellchecking for German/English
-setlocal spell spelllang=en_us
-"setlocal spell spelllang=de_de
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -179,6 +221,12 @@ set completeopt=longest,menuone
 
 " Activate mouse support
 set mouse=a
+
+" Set utf8 as standard encoding
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -234,9 +282,6 @@ set tm=500
 
 set completeopt=menuone
 
-" Use Silver Searcher instead of grep
-set grepprg=ag
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -255,12 +300,6 @@ endif
 set t_Co=256
 set background=dark
 colorscheme jellybeans
-
-" Set utf8 as standard encoding
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
 
 " Set nicer font in Windows GUI
 if has ("gui_win32")
@@ -356,6 +395,18 @@ endtry
 " Remember info about open buffers on close
 set viminfo^=%
 
+" Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings / additional mappings
@@ -411,25 +462,19 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 set autochdir
 let NERDTreeChDirMode=2
 
-" Make easytags to work asynchronously
-let g:easytags_async = 1
-" Make easytags to work on save
-"let g:easytags_events = ['BufWritePost']
-
-" delete all open buffers except this
-nnoremap <leader>bo :bufdo bd<CR>
-
 " Toggle the tagbar
 nmap <leader>ct :TagbarToggle<CR>
 
 " Toggle undo tree
-nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <leader>u :MundoToggle<CR>
 
 " gutentag statusline
 set statusline+=%{gutentags#statusline('[Generating...]')}
 
 " Make Ctrlp start from the current dir
 let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " ale settings for linting
 let g:ale_sign_column_always = 1
@@ -484,8 +529,7 @@ nmap <silent> <leader>g :TestVisit<CR>
 let anyfold_activate=1
 set foldlevel=1
 
-" Make jedi suggestions to pop up with supertab
-let g:SuperTabDefaultCompletionType = "context"
+" jedi settings
 let g:jedi#show_call_signatures = 2
 let g:jedi#force_py_version = 3
 
@@ -493,14 +537,14 @@ let g:jedi#force_py_version = 3
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Correct spell errors:
+" correct spell errors:
 function! FixLastSpellingError()
   normal! mm[s1z=`m"
 endfunction
 nnoremap <leader>sp :call FixLastSpellingError()<CR>
 
 
-" Delete trailing white space on save for the relevant file types
+" delete trailing white space on save for the relevant file types
 function! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
@@ -509,7 +553,7 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-
+" show folding depth on the left side
 function! FoldColumnToggle()
     if &foldcolumn
         let g:last_fold_column_width = &foldcolumn
@@ -520,6 +564,19 @@ function! FoldColumnToggle()
 endfunction
 let g:last_fold_column_width = 4  " Pick a sane default for the foldcolumn
 nnoremap <leader>f :call FoldColumnToggle()<CR>
+
+
+" toggle spellchecking
+function! ToggleSpellCheck()
+  setlocal spell! spelllang=en_us
+  if &spell
+    echo "Spellcheck ON"
+  else
+    echo "Spellcheck OFF"
+  endif
+endfunction
+
+nnoremap <silent> <Leader>s :call ToggleSpellCheck()<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
