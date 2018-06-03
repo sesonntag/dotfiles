@@ -82,4 +82,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # alias to use ctags from Homebrew
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
+elif [[ "$OSTYPE" == "linux"* ]]; then
+    # alias for system updates
+    alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
+
+    # export editor variable
+    export EDITOR='vim'
 fi
