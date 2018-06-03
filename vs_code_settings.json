@@ -9,6 +9,7 @@
     // Workbench
     "workbench.commandPalette.history": 100,
     "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "vscode-icons",
 
     // Windows
     "window.restoreWindows": "one",
@@ -16,5 +17,11 @@
     // Files
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": false,
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+
+    // Privacy
+    "telemetry.enableTelemetry": false,
+
+    // Extensions
+    "git.autofetch": true
 }
