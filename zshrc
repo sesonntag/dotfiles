@@ -59,6 +59,9 @@ alias lt='ls -althG'
 # alias for content of folder recursively
 alias content='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
 
+# export editor variable
+export EDITOR='vim'
+
 
 ###################################
 # operating system  realted stuff #
@@ -74,9 +77,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # alias for neovim
     alias vim='mvim -v'
 
-    # export editor variable
-    export EDITOR='vim'
-
     # aliases for keeping brew clean
     alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor; brew cask upgrade; brew cask cleanup;'
 
@@ -85,7 +85,4 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux"* ]]; then
     # alias for system updates
     alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
-
-    # export editor variable
-    export EDITOR='vim'
 fi
