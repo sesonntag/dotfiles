@@ -2,7 +2,7 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2018-05-19
+;; Date: 2018-06-08
 ;; License:
 ;;*****************************************************************************
 
