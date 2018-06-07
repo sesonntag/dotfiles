@@ -73,16 +73,33 @@
     kept-old-versions 2
     version-control t)
 
+;; comment or uncomment the current line or selection
+  (global-set-key (kbd "C-,") 'comment-line)
+
+;; highlight current line (Setting)
+  (global-hl-line-mode 1)
+  (set-face-foreground 'highlight nil)
+
 
 ;; === color settings =========================================================
   ; set background color
     (set-frame-parameter nil 'background-mode 'dark)
 
   ; color theme
-    (use-package molokai-theme
+    (use-package atom-one-dark-theme
       :ensure t
       :config
-      (load-theme 'molokai t))
+      (load-theme 'atom-one-dark t))
+
+
+;; === git gutter =============================================================
+  (use-package git-gutter-fringe
+    :ensure t
+    :config
+    (global-git-gutter-mode +1)
+    (set-face-foreground 'git-gutter-fr:modified "yellow")
+    (set-face-foreground 'git-gutter-fr:added    "green")
+    (set-face-foreground 'git-gutter-fr:deleted  "red"))
 
 
 ;; === evil settings ==========================================================
@@ -118,60 +135,79 @@
     (setq linum-relative-current-symbol ""))
 
 
-;; ============================================================================
-;; ============================================================================
-;; ============================================================================
+;; === indent guides ==========================================================
+  (use-package highlight-indent-guides
+    :ensure t
+    :config
+    (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+    (setq highlight-indent-guides-method 'character))
 
+
+;; === word wrapping ==========================================================
+  (use-package adaptive-wrap
+    :ensure t
+    :config
+    (defun turn-on-adaptive-wrap-prefix-mode (&optional arg)
+      (interactive)
+      (adaptive-wrap-prefix-mode (or arg 1)))
+    (defun turn-off-adaptive-wrap-prefix-mode (&optional arg)
+      (interactive)
+      (adaptive-wrap-prefix-mode (or arg -1)))
+    (defun adaptive-wrap-initialize ()
+      (unless (minibufferp)
+        (progn
+          (adaptive-wrap-prefix-mode 1)
+          (setq word-wrap t))))
+    (define-globalized-minor-mode adaptive-wrap-mode
+      adaptive-wrap-prefix-mode adaptive-wrap-initialize)
+    (adaptive-wrap-mode))
+
+
+;; === highlight multiple occurances ==========================================
+  (use-package highlight-symbol
+    :ensure t
+    :config
+    (highlight-symbol-mode t)
+    (global-set-key (kbd "C-x C-h") 'highlight-symbol))
+
+
+;; === undo tree ==============================================================
+  (use-package undo-tree
+    :ensure t
+    :config
+    (global-undo-tree-mode t))
+
+
+;; === magit ==================================================================
+  (use-package magit
+    :ensure t
+    :config
+    (global-set-key (kbd "C-x g") 'magit-status))
+
+
+
+
+
+
+
+
+
+
+;; ============================================================================
 ;; === OLD STUFF - NOT YET DONE ===============================================
+;; ============================================================================
 ;; list the packages you want
 ;(setq package-list '(tabbar
-;                                neotree
-;                                linum-relative
-;                                auto-complete
-;                                git-gutter-fringe
-;                                minimap
-;                                highlight-indent-guides
-;                                adaptive-wrap
-;                                auto-highlight-symbol
-;                                flycheck
-;                                magit
-;                                projectile
-;                                helm
-;                                undo-tree
-;                                yasnippet
-;                                bind-key
-;                                rainbow-delimiters
+;                     auto-complete
+;                     flycheck
+;                     projectile
+;                     helm
+;                     yasnippet
+;                     bind-key
 ; ))
-;
-;
-;    ;; Turn on relative line numbers plus actual line number on current line
-;        (require 'linum-relative)
-;        (linum-relative-global-mode)
-;        (setq linum-relative-current-symbol "")
 ;
 ;    ;; Default config for auto completion
 ;        (ac-config-default)
-;
-;    ;; Use git gutter
-;        (require 'git-gutter-fringe)
-;        (global-git-gutter-mode +1)
-;        (set-face-foreground 'git-gutter-fr:modified "yellow")
-;        (set-face-foreground 'git-gutter-fr:added    "green")
-;        (set-face-foreground 'git-gutter-fr:deleted  "red")
-;
-;    ;; Use minimap
-;        (require 'minimap)
-;        ;(minimap-mode 1)
-;
-;    ;; Highlight indent guides
-;        ;(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-;        ;(setq highlight-indent-guides-method 'character)
-;
-;    ;; Auto highlight words under cursor
-;        (auto-highlight-symbol-mode t)
-;
-;    ;; Use undo-tree to show history of changes
-;        (global-undo-tree-mode t)
 ;
 ;    ;; use flycheck to check code against coding standards
 ;        (require 'flycheck)
@@ -180,43 +216,16 @@
 ;    ;; use yasnippet
 ;        (require 'yasnippet)
 ;        (yas-global-mode 1)
-;
-;    ;; wrap words
-;        (defun turn-on-adaptive-wrap-prefix-mode (&optional arg)
-;            (interactive)
-;            (adaptive-wrap-prefix-mode (or arg 1)))
-;        (defun turn-off-adaptive-wrap-prefix-mode (&optional arg)
-;            (interactive)
-;            (adaptive-wrap-prefix-mode (or arg -1)))
-;        (defun adaptive-wrap-initialize ()
-;            (unless (minibufferp)
-;            (progn
-;                (adaptive-wrap-prefix-mode 1)
-;                (setq word-wrap t))))
-;        (define-globalized-minor-mode adaptive-wrap-mode
-;            adaptive-wrap-prefix-mode adaptive-wrap-initialize)
-;        (adaptive-wrap-mode)
-;;; ============================================================================
-;
-;
+
 ;;; === Key bindings =========================================================;;
-;
 ;    ;; Windows movement
 ;        (global-set-key (kbd "C-x <up>") 'windmove-up)
 ;        (global-set-key (kbd "C-x <down>") 'windmove-down)
 ;        (global-set-key (kbd "C-x <left>") 'windmove-left)
 ;        (global-set-key (kbd "C-x <right>") 'windmove-right)
-;
-;    ;; Comment or uncomment
-;        (global-set-key (kbd "C-,") 'comment-line)
-;
-;    ;; Check magit status
-;        (global-set-key (kbd "C-x g") 'magit-status)
-;;; ============================================================================
-;
-;
-;;; === ToDo =================================================================;;
-;
+
+
+;; === ToDo =================================================================;;
 ;    ;; find aspell and hunspell automatically
 ;        ;(setq flyspell-issue-welcome-flag nil)
 ;        ;(if (eq system-type 'darwin)
@@ -235,19 +244,3 @@
 ;            ;(global-set-key (kbd "M-y") helm-show-kill-ring)
 ;            ;(global-set-key (kbd "C-x C-f") helm-find-files))
 ;        ;(helm-mode 1)
-;;; ============================================================================
-;
-;
-;;; === Unused packages/settings =============================================;;
-;
-;    ;; highlight current line (Setting)
-;        ;(global-hl-line-mode 1)
-;        ;(set-face-foreground 'highlight nil)
-;
-;    ;; Turn on evil-mode on start up (package)
-;        ;(require 'evil)
-;        ;(evil-mode t)
-;
-;    ;; Turn on tabbar-mode on start up (package)
-;        (require 'tabbar)
-;        ;(tabbar-mode t)
