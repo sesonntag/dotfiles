@@ -63,10 +63,10 @@ endif
 " add surroundings with vim style commands
 Plug 'tpope/vim-surround'
 
-" handle git repos from within neovim
+" handle git repos from within vim
 Plug 'tpope/vim-fugitive'
 
-" hex features vor neovim
+" hex features vor vim
 Plug 'Shougo/vinarise.vim', { 'for': 'hex' }
 
 " show detailed information about git repos
@@ -99,7 +99,7 @@ Plug 'jiangmiao/auto-pairs'
 " add indexing to search results
 Plug 'google/vim-searchindex'
 
-" adding latex features to neovim
+" adding latex features to vim
 Plug 'lervag/vimtex', { 'for': 'latex' }
 
 " highlighting trailling white spaces
@@ -132,7 +132,7 @@ Plug 'majutsushi/tagbar'
 " gitk lik evim tool to dig into commits
 Plug 'gregsexton/gitv'
 
-" ctag support for neovim
+" ctag support for vim
 Plug 'ludovicchabant/vim-gutentags'
 
 " fold setup to work with various different languages
