@@ -7,10 +7,11 @@
 ;;*****************************************************************************
 
 
-;; === proxy settings to make use of package archives =========================
+;; === save custom settings in separate file ==================================
   (setq custom-file "~/.emacs-custom.el")
   (load custom-file)
 
+  
 ;; === repo settings ==========================================================
   (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                            ("marmalade" . "https://marmalade-repo.org/packages/")
@@ -33,7 +34,7 @@
     (setq default-directory "~/"))
 
   (if (eq system-type 'windows-nt)
-    (setq default-directory "C:/Documents and Settings/USER_NAME/Desktop/"))
+    (setq default-directory "C:/Users/desonnse/"))
 
 ;; scroll three lines with mouse, and one line with keyboard
   (setq mouse-wheel-scroll-amount '(3 ((shift) . 1)))
@@ -183,6 +184,12 @@
     :ensure t
     :config
     (global-set-key (kbd "C-x g") 'magit-status))
+    
+
+;; === markdown support =======================================================
+  (use-package markdown-mode
+  :ensure t
+  :config)
 
 
 
