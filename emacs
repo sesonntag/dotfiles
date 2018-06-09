@@ -11,7 +11,7 @@
   (setq custom-file "~/.emacs-custom.el")
   (load custom-file)
 
-  
+
 ;; === repo settings ==========================================================
   (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                            ("marmalade" . "https://marmalade-repo.org/packages/")
@@ -184,7 +184,7 @@
     :ensure t
     :config
     (global-set-key (kbd "C-x g") 'magit-status))
-    
+
 
 ;; === markdown support =======================================================
   (use-package markdown-mode
@@ -192,6 +192,18 @@
   :config)
 
 
+;; === trim trailing whitespaces ==============================================
+  (use-package whitespace-cleanup-mode
+    :ensure t
+    :config
+    (global-whitespace-cleanup-mode t))
+
+
+;; === commenting =============================================================
+  (use-package smart-comment
+    :ensure t
+    :bind
+    ("M-;" . smart-comment))
 
 
 
@@ -253,28 +265,18 @@
 ;        ;(helm-mode 1)
 
 ;; === vim packages ===========================================================
-;Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } -->  file and folder tree on the left side
 ;Plug 'kien/ctrlp.vim', { 'on':  'CtrlP' } --> fuzzy file search
 ;Plug 'vim-airline/vim-airline' --> adding airline engine and themes
 ;Plug 'vim-airline/vim-airline-themes' --> adding airline engine and themes
-;Plug 'scrooloose/nerdcommenter' --> commenting of lines or blocks
 ;Plug 'Shougo/deoplete.nvim' --> completions
 ;Plug 'tpope/vim-surround' --> add surroundings with vim style commands
-;Plug 'tpope/vim-fugitive' --> handle git repos from within neovim
 ;Plug 'Shougo/vinarise.vim', { 'for': 'hex' } --> hex features vor neovim
 ;Plug 'junegunn/gv.vim' --> show detailed information about git repos
 ;Plug 'auwsmit/vim-active-numbers' --> show line numbers only in current window
 ;Plug 'christoomey/vim-tmux-navigator' --> navigate in vim and tmux without further actions
 ;Plug 'w0rp/ale' --> asynchronous linting engine
-;Plug 'mhinz/vim-signify' --> showing file changes in the gutter in case it is handeld by vcs
-;Plug 'nanotech/jellybeans.vim' --> jellybeans colorscheme
-;Plug 'joshdick/onedark.vim' --> one dark colorscheme
-;Plug 'Yggdroot/indentLine' --> showing indent lines
-;Plug 'jiangmiao/auto-pairs' --> add closing brackets, quotation marks, and co automatically
 ;Plug 'google/vim-searchindex' --> add indexing to search results
 ;Plug 'lervag/vimtex', { 'for': 'latex' } --> adding latex features to neovim
-;Plug 'ntpeters/vim-better-whitespace' --> highlighting trailling white spaces
-;Plug 'simnalamburt/vim-mundo' --> graphical undo tree
 ;Plug 'vim-scripts/SearchComplete' --> tab completion on search
 ;Plug 'jvirtanen/vim-octave', { 'for': ['octave', 'matlab'] } --> octave/matlab syntax highlighting
 ;Plug 'sickill/vim-pasta' --> indent araw pasting to not clutter the indentation depth
@@ -282,7 +284,6 @@
 ;Plug 'janko-m/vim-test' --> running code tests (e.g. pytest, rspec, ...)
 ;Plug 'aserebryakov/vim-todo-lists' --> managing to-do lists
 ;Plug 'majutsushi/tagbar' --> display tags in the right side
-;Plug 'gregsexton/gitv' --> gitk lik evim tool to dig into commits
 ;Plug 'ludovicchabant/vim-gutentags' --> ctag support for neovim
 ;Plug 'pseewald/vim-anyfold' --> fold setup to work with various different languages
 ;Plug 'tell-k/vim-autopep8', { 'for': 'python' } --> rearrange python code to meet the pep8 standards
