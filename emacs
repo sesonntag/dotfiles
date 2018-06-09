@@ -206,6 +206,14 @@
     ("M-;" . smart-comment))
 
 
+;; === spellchecking ==========================================================
+  (use-package flyspell
+  :ensure t
+  :config
+  (setq ispell-program-name "/usr/local/bin/ispell")
+  (flyspell-mode t))
+
+
 
 
 
