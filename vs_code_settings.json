@@ -1,13 +1,14 @@
 // Place your settings in this file to overwrite the default settings
 {
-    // Editor
+ // Editor
     "editor.tabCompletion": false,
     "editor.lineNumbers": "relative",
-    "editor.rulers": [81, 121],
+    "editor.rulers": [80, 120],
     "editor.wordWrap": "on",
+    "editor.fontSize": 13,
 
     // Workbench
-    "workbench.commandPalette.history": 100,
+    "workbench.commandPalette.history": 1000,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.iconTheme": "vscode-icons",
 
@@ -24,4 +25,7 @@
 
     // Extensions
     "git.autofetch": true
+
+    // HTTP
+    // "http.proxyStrictSSL": false
 }
