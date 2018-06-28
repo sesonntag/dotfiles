@@ -5,7 +5,8 @@
     "editor.lineNumbers": "relative",
     "editor.rulers": [80, 120],
     "editor.wordWrap": "on",
-    "editor.fontSize": 13,
+    //"editor.fontSize": 13, // on windows os
+    "editor.fontSize": 12, // on mac os
 
     // Workbench
     "workbench.commandPalette.history": 1000,
