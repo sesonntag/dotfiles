@@ -4,7 +4,7 @@
 # Title: .zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-05-03
+# Date: 2018-07-29
 # License:
 #*******************************************************************************
 
@@ -61,6 +61,11 @@ alias content='for t in files links directories; do echo `find . -type ${t:0:1} 
 
 # export editor variable
 export EDITOR='vim'
+
+# Miniconda3 path and aliases
+export PATH="/Users/sebastiansonntag/miniconda3/bin:$PATH"
+alias activate='source activate'
+alias deactivate='source deactivate'
 
 
 ###################################
