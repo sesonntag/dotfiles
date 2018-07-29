@@ -63,7 +63,7 @@ alias content='for t in files links directories; do echo `find . -type ${t:0:1} 
 export EDITOR='vim'
 
 # Miniconda3 path and aliases
-export PATH="/Users/sebastiansonntag/miniconda3/bin:$PATH"
+export PATH="/Users/sebastiansonntag/.miniconda3/bin:$PATH"
 alias activate='source activate'
 alias deactivate='source deactivate'
 
