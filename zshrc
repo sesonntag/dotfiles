@@ -4,7 +4,7 @@
 # Title: .zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-08-02
+# Date: 2018-08-05
 # License:
 #*******************************************************************************
 
@@ -82,6 +82,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # alias to use ctags from Homebrew
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
+
+    # added by Miniconda2 installer
+    export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"
+
 elif [[ "$OSTYPE" == "linux"* ]]; then
     # alias for system updates
     alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
