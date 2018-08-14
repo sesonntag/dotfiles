@@ -1,19 +1,18 @@
 // Place your settings in this file to overwrite the default settings
 {
- // Editor
+    // Editor
     "editor.tabCompletion": false,
-    "editor.lineNumbers": "relative",
+    //"editor.lineNumbers": "relative",
     "editor.rulers": [80, 120],
     "editor.wordWrap": "on",
-    //"editor.fontSize": 13, // on windows os
-    "editor.fontSize": 12, // on mac os
+    "editor.fontSize": 13,
 
     // Workbench
     "workbench.commandPalette.history": 1000,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.iconTheme": "vscode-icons",
 
-    // Windows
+    // Window
     "window.restoreWindows": "one",
 
     // Files
@@ -21,12 +20,18 @@
     "files.insertFinalNewline": false,
     "files.autoSave": "afterDelay",
 
+    // Extensions
+    "git.autofetch": true,
+    "cSpell.userWords": [
+        "pyplot"
+    ],
+
     // Privacy
     "telemetry.enableTelemetry": false,
-
-    // Extensions
-    "git.autofetch": true
+    "telemetry.enableCrashReporter": false,
+    "code-runner.enableAppInsights": false
 
     // HTTP
-    // "http.proxyStrictSSL": false
+    //"http.proxy": "http:link.com:port",
+    //"http.proxyStrictSSL": false,
 }
