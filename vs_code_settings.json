@@ -2,17 +2,17 @@
 {
     // Editor
     "editor.tabCompletion": false,
-    //"editor.lineNumbers": "relative",
     "editor.rulers": [80, 120],
     "editor.wordWrap": "on",
-    "editor.fontSize": 13,
+    "editor.fontSize": 11,
 
     // Workbench
     "workbench.commandPalette.history": 1000,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.iconTheme": "vscode-icons",
+    "workbench.settings.editor": "json",
 
-    // Window
+    // Windows
     "window.restoreWindows": "one",
 
     // Files
@@ -20,18 +20,14 @@
     "files.insertFinalNewline": false,
     "files.autoSave": "afterDelay",
 
-    // Extensions
-    "git.autofetch": true,
-    "cSpell.userWords": [
-        "pyplot"
-    ],
-
     // Privacy
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    "code-runner.enableAppInsights": false
 
+    // Extensions
+    "git.autofetch": true,
+    "code-runner.enableAppInsights": false
     // HTTP
     //"http.proxy": "http:link.com:port",
-    //"http.proxyStrictSSL": false,
+    // "http.proxyStrictSSL": false
 }
