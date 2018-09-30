@@ -83,6 +83,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # alias for git
     alias git='/usr/local/bin/git'
 
+    # alias for rsync
+    alias rsync='/usr/local/bin/rsync'
+
     # alias to use ctags from Homebrew
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
 
