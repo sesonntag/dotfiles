@@ -4,7 +4,7 @@
 # Title: .zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-09-30
+# Date: 2018-10-03
 # License:
 #*******************************************************************************
 
@@ -91,6 +91,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # added by Miniconda2 installer
     export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"
+
+    # define the command line language
+    export LANG=en_US.UTF-8
 
 elif [[ "$OSTYPE" == "linux"* ]]; then
     # alias for system updates
