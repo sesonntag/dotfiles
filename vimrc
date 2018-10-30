@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-06-08
+" Date: 2018-10-30
 " License:
 "*******************************************************************************
 
@@ -52,13 +52,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 
 " completions
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+Plug 'maralla/completor.vim'
 
 " add surroundings with vim style commands
 Plug 'tpope/vim-surround'
@@ -537,7 +538,10 @@ let g:jedi#show_call_signatures = 2
 let g:jedi#force_py_version = 3
 
 " load deoplete completion engine on start up
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
+
+" completor settings
+"let g:completor_python_binary = '/path/to/python/with/jedi/installed'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
