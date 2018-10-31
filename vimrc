@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-10-30
+" Date: 2018-10-31
 " License:
 "*******************************************************************************
 
@@ -36,6 +36,8 @@ endif
 " Set the runtime path to include Vim-plug and initialize
 if has("mac") || has("macunix") || has("unix")
   call plug#begin('~/.vim/plugged')
+elseif has("win32") || has("gui_win32")
+  "call plug#begin('C:/Users/desonnse/vimfiles/plugged')
 endif
 
 " file and folder tree on the left side
@@ -299,12 +301,9 @@ set background=dark
 colorscheme jellybeans
 
 " Set nicer font in Windows GUI
-if has ("gui_win32")
+if has("gui_win32")
     set guifont=Consolas:h10.5:cANSI
-endif
-
-" Set bigger font (still Menlo but with different size) in OS X
-if has ("gui_macvim")
+elseif has("gui_macvim")
     set guifont=Menlo:h11
 endif
 
@@ -315,11 +314,19 @@ endif
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Define dirs for undo, backup and swap
-set undodir=~/.vim/undo//
-set undofile
-set undolevels=1000
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
+if has("mac") || has("macunix") || has("unix")
+  set undodir=~/.vim/undo//
+  set undofile
+  set undolevels=1000
+  set backupdir=~/.vim/backup//
+  set directory=~/.vim/swp//
+elseif has("win32") || has("gui_win32")
+  set undodir=~/vimfiles/undo//
+  set undofile
+  set undolevels=1000
+  set backupdir=~/vimfiles/backup//
+  set directory=~/vimfiles/swp//
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -579,4 +586,3 @@ nnoremap <silent> <Leader>s :call ToggleSpellCheck()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sandbox area for testing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set shortmess+=c   " Shut off completion messages
