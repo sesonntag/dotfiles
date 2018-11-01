@@ -265,29 +265,3 @@
 ;            ;(global-set-key (kbd "M-y") helm-show-kill-ring)
 ;            ;(global-set-key (kbd "C-x C-f") helm-find-files))
 ;        ;(helm-mode 1)
-
-;; === vim packages ===========================================================
-;Plug 'kien/ctrlp.vim', { 'on':  'CtrlP' } --> fuzzy file search
-;Plug 'vim-airline/vim-airline' --> adding airline engine and themes
-;Plug 'vim-airline/vim-airline-themes' --> adding airline engine and themes
-;Plug 'Shougo/deoplete.nvim' --> completions
-;Plug 'tpope/vim-surround' --> add surroundings with vim style commands
-;Plug 'Shougo/vinarise.vim', { 'for': 'hex' } --> hex features vor neovim
-;Plug 'junegunn/gv.vim' --> show detailed information about git repos
-;Plug 'auwsmit/vim-active-numbers' --> show line numbers only in current window
-;Plug 'christoomey/vim-tmux-navigator' --> navigate in vim and tmux without further actions
-;Plug 'w0rp/ale' --> asynchronous linting engine
-;Plug 'google/vim-searchindex' --> add indexing to search results
-;Plug 'lervag/vimtex', { 'for': 'latex' } --> adding latex features to neovim
-;Plug 'vim-scripts/SearchComplete' --> tab completion on search
-;Plug 'jvirtanen/vim-octave', { 'for': ['octave', 'matlab'] } --> octave/matlab syntax highlighting
-;Plug 'sickill/vim-pasta' --> indent araw pasting to not clutter the indentation depth
-;Plug 'brooth/far.vim' --> search and replace across multiple files
-;Plug 'janko-m/vim-test' --> running code tests (e.g. pytest, rspec, ...)
-;Plug 'aserebryakov/vim-todo-lists' --> managing to-do lists
-;Plug 'majutsushi/tagbar' --> display tags in the right side
-;Plug 'ludovicchabant/vim-gutentags' --> ctag support for neovim
-;Plug 'pseewald/vim-anyfold' --> fold setup to work with various different languages
-;Plug 'tell-k/vim-autopep8', { 'for': 'python' } --> rearrange python code to meet the pep8 standards
-;Plug 'jeetsukumaran/vim-buffergator' --> list currently open buffers and cycle through them with the directional keys
-;Plug 'davidhalter/jedi-vim', { 'for': 'python' } --> python language agnostic tools (goto, completion, ...)
