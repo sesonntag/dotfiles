@@ -190,8 +190,7 @@
 
 ;; === markdown support =======================================================
   (use-package markdown-mode
-  :ensure t
-  :config)
+  :ensure t)
 
 
 ;; === trim trailing whitespaces ==============================================
@@ -199,13 +198,6 @@
     :ensure t
     :config
     (global-whitespace-cleanup-mode t))
-
-
-;; === commenting =============================================================
-  (use-package smart-comment
-    :ensure t
-    :bind
-    ("M-;" . smart-comment))
 
 
 ;; === spellchecking ==========================================================
