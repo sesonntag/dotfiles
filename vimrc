@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-10-30
+" Date: 2018-11-01
 " License:
 "*******************************************************************************
 
@@ -140,6 +140,9 @@ Plug 'jeetsukumaran/vim-buffergator'
 
 " python language agnostic tools (goto, completion, ...)
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
+" use anaconda python installation
+Plug 'cjrh/vim-conda'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -528,8 +531,7 @@ set foldlevel=1
 
 " jedi settings
 let g:jedi#show_call_signatures = 2
-let g:jedi#force_py_version = 2
-
+let g:jedi#force_py_version = 3
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
