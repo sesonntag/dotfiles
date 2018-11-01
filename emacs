@@ -126,7 +126,9 @@
 
 ;; === neotree settings =======================================================
   (use-package neotree
-    :ensure t)
+    :ensure t
+    :config
+    (setq neo-smart-open t))
 
 ;; === relative line numer settings ===========================================
   (use-package linum-relative
