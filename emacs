@@ -2,7 +2,7 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2018-06-08
+;; Date: 2018-11-01
 ;; License:
 ;;*****************************************************************************
 
@@ -34,7 +34,7 @@
     (setq default-directory "~/"))
 
   (if (eq system-type 'windows-nt)
-    (setq default-directory "C:/Users/desonnse/"))
+    (setq default-directory "D:/desonnse/"))
 
 ;; scroll three lines with mouse, and one line with keyboard
   (setq mouse-wheel-scroll-amount '(3 ((shift) . 1)))
