@@ -202,10 +202,19 @@
 
 ;; === spellchecking ==========================================================
   (use-package flyspell
-  :ensure t
-  :config
-  (setq ispell-program-name "/usr/local/bin/ispell")
-  (flyspell-mode t))
+    :ensure t
+    :config
+    (setq ispell-program-name "/usr/local/bin/ispell")
+    (flyspell-mode t))
+
+
+;; === auto completion ========================================================
+  (use-package company
+    :ensure t
+    :config
+    (add-hook 'after-init-hook 'global-company-mode)
+    (setq company-selection-wrap-around t)
+    (company-tng-configure-default))
 
 
 
@@ -219,16 +228,12 @@
 ;; ============================================================================
 ;; list the packages you want
 ;(setq package-list '(tabbar
-;                     auto-complete
 ;                     flycheck
 ;                     projectile
 ;                     helm
 ;                     yasnippet
 ;                     bind-key
 ; ))
-;
-;    ;; Default config for auto completion
-;        (ac-config-default)
 ;
 ;    ;; use flycheck to check code against coding standards
 ;        (require 'flycheck)
