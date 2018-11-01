@@ -217,6 +217,11 @@
     (company-tng-configure-default))
 
 
+;; === ido ====================================================================
+  (use-package ido
+    :ensure t
+    :config
+    (ido-mode t))
 
 
 
