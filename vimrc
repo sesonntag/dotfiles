@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-11-01
+" Date: 2018-11-03
 " License:
 "*******************************************************************************
 
@@ -129,7 +129,8 @@ Plug 'majutsushi/tagbar'
 Plug 'gregsexton/gitv'
 
 " ctag support for vim
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
 
 " fold setup to work with various different languages
 Plug 'pseewald/vim-anyfold'
@@ -472,9 +473,6 @@ nmap <leader>ct :TagbarToggle<CR>
 
 " Toggle undo tree
 nnoremap <leader>u :MundoToggle<CR>
-
-" gutentag statusline
-set statusline+=%{gutentags#statusline('[Generating...]')}
 
 " Make Ctrlp start from the current dir
 let g:ctrlp_working_path_mode = 'c'
