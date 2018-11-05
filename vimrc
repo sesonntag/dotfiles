@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-10-30
+" Date: 2018-11-03
 " License:
 "*******************************************************************************
 
@@ -36,6 +36,8 @@ endif
 " Set the runtime path to include Vim-plug and initialize
 if has("mac") || has("macunix") || has("unix")
   call plug#begin('~/.vim/plugged')
+elseif has("win32") || has("gui_win32")
+  "call plug#begin('C:/Users/desonnse/vimfiles/plugged')
 endif
 
 " file and folder tree on the left side
@@ -127,7 +129,8 @@ Plug 'majutsushi/tagbar'
 Plug 'gregsexton/gitv'
 
 " ctag support for vim
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
 
 " fold setup to work with various different languages
 Plug 'pseewald/vim-anyfold'
@@ -140,6 +143,9 @@ Plug 'jeetsukumaran/vim-buffergator'
 
 " python language agnostic tools (goto, completion, ...)
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
+" use anaconda python installation
+Plug 'cjrh/vim-conda'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -277,8 +283,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-set completeopt=menuone
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -299,12 +303,9 @@ set background=dark
 colorscheme jellybeans
 
 " Set nicer font in Windows GUI
-if has ("gui_win32")
+if has("gui_win32")
     set guifont=Consolas:h10.5:cANSI
-endif
-
-" Set bigger font (still Menlo but with different size) in OS X
-if has ("gui_macvim")
+elseif has("gui_macvim")
     set guifont=Menlo:h11
 endif
 
@@ -315,11 +316,19 @@ endif
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Define dirs for undo, backup and swap
-set undodir=~/.vim/undo//
-set undofile
-set undolevels=1000
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
+if has("mac") || has("macunix") || has("unix")
+  set undodir=~/.vim/undo//
+  set undofile
+  set undolevels=1000
+  set backupdir=~/.vim/backup//
+  set directory=~/.vim/swp//
+elseif has("win32") || has("gui_win32")
+  set undodir=~/vimfiles/undo//
+  set undofile
+  set undolevels=1000
+  set backupdir=~/vimfiles/backup//
+  set directory=~/vimfiles/swp//
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -465,9 +474,6 @@ nmap <leader>ct :TagbarToggle<CR>
 " Toggle undo tree
 nnoremap <leader>u :MundoToggle<CR>
 
-" gutentag statusline
-set statusline+=%{gutentags#statusline('[Generating...]')}
-
 " Make Ctrlp start from the current dir
 let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_map = '<c-p>'
@@ -528,8 +534,7 @@ set foldlevel=1
 
 " jedi settings
 let g:jedi#show_call_signatures = 2
-let g:jedi#force_py_version = 2
-
+let g:jedi#force_py_version = 3
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -579,4 +584,3 @@ nnoremap <silent> <Leader>s :call ToggleSpellCheck()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sandbox area for testing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set shortmess+=c   " Shut off completion messages
