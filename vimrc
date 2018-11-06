@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-11-03
+" Date: 2018-11-06
 " License:
 "*******************************************************************************
 
