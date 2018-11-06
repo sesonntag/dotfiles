@@ -4,7 +4,7 @@
 # Title: .zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-10-03
+# Date: 2018-11-06
 # License:
 #*******************************************************************************
 
@@ -62,6 +62,9 @@ alias content='for t in files links directories; do echo `find . -type ${t:0:1} 
 # export editor variable
 export EDITOR='vim'
 
+# define the command line language
+export LANG=en_US.UTF-8
+
 
 ###################################
 # operating system  realted stuff #
@@ -89,13 +92,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # alias to use ctags from Homebrew
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
 
-    # added by Miniconda2 installer
+    # added by Miniconda3 installer
     export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"
-
-    # define the command line language
-    export LANG=en_US.UTF-8
 
 elif [[ "$OSTYPE" == "linux"* ]]; then
     # alias for system updates
     alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
+    
+    # added by Miniconda3 installer
+    export PATH="/opt/miniconda3/bin:$PATH"
 fi
