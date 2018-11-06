@@ -177,6 +177,9 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " Show trailing white spaces and eol signs, ...
 autocmd BufNewFile,BufRead *.* set list listchars=eol:¬,tab:\▸\ ,trail:~,extends:>,precedes:<
 
+" Activate any-fold from start up
+autocmd Filetype * AnyFoldActivate
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -529,7 +532,6 @@ nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
 " set folding methods
-let anyfold_activate=1
 set foldlevel=1
 
 " jedi settings
