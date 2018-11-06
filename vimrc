@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-11-03
+" Date: 2018-11-06
 " License:
 "*******************************************************************************
 
@@ -176,6 +176,9 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " Show trailing white spaces and eol signs, ...
 autocmd BufNewFile,BufRead *.* set list listchars=eol:¬,tab:\▸\ ,trail:~,extends:>,precedes:<
+
+" Activate any-fold from start up
+autocmd Filetype * AnyFoldActivate
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -529,7 +532,6 @@ nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
 " set folding methods
-let anyfold_activate=1
 set foldlevel=1
 
 " jedi settings
