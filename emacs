@@ -54,7 +54,7 @@
 ;; always use y-or-n as answer
   (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; show matching parens
+;; show matching brackets
   (show-paren-mode 1)
 
 ;; auto pair brackets and others
@@ -84,7 +84,7 @@
     kept-new-versions 5    ; keep some new versions
     kept-old-versions 2)   ; and some old ones, too
 
-;; comment or uncomment the current line or selection
+;; comment or un-comment the current line or selection
   (global-set-key (kbd "C-,") 'comment-line)
 
 ;; highlight current line (Setting)
@@ -140,7 +140,7 @@
     :config
     (setq neo-smart-open t))
 
-;; === relative line numer settings ===========================================
+;; === relative line number settings ===========================================
   (use-package linum-relative
     :ensure t
     :config
@@ -176,7 +176,7 @@
     (adaptive-wrap-mode))
 
 
-;; === highlight multiple occurances ==========================================
+;; === highlight multiple occurrences =========================================
   (use-package highlight-symbol
     :ensure t
     :config
@@ -203,7 +203,7 @@
   :ensure t)
 
 
-;; === trim trailing whitespaces ==============================================
+;; === trim trailing white spaces =============================================
   (use-package whitespace-cleanup-mode
     :ensure t
     :config
