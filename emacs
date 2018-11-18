@@ -66,9 +66,9 @@
 ;; detect file changes and reload file
   (global-auto-revert-mode t)
 
-;; Put backup files neatly away                                                 
-  (let ((backup-dir "~/backups")
-    (auto-saves-dir "~/auto-saves/"))
+;; Put backup files neatly away
+  (let ((backup-dir "~/.emacs.d/backups")
+    (auto-saves-dir "~/.emacs.d/auto-saves/"))
   (dolist (dir (list backup-dir auto-saves-dir))
     (when (not (file-directory-p dir))
       (make-directory dir t)))
@@ -78,10 +78,10 @@
     tramp-backup-directory-alist `((".*" . ,backup-dir))
     tramp-auto-save-directory auto-saves-dir))
 
-  (setq backup-by-copying t    ; Don't delink hardlinks                           
-    delete-old-versions t  ; Clean up the backups                             
-    version-control t      ; Use version numbers on backups,                  
-    kept-new-versions 5    ; keep some new versions                           
+  (setq backup-by-copying t    ; Don't delink hardlinks
+    delete-old-versions t  ; Clean up the backups
+    version-control t      ; Use version numbers on backups,
+    kept-new-versions 5    ; keep some new versions
     kept-old-versions 2)   ; and some old ones, too
 
 ;; comment or uncomment the current line or selection
