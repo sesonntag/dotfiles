@@ -97,10 +97,10 @@
     (set-frame-parameter nil 'background-mode 'dark)
 
   ; color theme
-    (use-package molokai-theme
+    (use-package atom-one-dark-theme
       :ensure t
       :config
-      (load-theme 'molokai t))
+      (load-theme 'atom-one-dark t))
 
 
 ;; === git gutter =============================================================
