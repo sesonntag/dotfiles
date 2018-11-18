@@ -49,7 +49,7 @@
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; reopen closed files on start up
-  ;(desktop-save-mode 1)
+  (desktop-save-mode 1)
 
 ;; always use y-or-n as answer
   (defalias 'yes-or-no-p 'y-or-n-p)
