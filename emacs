@@ -215,7 +215,8 @@
     :ensure t
     :config
     (setq ispell-program-name "/usr/local/bin/ispell")
-    (flyspell-mode t))
+    (add-hook 'text-mode-hook 'flyspell-mode)
+    (add-hook 'prog-mode-hook 'flyspell-prog-mode))
 
 
 ;; === auto completion ========================================================
