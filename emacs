@@ -2,7 +2,7 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2018-11-01
+;; Date: 2018-11-18
 ;; License:
 ;;*****************************************************************************
 
@@ -224,6 +224,7 @@
     :ensure t
     :config
     (add-hook 'after-init-hook 'global-company-mode)
+    (setq company-minimum-prefix-length 1)
     (setq company-selection-wrap-around t)
     (company-tng-configure-default))
 
