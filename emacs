@@ -60,6 +60,11 @@
 ;; auto pair brackets and others
   (electric-pair-mode 1)
 
+;; deactivate splash and startup stuff
+(setq inhibit-splash-screen t
+      inhibit-startup-message t
+      inhibit-startup-echo-area-message t)
+
 ;; use spaces instead of tabs
   (setq-default indent-tabs-mode nil)
 
