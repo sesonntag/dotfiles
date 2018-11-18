@@ -2,7 +2,7 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2018-11-01
+;; Date: 2018-11-18
 ;; License:
 ;;*****************************************************************************
 
@@ -48,17 +48,19 @@
 ;; remove trailing white spaces
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; reopen closed files on start up
-  ;(desktop-save-mode 1)
-
 ;; always use y-or-n as answer
   (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; show matching parens
+;; show matching brackets
   (show-paren-mode 1)
 
 ;; auto pair brackets and others
   (electric-pair-mode 1)
+
+;; deactivate splash and startup stuff
+(setq inhibit-splash-screen t
+      inhibit-startup-message t
+      inhibit-startup-echo-area-message t)
 
 ;; use spaces instead of tabs
   (setq-default indent-tabs-mode nil)
@@ -66,15 +68,25 @@
 ;; detect file changes and reload file
   (global-auto-revert-mode t)
 
-;; make emacs save backups at one place
-  (setq backup-directory-alist `(("." . "~/.emacs_saves")))
-  (setq backup-by-copying t)
-  (setq delete-old-versions t
-    kept-new-versions 6
-    kept-old-versions 2
-    version-control t)
+;; Put backup files neatly away
+  (let ((backup-dir "~/.emacs.d/backups")
+    (auto-saves-dir "~/.emacs.d/auto-saves/"))
+  (dolist (dir (list backup-dir auto-saves-dir))
+    (when (not (file-directory-p dir))
+      (make-directory dir t)))
+  (setq backup-directory-alist `(("." . ,backup-dir))
+    auto-save-file-name-transforms `((".*" ,auto-saves-dir t))
+    auto-save-list-file-prefix (concat auto-saves-dir ".saves-")
+    tramp-backup-directory-alist `((".*" . ,backup-dir))
+    tramp-auto-save-directory auto-saves-dir))
 
-;; comment or uncomment the current line or selection
+  (setq backup-by-copying t    ; Don't delink hardlinks
+    delete-old-versions t  ; Clean up the backups
+    version-control t      ; Use version numbers on backups,
+    kept-new-versions 5    ; keep some new versions
+    kept-old-versions 2)   ; and some old ones, too
+
+;; comment or un-comment the current line or selection
   (global-set-key (kbd "C-,") 'comment-line)
 
 ;; highlight current line (Setting)
@@ -87,10 +99,10 @@
     (set-frame-parameter nil 'background-mode 'dark)
 
   ; color theme
-    (use-package molokai-theme
+    (use-package atom-one-dark-theme
       :ensure t
       :config
-      (load-theme 'molokai t))
+      (load-theme 'atom-one-dark t))
 
 
 ;; === git gutter =============================================================
@@ -104,24 +116,30 @@
 
 
 ;; === evil settings ==========================================================
-;  (use-package evil
-;    :ensure t
-;    :config
-;    (evil-mode 1)
-;
-;    (use-package evil-leader
-;      :ensure t
-;      :config
-;      (global-evil-leader-mode))
-;         (evil-leader/set-leader "<SPC>")
-;         (evil-leader/set-key
-;           "w" 'save-buffer)
-;         ; "C-n" 'neotree-toggle) ;open question: how to use ctrl?
-;
-;    (use-package evil-surround
-;      :ensure t
-;      :config
-;      (global-evil-surround-mode 1))
+  (use-package evil
+    :ensure t
+    :config
+    (evil-mode 1)
+
+  (use-package evil-surround
+    :ensure t
+    :config
+    (global-evil-surround-mode))
+
+  (use-package evil-indent-textobject
+    :ensure t))
+
+  (dolist (mode '(magit-mode
+                  flycheck-error-list-mode
+                  git-rebase-mode))
+    (add-to-list 'evil-emacs-state-modes mode))
+
+  (use-package evil-leader
+    :ensure t
+    :config
+    (global-evil-leader-mode)
+    (evil-leader/set-leader "<SPC>")
+    (evil-leader/set-key "w" 'save-buffer))
 
 
 ;; === neotree settings =======================================================
@@ -130,7 +148,7 @@
     :config
     (setq neo-smart-open t))
 
-;; === relative line numer settings ===========================================
+;; === relative line number settings ===========================================
   (use-package linum-relative
     :ensure t
     :config
@@ -166,7 +184,7 @@
     (adaptive-wrap-mode))
 
 
-;; === highlight multiple occurances ==========================================
+;; === highlight multiple occurrences =========================================
   (use-package highlight-symbol
     :ensure t
     :config
@@ -193,7 +211,7 @@
   :ensure t)
 
 
-;; === trim trailing whitespaces ==============================================
+;; === trim trailing white spaces =============================================
   (use-package whitespace-cleanup-mode
     :ensure t
     :config
@@ -205,7 +223,8 @@
     :ensure t
     :config
     (setq ispell-program-name "/usr/local/bin/ispell")
-    (flyspell-mode t))
+    (add-hook 'text-mode-hook 'flyspell-mode)
+    (add-hook 'prog-mode-hook 'flyspell-prog-mode))
 
 
 ;; === auto completion ========================================================
@@ -213,6 +232,7 @@
     :ensure t
     :config
     (add-hook 'after-init-hook 'global-company-mode)
+    (setq company-minimum-prefix-length 1)
     (setq company-selection-wrap-around t)
     (company-tng-configure-default))
 
