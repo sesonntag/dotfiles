@@ -121,11 +121,6 @@
     :config
     (evil-mode 1)
 
-  (use-package evil-leader
-    :ensure t
-    :config
-    (global-evil-leader-mode))
-
   (use-package evil-surround
     :ensure t
     :config
@@ -138,6 +133,13 @@
                   flycheck-error-list-mode
                   git-rebase-mode))
     (add-to-list 'evil-emacs-state-modes mode))
+
+  (use-package evil-leader
+    :ensure t
+    :config
+    (global-evil-leader-mode)
+    (evil-leader/set-leader "<SPC>")
+    (evil-leader/set-key "w" 'save-buffer))
 
 
 ;; === neotree settings =======================================================
