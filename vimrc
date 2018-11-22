@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-11-06
+" Date: 2018-11-22
 " License:
 "*******************************************************************************
 
@@ -233,6 +233,9 @@ set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+
+" Use Silver Searcher instead of grep
+set grepprg=ag
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
