@@ -98,7 +98,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux"* ]]; then
     # alias for system updates
     alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
-    
+
     # added by Miniconda3 installer
     export PATH="/opt/miniconda3/bin:$PATH"
 fi
