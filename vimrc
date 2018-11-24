@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-11-22
+" Date: 2018-11-24
 " License:
 "*******************************************************************************
 
@@ -44,7 +44,7 @@ endif
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " fuzzy file search
-Plug 'kien/ctrlp.vim', { 'on':  'CtrlP' }
+Plug 'ctrlpvim/ctrlp.vim'
 
 " adding airline engine and themes
 Plug 'vim-airline/vim-airline'
@@ -373,7 +373,7 @@ vnoremap > >gv
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
+" => Moving around, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Close the current buffer
 nnoremap <leader>bd :bd<CR>
@@ -381,28 +381,19 @@ nnoremap <leader>bd :bd<CR>
 " Close all the buffers
 nnoremap <leader>ba :1,1000 bd!<CR>
 
-" Useful mappings for managing tabs
-nnoremap <leader>tt :tabnew<CR>
-nnoremap <leader>to :tabonly<CR>
-nnoremap <leader>tc :tabclose<CR>
-nnoremap <leader>tm :tabmove
-nnoremap <leader>tN <esc>:tabprevious<CR>
-nnoremap <leader>tn <esc>:tabnext<CR>
-nnoremap <leader>oo :only<CR>
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<CR>/
+" Useful mappings for managing buffers
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
 
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
+"try
+  "set switchbuf=useopen,usetab,newtab
+  "set stal=2
+"catch
+"endtry
 
 " Remember info about open buffers on close
 set viminfo^=%
@@ -438,6 +429,7 @@ nnoremap <silent> _ :nohl<CR>
 " Map Ctrl-P to open fuzzy finder
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+nnoremap <c-b> :CtrlPBuffer<CR>
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nnoremap <M-j> mz:m+<CR>`z
