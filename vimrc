@@ -419,6 +419,7 @@ nnoremap 0 ^
 
 " Use ü to go to tag definition
 nnoremap ü <C-]>
+nnoremap Ü <C-O>
 
 " Map the ESC key sequence to jk for faster leaving the insert mode
 inoremap kj <Esc>
