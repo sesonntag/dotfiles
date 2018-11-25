@@ -339,6 +339,7 @@ elseif has("win32") || has("gui_win32")
   set undodir=~/vimfiles/undo//
   set undofile
   set undolevels=1000
+  set undoreload=10000
   set backupdir=~/vimfiles/backup//
   set directory=~/vimfiles/swp//
 endif
