@@ -402,13 +402,6 @@ nnoremap <leader>bN :bp<CR>
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
-" Specify the behavior when switching between buffers
-"try
-  "set switchbuf=useopen,usetab,newtab
-  "set stal=2
-"catch
-"endtry
-
 " Remember info about open buffers on close
 set viminfo^=%
 
