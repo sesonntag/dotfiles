@@ -2,34 +2,25 @@
 # Title: .gitconfig
 # Description: git configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-03-25
+# Date: 2018-11-25
 # License:
 #*******************************************************************************
 
 [core]
-	excludesfile = /Users/sebastiansonntag/.gitignore_global
+	excludesfile = ~/.gitignore_global
+        autocrlf = input
 [user]
 	name = Sebastian Sonntag
 	email = se.bastian.sonntag@hotmail.com
 [color]
 	ui = true
-[pack]
-	threads = 0
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit
-	difft = difftool
+[merge]
+        ff = only
+[fetch]
+        prune = true
+[rebase]
+        autosquash = true
 [diff]
-	tool = vimdiff
-[difftool]
-	prompt = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+        colorMoved = zebra
