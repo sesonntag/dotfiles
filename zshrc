@@ -59,6 +59,9 @@ alias lt='ls -althG'
 #alias to extend the ln command
 alias ln='ln -v'
 
+# alias to extend the mkdir command
+alias mkdir='mkdir -p'
+
 # alias for content of folder recursively
 alias content='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
 
