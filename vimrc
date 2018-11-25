@@ -197,6 +197,9 @@ set relativenumber
 set number
 set numberwidth=5
 
+" Use one space, not two, after punctuation.
+set nojoinspaces
+
 " Set cursorline
 set cursorline
 
