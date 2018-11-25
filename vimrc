@@ -434,6 +434,7 @@ nnoremap <silent> _ :nohl<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 nnoremap <c-b> :CtrlPBuffer<CR>
+let g:ctrlp_use_caching = 0
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nnoremap <M-j> mz:m+<CR>`z
