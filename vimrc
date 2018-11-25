@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-11-24
+" Date: 2018-11-25
 " License:
 "*******************************************************************************
 
@@ -383,7 +383,7 @@ nnoremap <leader>ba :1,1000 bd!<CR>
 
 " Useful mappings for managing buffers
 nnoremap <leader>bn :bn<CR>
-nnoremap <leader>bp :bp<CR>
+nnoremap <leader>bN :bp<CR>
 
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
