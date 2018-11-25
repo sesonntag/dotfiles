@@ -2,7 +2,7 @@
 " Title: init.vim
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-06-01
+" Date: 2018-11-25
 " License:
 "*******************************************************************************
 
@@ -42,7 +42,7 @@ endif
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " fuzzy file search
-Plug 'kien/ctrlp.vim', { 'on':  'CtrlP' }
+Plug 'ctrlpvim/ctrlp.vim'
 
 " adding airline engine and themes
 Plug 'vim-airline/vim-airline'
@@ -82,6 +82,9 @@ Plug 'mhinz/vim-signify'
 
 " jellybeans colorscheme
 Plug 'nanotech/jellybeans.vim'
+
+" one dark colorscheme
+Plug 'joshdick/onedark.vim'
 
 " showing indent lines
 Plug 'Yggdroot/indentLine'
@@ -125,8 +128,9 @@ Plug 'majutsushi/tagbar'
 " gitk lik evim tool to dig into commits
 Plug 'gregsexton/gitv'
 
-" ctag support for neovim
-Plug 'ludovicchabant/vim-gutentags'
+" ctag support for vim
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
 
 " fold setup to work with various different languages
 Plug 'pseewald/vim-anyfold'
@@ -139,6 +143,9 @@ Plug 'jeetsukumaran/vim-buffergator'
 
 " python language agnostic tools (goto, completion, ...)
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
+" use anaconda python installation
+Plug 'cjrh/vim-conda'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -170,6 +177,9 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " Show trailing white spaces and eol signs, ...
 autocmd BufNewFile,BufRead *.* set list listchars=eol:¬,tab:\▸\ ,trail:~,extends:>,precedes:<
 
+" Activate any-fold from start up
+autocmd Filetype * AnyFoldActivate
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -187,8 +197,17 @@ set relativenumber
 set number
 set numberwidth=5
 
+" Use one space, not two, after punctuation.
+set nojoinspaces
+
 " Set cursorline
 set cursorline
+
+" enable autosave on vim startup
+let g:auto_save = 1
+
+" do not save in insert mode
+let g:auto_save_in_insert_mode = 0
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -217,6 +236,15 @@ set completeopt=longest,menuone
 
 " Activate mouse support
 set mouse=a
+
+" Set utf8 as standard encoding
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+" Use Silver Searcher instead of grep
+set grepprg=ag
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -270,11 +298,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-set completeopt=menuone
-
-" Use Silver Searcher instead of grep
-set grepprg=ag
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -287,12 +310,6 @@ set t_Co=256
 set background=dark
 colorscheme jellybeans
 
-" Set utf8 as standard encoding
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
 " Apply a color column in light grey in the 81st and from 121st column on
 "let &colorcolumn="81,".join(range(121,9999),",")
 
@@ -303,6 +320,7 @@ set ffs=unix,dos,mac
 set undodir=~/.config/nvim/undo//
 set undofile
 set undolevels=1000
+  set undoreload=10000
 set backupdir=~/.config/nvim/backup//
 set directory=~/.config/nvim/swp//
 
@@ -343,7 +361,7 @@ vnoremap > >gv
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
+" => Moving around, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Close the current buffer
 nnoremap <leader>bd :bd<CR>
@@ -351,28 +369,12 @@ nnoremap <leader>bd :bd<CR>
 " Close all the buffers
 nnoremap <leader>ba :1,1000 bd!<CR>
 
-" Useful mappings for managing tabs
-nnoremap <leader>tt :tabnew<CR>
-nnoremap <leader>to :tabonly<CR>
-nnoremap <leader>tc :tabclose<CR>
-nnoremap <leader>tm :tabmove
-nnoremap <leader>tN <esc>:tabprevious<CR>
-nnoremap <leader>tn <esc>:tabnext<CR>
-nnoremap <leader>oo :only<CR>
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-nnoremap <leader>te :tabedit <c-r>=expand("%:p:h")<CR>/
+" Useful mappings for managing buffers
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bN :bp<CR>
 
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-" Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
 
 " Remember info about open buffers on close
 set viminfo^=%
@@ -398,12 +400,19 @@ nnoremap 0 ^
 
 " Use ü to go to tag definition
 nnoremap ü <C-]>
+nnoremap Ü <C-O>
 
 " Map the ESC key sequence to jk for faster leaving the insert mode
 inoremap kj <Esc>
 
 " Map the underscore to un-highlight after searching
 nnoremap <silent> _ :nohl<CR>
+
+" Map Ctrl-P to open fuzzy finder
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+nnoremap <c-b> :CtrlPBuffer<CR>
+let g:ctrlp_use_caching = 0
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nnoremap <M-j> mz:m+<CR>`z
@@ -501,7 +510,6 @@ nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
 " set folding methods
-let anyfold_activate=1
 set foldlevel=1
 
 " jedi settings
@@ -525,14 +533,14 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Correct spell errors:
+" correct spell errors:
 function! FixLastSpellingError()
   normal! mm[s1z=`m"
 endfunction
 nnoremap <leader>sp :call FixLastSpellingError()<CR>
 
 
-" Delete trailing white space on save for the relevant file types
+" delete trailing white space on save for the relevant file types
 function! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
@@ -541,8 +549,7 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-
-" show foling depth on the left side
+" show folding depth on the left side
 function! FoldColumnToggle()
     if &foldcolumn
         let g:last_fold_column_width = &foldcolumn
@@ -555,7 +562,7 @@ let g:last_fold_column_width = 4  " Pick a sane default for the foldcolumn
 nnoremap <leader>f :call FoldColumnToggle()<CR>
 
 
-" Toggle spellchecking
+" toggle spellchecking
 function! ToggleSpellCheck()
   setlocal spell! spelllang=en_us
   if &spell
