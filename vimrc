@@ -203,6 +203,12 @@ set nojoinspaces
 " Set cursorline
 set cursorline
 
+" enable autosave on vim startup
+let g:auto_save = 1
+
+" do not save in insert mode
+let g:auto_save_in_insert_mode = 0
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
