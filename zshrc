@@ -4,7 +4,7 @@
 # Title: .zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-11-06
+# Date: 2018-11-25
 # License:
 #*******************************************************************************
 
@@ -55,6 +55,9 @@ alias ls='ls -G'
 alias la='ls -AG'
 alias ll='ls -alhG'
 alias lt='ls -althG'
+
+#alias to extend the ln command
+alias ln='ln -v'
 
 # alias for content of folder recursively
 alias content='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
