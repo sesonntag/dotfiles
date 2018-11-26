@@ -37,7 +37,7 @@ endif
 if has("mac") || has("macunix") || has("unix")
   call plug#begin('~/.config/nvim/plugged')
 elseif has("win32") || has("gui_win32")
-  call plug#begin('~/AppData/Local/nvim/plugged')
+  call plug#begin('C:/Users/desonnse/vimfiles/plugged')
 endif
 
 " file and folder tree on the left side
@@ -54,7 +54,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 
 " completions
-Plug 'lifepillar/vim-mucomplete'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" snippets
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
 " add surroundings with vim style commands
 Plug 'tpope/vim-surround'
