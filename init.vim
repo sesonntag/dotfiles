@@ -37,7 +37,7 @@ endif
 if has("mac") || has("macunix") || has("unix")
   call plug#begin('~/.config/nvim/plugged')
 elseif has("win32") || has("gui_win32")
-  call plug#begin('C:/Users/desonnse/vimfiles/plugged')
+  call plug#begin('~/AppData/Local/nvim/plugged')
 endif
 
 " file and folder tree on the left side
