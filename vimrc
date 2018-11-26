@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-11-25
+" Date: 2018-11-26
 " License:
 "*******************************************************************************
 
@@ -59,10 +59,10 @@ Plug 'lifepillar/vim-mucomplete'
 " add surroundings with vim style commands
 Plug 'tpope/vim-surround'
 
-" handle git repos from within vim
+" handle git repos from within
 Plug 'tpope/vim-fugitive'
 
-" hex features vor vim
+" hex features
 Plug 'Shougo/vinarise.vim', { 'for': 'hex' }
 
 " show detailed information about git repos
@@ -95,7 +95,7 @@ Plug 'jiangmiao/auto-pairs'
 " add indexing to search results
 Plug 'google/vim-searchindex'
 
-" adding latex features to vim
+" adding latex features
 Plug 'lervag/vimtex', { 'for': 'latex' }
 
 " highlighting trailling white spaces
@@ -541,6 +541,7 @@ set foldlevel=1
 " jedi settings
 let g:jedi#show_call_signatures = 2
 let g:jedi#force_py_version = 3
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
