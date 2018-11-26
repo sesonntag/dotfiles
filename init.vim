@@ -2,7 +2,7 @@
 " Title: init.vim
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-11-25
+" Date: 2018-11-26
 " License:
 "*******************************************************************************
 
@@ -13,7 +13,7 @@
 " Vim-plug initialization
 " Avoid modify this section, unless you are very sure of what you are doing
 
-if has("mac") || has("macunix")
+if has("mac") || has("macunix") || has("unix")
   let vim_plug_just_installed = 0
   let vim_plug_path = expand('~/.config/nvim/autoload/plug.vim')
   if !filereadable(vim_plug_path)
@@ -33,9 +33,11 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set the runtime path to include Vundle and initialize
-if has("mac") || has("macunix")
+" Set the runtime path to include Vim-plug and initialize
+if has("mac") || has("macunix") || has("unix")
   call plug#begin('~/.config/nvim/plugged')
+elseif has("win32") || has("gui_win32")
+  call plug#begin('C:/Users/desonnse/vimfiles/plugged')
 endif
 
 " file and folder tree on the left side
@@ -51,18 +53,16 @@ Plug 'vim-airline/vim-airline-themes'
 " commenting of lines or blocks
 Plug 'scrooloose/nerdcommenter'
 
-" compeltions
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+" completions
+Plug 'lifepillar/vim-mucomplete'
 
 " add surroundings with vim style commands
 Plug 'tpope/vim-surround'
 
-" handle git repos from within neovim
+" handle git repos from within
 Plug 'tpope/vim-fugitive'
 
-" hex features vor neovim
+" hex features
 Plug 'Shougo/vinarise.vim', { 'for': 'hex' }
 
 " show detailed information about git repos
@@ -95,7 +95,7 @@ Plug 'jiangmiao/auto-pairs'
 " add indexing to search results
 Plug 'google/vim-searchindex'
 
-" adding latex features to neovim
+" adding latex features
 Plug 'lervag/vimtex', { 'for': 'latex' }
 
 " highlighting trailling white spaces
@@ -317,12 +317,20 @@ colorscheme jellybeans
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Define dirs for undo, backup and swap
-set undodir=~/.config/nvim/undo//
-set undofile
-set undolevels=1000
+if has("mac") || has("macunix") || has("unix")
+  set undodir=~/.config/nvim/undo//
+  set undofile
+  set undolevels=1000
+  set backupdir=~/.config/nvim/backup//
+  set directory=~/.config/nvim/swp//
+elseif has("win32") || has("gui_win32")
+  set undodir=~/.config/nvim//undo//
+  set undofile
+  set undolevels=1000
   set undoreload=10000
-set backupdir=~/.config/nvim/backup//
-set directory=~/.config/nvim/swp//
+  set backupdir=~/.config/nvim/backup//
+  set directory=~/.config/nvim//swp//
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
