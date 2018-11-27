@@ -65,6 +65,9 @@ alias mkdir='mkdir -p'
 # alias for content of folder recursively
 alias content='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
 
+# alias for neovim
+alias vim='nvim'
+
 # export editor variable
 export EDITOR='vim'
 
@@ -82,9 +85,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # aliases for rsync scripts
     alias rsync_home_to_wd_2000='chmod +x ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh && . ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh && chmod -x ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh'
     alias rsync_wd_2000_to_core_750='chmod +x ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh && . ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh && chmod -x ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh'
-
-    # alias for neovim
-    alias vim='mvim -v'
 
     # aliases for keeping brew clean
     alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor; brew cask upgrade'
