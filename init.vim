@@ -590,3 +590,9 @@ nnoremap <silent> <Leader>s :call ToggleSpellCheck()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sandbox area for testing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" define python3 path
+if has("mac") || has("macunix") || has("unix")
+  "let g:python3_host_prog = '~/.opt/miniconda3/bin/python' "necessary?
+elseif has("win32") || has("gui_win32")
+  let g:python3_host_prog = 'C:\ProgramData\Miniconda3\envs\myenv_p36\python.exe'
+endif
