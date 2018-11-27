@@ -328,12 +328,12 @@ if has("mac") || has("macunix") || has("unix")
   set backupdir=~/.config/nvim/backup//
   set directory=~/.config/nvim/swp//
 elseif has("win32") || has("gui_win32")
-  set undodir=~/.config/nvim//undo//
+  set undodir=~/AppData/Local/nvim/undo//
   set undofile
   set undolevels=1000
   set undoreload=10000
-  set backupdir=~/.config/nvim/backup//
-  set directory=~/.config/nvim//swp//
+  set backupdir=~/AppData/Local/nvim/backup//
+  set directory=~/AppData/Local/nvim/swp//
 endif
 
 
