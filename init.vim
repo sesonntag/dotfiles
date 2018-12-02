@@ -2,7 +2,7 @@
 " Title: init.vim
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-11-26
+" Date: 2018-12-02
 " License:
 "*******************************************************************************
 
@@ -387,6 +387,10 @@ nnoremap <leader>bN :bp<CR>
 
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" use gj or gk to move lines
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Remember info about open buffers on close
 set viminfo^=%
