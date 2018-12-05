@@ -2,7 +2,7 @@
 " Title: init.vim
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-12-02
+" Date: 2018-12-05
 " License:
 "*******************************************************************************
 
@@ -150,6 +150,10 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " use anaconda python installation
 Plug 'cjrh/vim-conda'
+
+" do calculations inside of vim
+Plug 'gregsexton/VimCalc'
+
 
 " All of your Plugins must be added before the following line
 call plug#end()
