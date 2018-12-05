@@ -93,6 +93,9 @@ Plug 'joshdick/onedark.vim'
 " showing indent lines
 Plug 'Yggdroot/indentLine'
 
+" correct identstion also in rare cases for python
+Plug 'vim-scripts/indentpython.vim'
+
 " add closing brackets, quotation marks, and co automatically
 Plug 'jiangmiao/auto-pairs'
 
