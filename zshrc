@@ -4,7 +4,7 @@
 # Title: .zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-11-25
+# Date: 2018-12-05
 # License:
 #*******************************************************************************
 
@@ -65,11 +65,11 @@ alias mkdir='mkdir -p'
 # alias for content of folder recursively
 alias content='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
 
-# alias for neovim
-alias vim='nvim'
-
 # export editor variable
 export EDITOR='vim'
+
+# alias for neovim
+alias vim='nvim'
 
 # define the command line language
 export LANG=en_US.UTF-8
