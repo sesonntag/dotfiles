@@ -2,7 +2,7 @@
 " Title: init.vim
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-12-05
+" Date: 2018-12-06
 " License:
 "*******************************************************************************
 
@@ -156,6 +156,9 @@ Plug 'cjrh/vim-conda'
 
 " do calculations inside of vim
 Plug 'gregsexton/VimCalc'
+
+" github colors (light)
+Plug 'cormacrelf/vim-colors-github'
 
 
 " All of your Plugins must be added before the following line
