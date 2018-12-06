@@ -2,7 +2,7 @@
 " Title: .vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-11-26
+" Date: 2018-12-06
 " License:
 "*******************************************************************************
 
@@ -37,7 +37,7 @@ endif
 if has("mac") || has("macunix") || has("unix")
   call plug#begin('~/.vim/plugged')
 elseif has("win32") || has("gui_win32")
-  "call plug#begin('C:/Users/desonnse/vimfiles/plugged')
+  "call plug#begin('~/vimfiles/plugged')
 endif
 
 " file and folder tree on the left side
@@ -88,6 +88,9 @@ Plug 'joshdick/onedark.vim'
 
 " showing indent lines
 Plug 'Yggdroot/indentLine'
+
+" correct identstion also in rare cases for python
+Plug 'vim-scripts/indentpython.vim'
 
 " add closing brackets, quotation marks, and co automatically
 Plug 'jiangmiao/auto-pairs'
@@ -146,6 +149,13 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " use anaconda python installation
 Plug 'cjrh/vim-conda'
+
+" do calculations inside of vim
+Plug 'gregsexton/VimCalc'
+
+" github colors (light)
+Plug 'cormacrelf/vim-colors-github'
+
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -401,6 +411,10 @@ nnoremap <leader>bN :bp<CR>
 
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" use gj or gk to move lines
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Remember info about open buffers on close
 set viminfo^=%
