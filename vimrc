@@ -1,5 +1,5 @@
 "*******************************************************************************
-" Title: init.vim
+" Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
 " Date: 2018-12-10
