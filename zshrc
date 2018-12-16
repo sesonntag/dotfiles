@@ -1,10 +1,10 @@
 #!/bin/zsh
 #
 #*******************************************************************************
-# Title: .zshrc
+# Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-12-05
+# Date: 2018-12-16
 # License:
 #*******************************************************************************
 
@@ -12,7 +12,7 @@
 export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="bira" # bira geoffgarside josh ys
+ZSH_THEME="hyperzsh" # bira geoffgarside josh ys
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
