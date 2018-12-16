@@ -1,8 +1,8 @@
 "*******************************************************************************
-" Title: .vimrc
+" Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-12-06
+" Date: 2018-12-16
 " License:
 "*******************************************************************************
 
@@ -37,7 +37,19 @@ endif
 if has("mac") || has("macunix") || has("unix")
   call plug#begin('~/.vim/plugged')
 elseif has("win32") || has("gui_win32")
-  "call plug#begin('~/vimfiles/plugged')
+  call plug#begin('~/AppData/Local/nvim/plugged')
+endif
+
+if has ('nvim')
+  " completions
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+  " snippets
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'Shougo/neosnippet-snippets'
+else
+  " completions
+  Plug 'lifepillar/vim-mucomplete'
 endif
 
 " file and folder tree on the left side
@@ -52,9 +64,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 " commenting of lines or blocks
 Plug 'scrooloose/nerdcommenter'
-
-" completions
-Plug 'lifepillar/vim-mucomplete'
 
 " add surroundings with vim style commands
 Plug 'tpope/vim-surround'
@@ -165,8 +174,12 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Auto commands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Auto load .vimrc after saving
-autocmd! bufwritepost .vimrc source %
+" Auto load vim config after saving
+if has ('nvim')
+  autocmd! bufwritepost init.vim source $MYVIMRC
+else
+  autocmd! bufwritepost .vimrc source %
+endif
 
 " Detect markdown language and activate syntax highlighting
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -315,23 +328,23 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set guitablabel=%M\ %t
-endif
-
 " Set color schemes
 set t_Co=256
 set background=dark
 colorscheme jellybeans
 
+" set gui options when being in classical vim
+if has("gui_running") && !has('nvim')
+  set guioptions-=T
+  set guioptions+=e
+  set guitablabel=%M\ %t
+endif
+
 " Set nicer font in Windows GUI
-if has("gui_win32")
-    set guifont=Consolas:h10.5:cANSI
-elseif has("gui_macvim")
-    set guifont=Menlo:h11
+if !has('nvim') && has("gui_win32")
+  set guifont=Consolas:h10.5:cANSI
+elseif !has('nvim') && has("gui_macvim")
+  set guifont=Menlo:h11
 endif
 
 " Make it obvious where 80 characters is
@@ -347,19 +360,16 @@ set colorcolumn=+1
 " Define dirs for undo, backup and swap
 if has("mac") || has("macunix") || has("unix")
   set undodir=~/.vim/undo//
-  set undofile
-  set undolevels=1000
   set backupdir=~/.vim/backup//
   set directory=~/.vim/swp//
 elseif has("win32") || has("gui_win32")
-  set undodir=~/vimfiles/undo//
-  set undofile
-  set undolevels=1000
-  set undoreload=10000
-  set backupdir=~/vimfiles/backup//
-  set directory=~/vimfiles/swp//
+  set undodir=~/AppData/Local/nvim/undo//
+  set backupdir=~/AppData/Local/nvim/backup//
+  set directory=~/AppData/Local/nvim/swp//
 endif
-
+set undofile
+set undolevels=1000
+set undoreload=10000
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -555,6 +565,29 @@ set foldlevel=1
 " jedi settings
 let g:jedi#show_call_signatures = 2
 let g:jedi#force_py_version = 3
+
+" deoplete and neosnippet settings
+if has ('nvim')
+  let g:deoplete#enable_at_startup = 1
+  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k>     <Plug>(neosnippet_expand_target)
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+  " For conceal markers.
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+
+  " define python3 path
+  if has("mac") || has("macunix") || has("unix")
+    "let g:python3_host_prog = '~/.opt/miniconda3/bin/python' "necessary?
+  elseif has("win32") || has("gui_win32")
+    let g:python3_host_prog = 'C:\ProgramData\Miniconda3\envs\myenv_p36\python.exe'
+  endif
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
