@@ -174,7 +174,7 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Auto commands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Auto load init.vim after saving
+" Auto load vim config after saving
 if has ('nvim')
   autocmd! bufwritepost init.vim source $MYVIMRC
 else
