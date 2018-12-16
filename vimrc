@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-12-10
+" Date: 2018-12-16
 " License:
 "*******************************************************************************
 
@@ -333,12 +333,23 @@ set t_Co=256
 set background=dark
 colorscheme jellybeans
 
+" set gui options when being in classical vim
+if has("gui_running") && !has('nvim')
+  set guioptions-=T
+  set guioptions+=e
+  set guitablabel=%M\ %t
+endif
+
 " Set nicer font in Windows GUI
 if !has('nvim') && has("gui_win32")
   set guifont=Consolas:h10.5:cANSI
 elseif !has('nvim') && has("gui_macvim")
   set guifont=Menlo:h11
 endif
+
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
 
 " Apply a color column in light grey in the 81st and from 121st column on
 "let &colorcolumn="81,".join(range(121,9999),",")
@@ -349,19 +360,16 @@ endif
 " Define dirs for undo, backup and swap
 if has("mac") || has("macunix") || has("unix")
   set undodir=~/.vim/undo//
-  set undofile
-  set undolevels=1000
   set backupdir=~/.vim/backup//
   set directory=~/.vim/swp//
 elseif has("win32") || has("gui_win32")
   set undodir=~/AppData/Local/nvim/undo//
-  set undofile
-  set undolevels=1000
-  set undoreload=10000
   set backupdir=~/AppData/Local/nvim/backup//
   set directory=~/AppData/Local/nvim/swp//
 endif
-
+set undofile
+set undolevels=1000
+set undoreload=10000
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
