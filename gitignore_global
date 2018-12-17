@@ -2,7 +2,7 @@
 # Title: .gitignore_global
 # Description: files that should be ignored when versioning with git
 # Author: Sebastian Sonntag
-# Date: 2017-07-30
+# Date: 2018-12-17
 # License:
 #*******************************************************************************
 
@@ -248,6 +248,7 @@ TSWLatexianTemp*
 
 ### macOS ###
 *.DS_Store
+.DS_Store
 .AppleDouble
 .LSOverride
 
