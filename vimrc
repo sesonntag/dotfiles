@@ -68,6 +68,9 @@ Plug 'scrooloose/nerdcommenter'
 " add surroundings with vim style commands
 Plug 'tpope/vim-surround'
 
+" add the repeat plugin for various plugins from tim pope
+Plug 'tpope/vim-repeat'
+
 " handle git repos from within
 Plug 'tpope/vim-fugitive'
 
