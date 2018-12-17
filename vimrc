@@ -272,6 +272,11 @@ set ffs=unix,dos,mac
 " Use Silver Searcher instead of grep
 set grepprg=ag
 
+" use improved substitute command in neovim
+if has('nvim')
+  set inccommand=nosplit
+endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
