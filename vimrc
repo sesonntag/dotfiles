@@ -156,6 +156,9 @@ Plug 'tell-k/vim-autopep8', { 'for': 'python' }
 " list currently open buffers and cycle through them with the directional keys
 Plug 'jeetsukumaran/vim-buffergator'
 
+" highlight copied chars
+Plug 'machakann/vim-highlightedyank'
+
 " python language agnostic tools (goto, completion, ...)
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
@@ -596,6 +599,9 @@ if has ('nvim')
     let g:python3_host_prog = 'C:\ProgramData\Miniconda3\envs\myenv_p36\python.exe'
   endif
 endif
+
+" highlight yanks
+let g:highlightedyank_highlight_duration = 250
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
