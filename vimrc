@@ -406,6 +406,14 @@ set matchpairs+=<:> "
 
 
 """"""""""""""""""""""""""""""
+" => Terminal mode related
+""""""""""""""""""""""""""""""
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+endif
+
+
+""""""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
