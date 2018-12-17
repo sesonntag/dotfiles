@@ -602,6 +602,9 @@ endif
 
 " highlight yanks
 let g:highlightedyank_highlight_duration = 250
+if !has('nvim')
+  map y <Plug>(highlightyank)
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
