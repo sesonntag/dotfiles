@@ -683,6 +683,25 @@ endfunction
 nnoremap <silent> <Leader>s :call ToggleSpellCheck()<CR>
 
 
+" Setup a Tig command that opens tig in a terminal
+if has('nvim')
+    function! s:tig()
+        let s:callback = {}
+        let current = expand('%')
+
+        function! s:callback.on_exit(job_id, code, event)
+            bw!
+        endfunction
+
+        below new
+        call termopen('tig status', s:callback)
+        startinsert
+    endfunction
+
+    command! Tig call s:tig()
+endif
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sandbox area for testing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
