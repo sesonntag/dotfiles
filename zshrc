@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-12-29
+# Date: 2018-12-30
 # License:
 #*******************************************************************************
 
@@ -26,6 +26,7 @@ adb
 colored-man-pages
 colorize
 command-not-found
+copyfile
 cp
 dirhistory
 extract
