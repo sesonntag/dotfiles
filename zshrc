@@ -36,6 +36,7 @@ last-working-dir
 osx
 pep8
 pip
+python
 sudo
 terminalapp
 tmux
