@@ -153,6 +153,9 @@ Plug 'xolox/vim-misc'
 " fold setup to work with various different languages
 Plug 'pseewald/vim-anyfold'
 
+" plugin for pulsing on searches
+Plug 'inside/vim-search-pulse'
+
 " rearrange python code to meet the pep8 standards
 Plug 'tell-k/vim-autopep8', { 'for': 'python' }
 
@@ -537,6 +540,9 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 5, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 5, 4)<CR>
+
+" add plugin for search pulses
+let g:vim_search_pulse_duration = 200
 
 " ale settings for linting
 let g:ale_sign_column_always = 1
