@@ -58,6 +58,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " fuzzy file search
 Plug 'ctrlpvim/ctrlp.vim'
 
+" easy alignment of trailing comments
+Plug 'junegunn/vim-easy-align'
+
 " adding airline engine and themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -542,6 +545,10 @@ nnoremap <leader>u :MundoToggle<CR>
 let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" mapping for easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " smotth scrolling related
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
