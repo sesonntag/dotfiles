@@ -34,6 +34,7 @@ git
 history
 last-working-dir
 osx
+pep8
 sudo
 terminalapp
 tmux
