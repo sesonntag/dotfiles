@@ -438,7 +438,8 @@ vnoremap > >gv
 " => Moving around, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Close the current buffer
-nnoremap <leader>bd :bd<CR>
+map <silent> <leader>k :Bd<CR>
+map <silent> <leader>K :bd!<CR>
 
 " Close all the buffers
 nnoremap <leader>ba :1,1000 bd!<CR>
