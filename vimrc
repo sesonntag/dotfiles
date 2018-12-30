@@ -71,6 +71,9 @@ Plug 'tpope/vim-surround'
 " add the repeat plugin for various plugins from tim pope
 Plug 'tpope/vim-repeat'
 
+" Plugin for unix commands to be activated from vim
+Plug 'tpope/vim-eunuch'
+
 " add plugin for smooth scrolling
 Plug 'terryma/vim-smooth-scroll'
 
