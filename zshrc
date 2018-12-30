@@ -35,6 +35,7 @@ history
 last-working-dir
 osx
 pep8
+pip
 sudo
 terminalapp
 tmux
