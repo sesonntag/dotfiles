@@ -448,6 +448,10 @@ nnoremap <leader>ba :1,1000 bd!<CR>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bN :bp<CR>
 
+" Close help files and quickfix panes on 'q' or Escape
+autocmd FileType help nnoremap <buffer> <silent> q :bd<CR>
+autocmd FileType qf nnoremap <buffer> <silent> q :bd<CR>
+
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
