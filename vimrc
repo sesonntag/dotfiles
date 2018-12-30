@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-12-16
+" Date: 2018-12-30
 " License:
 "*******************************************************************************
 
@@ -70,6 +70,9 @@ Plug 'tpope/vim-surround'
 
 " add the repeat plugin for various plugins from tim pope
 Plug 'tpope/vim-repeat'
+
+" add plugin for smooth scrolling
+Plug 'terryma/vim-smooth-scroll'
 
 " handle git repos from within
 Plug 'tpope/vim-fugitive'
@@ -528,6 +531,12 @@ nnoremap <leader>u :MundoToggle<CR>
 let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" smotth scrolling related
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 5, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 5, 4)<CR>
 
 " ale settings for linting
 let g:ale_sign_column_always = 1
