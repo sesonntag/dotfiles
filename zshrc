@@ -32,6 +32,7 @@ dirhistory
 extract
 git
 history
+last-working-dir
 osx
 sudo
 terminalapp
