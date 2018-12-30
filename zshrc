@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-12-16
+# Date: 2018-12-29
 # License:
 #*******************************************************************************
 
@@ -83,8 +83,8 @@ export LANG=en_US.UTF-8
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # aliases for rsync scripts
-    alias rsync_home_to_wd_2000='chmod +x ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh && . ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh && chmod -x ~/System/Multiplattform/Skripte/rsync_home_to_wd_2000.sh'
-    alias rsync_wd_2000_to_core_750='chmod +x ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh && . ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh && chmod -x ~/System/Multiplattform/Skripte/rsync_wd_2000_to_core_750.sh'
+    alias rsync_home_to_wd_2000='chmod +x ~/System/Scripts/rsync_home_to_wd_2000.sh && . ~/System/Scripts/rsync_home_to_wd_2000.sh && chmod -x ~/System/Scripts/rsync_home_to_wd_2000.sh'
+    alias rsync_wd_2000_to_core_750='chmod +x ~/System/Scripts/rsync_wd_2000_to_core_750.sh && . ~/System/Scripts/rsync_wd_2000_to_core_750.sh && chmod -x ~/System/Scripts/rsync_wd_2000_to_core_750.sh'
 
     # aliases for keeping brew clean
     alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor; brew cask upgrade'
