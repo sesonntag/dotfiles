@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-12-30
+# Date: 2019-01-04
 # License:
 #*******************************************************************************
 
@@ -87,9 +87,12 @@ export LANG=en_US.UTF-8
 # mac os specific parts
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
+    # source my scripts folder
+    export PATH="/Users/sebastiansonntag/System/Scripts:$PATH"
+
     # aliases for rsync scripts
-    alias rsync_home_to_wd_2000='chmod +x ~/System/Scripts/rsync_home_to_wd_2000.sh && . ~/System/Scripts/rsync_home_to_wd_2000.sh && chmod -x ~/System/Scripts/rsync_home_to_wd_2000.sh'
-    alias rsync_wd_2000_to_core_750='chmod +x ~/System/Scripts/rsync_wd_2000_to_core_750.sh && . ~/System/Scripts/rsync_wd_2000_to_core_750.sh && chmod -x ~/System/Scripts/rsync_wd_2000_to_core_750.sh'
+    alias rsync_my_mac='chmod +x rsync_home_to_wd_2000.sh && ./rsync_home_to_wd_2000.sh && chmod -x rsync_home_to_wd_2000.sh'
+    alias rsync_my_external_drives='chmod +x rsync_wd_2000_to_core_750.sh && ./rsync_wd_2000_to_core_750.sh && chmod -x rsync_wd_2000_to_core_750.sh'
 
     # aliases for keeping brew clean
     alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor; brew cask upgrade'
