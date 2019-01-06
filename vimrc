@@ -222,7 +222,7 @@ autocmd BufNewFile,BufRead *.* set list listchars=eol:¬,tab:\▸\ ,trail:~,exte
 autocmd Filetype * AnyFoldActivate
 
 " Automaically rebalance windows on vim resize
-autocmd VimResized * :wincmd -
+autocmd VimResized * :wincmd =
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
