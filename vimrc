@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2018-12-30
+" Date: 2019-01-06
 " License:
 "*******************************************************************************
 
@@ -220,6 +220,9 @@ autocmd BufNewFile,BufRead *.* set list listchars=eol:¬,tab:\▸\ ,trail:~,exte
 
 " Activate any-fold from start up
 autocmd Filetype * AnyFoldActivate
+
+" Automaically rebalance windows on vim resize
+autocmd VimResized * :wincmd -
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
