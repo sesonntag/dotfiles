@@ -480,9 +480,6 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" zoom in and rebalace buffers like panes in tmux
-nnoremap <leader>- wincmd _<CR>:wincmd \|<CR>
-nnoremap <leader>= wincmd =<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings / additional mappings
