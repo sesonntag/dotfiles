@@ -95,6 +95,9 @@ Plug 'auwsmit/vim-active-numbers'
 " navigate in vim and tmux without further actions
 Plug 'christoomey/vim-tmux-navigator'
 
+" send text to tmux
+Plug 'christoomey/vim-tmux-runner'
+
 " asynchronous linting engine
 Plug 'w0rp/ale'
 
@@ -613,6 +616,11 @@ nmap <silent> <leader>g :TestVisit<CR>
 
 " set folding methods
 set foldlevel=1
+
+" settings for python and vim tmux runner
+let g:VtrStripLeadingWhitespace = 0
+let g:VtrClearEmptyLines = 0
+let g:VtrAppendNewline = 1
 
 " jedi settings
 let g:jedi#show_call_signatures = 2
