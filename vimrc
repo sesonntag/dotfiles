@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2019-01-06
+" Date: 2019-01-10
 " License:
 "*******************************************************************************
 
@@ -155,9 +155,11 @@ Plug 'majutsushi/tagbar'
 " gitk lik evim tool to dig into commits
 Plug 'gregsexton/gitv'
 
-" ctag support for vim
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
+if has("win32")
+  " ctag support for vim
+  Plug 'xolox/vim-easytags'
+  lug 'xolox/vim-misc'
+endif
 
 " fold setup to work with various different languages
 Plug 'pseewald/vim-anyfold'
