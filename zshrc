@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-01-04
+# Date: 2019-01-11
 # License:
 #*******************************************************************************
 
@@ -95,7 +95,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias rsync_my_external_drives='chmod +x rsync_wd_2000_to_core_750.sh && ./rsync_wd_2000_to_core_750.sh && chmod -x rsync_wd_2000_to_core_750.sh'
 
     # aliases for keeping brew clean
-    alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor; brew cask upgrade'
+    alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew cask upgrade'
 
     # alias for git
     alias git='/usr/local/bin/git'
