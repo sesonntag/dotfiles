@@ -498,6 +498,7 @@ nnoremap Ü <C-O>
 
 " Map the ESC key sequence to jk for faster leaving the insert mode
 inoremap kj <Esc>
+inoremap ,, <Esc>
 
 " Map the underscore to un-highlight after searching
 nnoremap <silent> _ :nohl<CR>
