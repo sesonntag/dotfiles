@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2019-01-11
+" Date: 2019-01-16
 " License:
 "*******************************************************************************
 
@@ -293,7 +293,9 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 " Use Silver Searcher instead of grep
-set grepprg=ag
+if executable("ag")
+  set grepprg=ag "\ --noheading\ --nogroup\ --nocolor
+endif
 
 " use improved substitute command in neovim
 if has('nvim')
