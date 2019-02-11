@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-01-11
+# Date: 2019-02-11
 # License:
 #*******************************************************************************
 
@@ -79,9 +79,6 @@ alias vim='nvim'
 # define the command line language
 export LANG=en_US.UTF-8
 
-# added by Miniconda3 installer
-export PATH="~/.opt/miniconda3/bin:$PATH"
-
 
 ###################################
 # operating system  realted stuff #
@@ -110,9 +107,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
 
     # added by Miniconda3 installer
-    #export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"
+    export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"
 
 elif [[ "$OSTYPE" == "linux"* ]]; then
     # alias for system updates
     alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
+
+    # added by Miniconda3 installer
+    export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
 fi
