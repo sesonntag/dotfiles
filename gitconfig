@@ -9,6 +9,7 @@
 [core]
         excludesfile = ~/.gitignore_global
         autocrlf = input
+        ignorecase = false
 [user]
         name = Sebastian Sonntag
         email = se.bastian.sonntag@hotmail.com
