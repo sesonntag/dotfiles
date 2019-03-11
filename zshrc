@@ -82,6 +82,9 @@ alias prp='pipenv run python'
 # define the command line language
 export LANG=en_US.UTF-8
 
+# aliases for keeping brew clean
+alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew cask upgrade'
+
 
 ###################################
 # operating system  realted stuff #
@@ -94,27 +97,29 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias backup_home_to_synology='/Users/sebastiansonntag/System/Scripts/backup_home_to_synology.sh'
     alias backup_synology_to_wd2000='/Users/sebastiansonntag/System/Scripts/backup_synology_to_wd2000.sh'
 
-    # aliases for keeping brew clean
-    alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew cask upgrade'
-
-    # alias for git
+    # alias to use git from Homebrew
     alias git='/usr/local/bin/git'
 
-    # alias for rsync
+    # alias to use rsync from Homebrew
     alias rsync='/usr/local/bin/rsync'
 
     # alias to use ctags from Homebrew
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
 
 elif [[ "$OSTYPE" == "linux"* ]]; then
-    # alias for system updates
-    alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
 
+    if [ -f "/etc/debian_version" ];
+        # alias for system updates
+        alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
+    fi
+    
     # added by Miniconda3 installer
     #export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    umask 002
-
-    # alias for python
-    #alias git='/home/linuxbrew/.linuxbrew/bin/python'
+    
+    # Linuxbrew path definition
+    LINUXBREWDIR="/home/linuxbrew/.linuxbrew"
+    if [ -d "$LINUXBREWDIR" ]; then
+        eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+        umask 002
+    fi
 fi
