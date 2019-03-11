@@ -108,17 +108,16 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
 elif [[ "$OSTYPE" == "linux"* ]]; then
 
-    if [ -f "/etc/debian_version" ];
-        # alias for system updates
-        alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
-    fi
-    
+    # alias for debian based system updates
+    alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
+
     # added by Miniconda3 installer
     #export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
-    
+
     # Linuxbrew path definition
     LINUXBREWDIR="/home/linuxbrew/.linuxbrew"
-    if [ -d "$LINUXBREWDIR" ]; then
+    if [ -d "$LINUXBREWDIR" ];
+        then
         eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
         umask 002
     fi
