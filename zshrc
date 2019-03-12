@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-03-11
+# Date: 2019-03-12
 # License:
 #*******************************************************************************
 
@@ -82,9 +82,6 @@ alias prp='pipenv run python'
 # define the command line language
 export LANG=en_US.UTF-8
 
-# aliases for keeping brew clean
-alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew cask upgrade'
-
 
 ###################################
 # operating system  realted stuff #
@@ -96,6 +93,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # aliases for rsync scripts
     alias backup_home_to_synology='/Users/sebastiansonntag/System/Scripts/backup_home_to_synology.sh'
     alias backup_synology_to_wd2000='/Users/sebastiansonntag/System/Scripts/backup_synology_to_wd2000.sh'
+
+    # aliases for keeping brew clean
+    alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew cask upgrade'
 
     # alias to use git from Homebrew
     alias git='/usr/local/bin/git'
@@ -113,12 +113,4 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 
     # added by Miniconda3 installer
     #export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
-
-    # Linuxbrew path definition
-    LINUXBREWDIR="/home/linuxbrew/.linuxbrew"
-    if [ -d "$LINUXBREWDIR" ];
-        then
-        eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-        umask 002
-    fi
 fi
