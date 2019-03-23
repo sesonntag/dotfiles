@@ -2,7 +2,7 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2018-11-18
+;; Date: 2019-03-23
 ;; License:
 ;;*****************************************************************************
 
@@ -94,6 +94,14 @@
   (set-face-foreground 'highlight nil)
 
 
+;; === Key bindings ===========================================================
+  ;; Windows movement
+    (global-set-key (kbd "C-x <up>") 'windmove-up)
+    (global-set-key (kbd "C-x <down>") 'windmove-down)
+    (global-set-key (kbd "C-x <left>") 'windmove-left)
+    (global-set-key (kbd "C-x <right>") 'windmove-right)
+
+
 ;; === color settings =========================================================
   ; set background color
     (set-frame-parameter nil 'background-mode 'dark)
@@ -147,6 +155,7 @@
     :ensure t
     :config
     (setq neo-smart-open t))
+
 
 ;; === relative line number settings ===========================================
   (use-package linum-relative
@@ -267,13 +276,6 @@
 ;    ;; use yasnippet
 ;        (require 'yasnippet)
 ;        (yas-global-mode 1)
-
-;;; === Key bindings =========================================================;;
-;    ;; Windows movement
-;        (global-set-key (kbd "C-x <up>") 'windmove-up)
-;        (global-set-key (kbd "C-x <down>") 'windmove-down)
-;        (global-set-key (kbd "C-x <left>") 'windmove-left)
-;        (global-set-key (kbd "C-x <right>") 'windmove-right)
 
 
 ;; === ToDo =================================================================;;
