@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-03-12
+# Date: 2019-03-25
 # License:
 #*******************************************************************************
 
@@ -109,8 +109,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux"* ]]; then
 
     # alias for debian based system updates
-    alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
-
+    #alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
+    alias sudo_update='sudo aptitude update && sudo aptitude full-upgrade  && sudo aptitude autoclean && sudo aptitude clean'
+    
     # added by Miniconda3 installer
     #export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
 fi
