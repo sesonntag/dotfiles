@@ -2,7 +2,7 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2019-03-23
+;; Date: 2019-03-26
 ;; License:
 ;;*****************************************************************************
 
@@ -41,6 +41,14 @@
   (setq mouse-wheel-progressive-speed nil)
   (setq mouse-wheel-follow-mouse 't)
   (setq scroll-step 1)
+  
+;; do not show new line symbols
+  (setf (cdr (assq 'continuation fringe-indicator-alist))
+    '(nil nil) ;; no continuation indicators
+    ;; '(nil right-curly-arrow) ;; right indicator only
+    ;; '(left-curly-arrow nil) ;; left indicator only
+    ;; '(left-curly-arrow right-curly-arrow) ;; default
+    )
 
 ;; no alarm bell
   (setq ring-bell-function 'ignore)
