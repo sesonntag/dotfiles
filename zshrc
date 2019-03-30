@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-03-25
+# Date: 2019-03-31
 # License:
 #*******************************************************************************
 
@@ -97,6 +97,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # aliases for keeping brew clean
     alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew cask upgrade'
 
+    # add path for zsh
+    export PATH="/usr/local/sbin:$PATH"
+
     # alias to use git from Homebrew
     alias git='/usr/local/bin/git'
 
@@ -111,7 +114,7 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
     # alias for debian based system updates
     #alias sudo_update='sudo wajig update && sudo wajig dist-upgrade && sudo wajig autoremove && sudo wajig autoclean && sudo wajig clean'
     alias sudo_update='sudo aptitude update && sudo aptitude full-upgrade  && sudo aptitude autoclean && sudo aptitude clean'
-    
+
     # added by Miniconda3 installer
     #export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
 fi
