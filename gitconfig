@@ -2,7 +2,7 @@
 # Title: .gitconfig
 # Description: git configuration file
 # Author: Sebastian Sonntag
-# Date: 2018-12-06
+# Date: 2019-03-31
 # License:
 #*******************************************************************************
 
@@ -11,8 +11,8 @@
         autocrlf = input
         ignorecase = false
 [user]
-        name = Sebastian Sonntag
-        email = se.bastian.sonntag@hotmail.com
+	name = Sebastian Sonntag
+	email = se.bastian.sonntag@hotmail.com
 [color]
         ui = true
 [alias]
