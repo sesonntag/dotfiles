@@ -292,6 +292,11 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+" activate clipboard on widows
+if has('win32')
+  set clipboard=unnamed
+endif
+
 " Use Silver Searcher instead of grep
 if executable("ag")
   set grepprg=ag "\ --noheading\ --nogroup\ --nocolor
