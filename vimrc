@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2019-04-05
+" Date: 2019-04-06
 " License:
 "*******************************************************************************
 
@@ -467,10 +467,6 @@ autocmd FileType qf nnoremap <buffer> <silent> q :bd<CR>
 
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-" use gj or gk to move lines
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Remember info about open buffers on close
 set viminfo^=%
