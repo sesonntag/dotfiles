@@ -507,19 +507,6 @@ let g:ctrlp_cmd = 'CtrlP'
 nnoremap <c-b> :CtrlPBuffer<CR>
 let g:ctrlp_use_caching = 0
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nnoremap <M-j> mz:m+<CR>`z
-nnoremap <M-k> mz:m-2<CR>`z
-vnoremap <M-j> :m'>+<CR>`<my`>mzgv`yo`z
-vnoremap <M-k> :m'<-2<CR>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nnoremap <D-j> <M-j>
-  nnoremap <D-k> <M-k>
-  vnoremap <D-j> <M-j>
-  vnoremap <D-k> <M-k>
-endif
-
 " make p in Visual mode replace the selected text with the yank register
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
