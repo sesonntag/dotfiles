@@ -503,6 +503,9 @@ nnoremap Ü <C-O>
 inoremap kj <Esc>
 inoremap ,, <Esc>
 
+" Force saving files that require root permission 
+cnoremap w!! w !sudo tee > /dev/null %
+
 " Map the underscore to un-highlight after searching
 nnoremap <silent> _ :nohl<CR>
 
