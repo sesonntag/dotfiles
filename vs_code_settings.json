@@ -27,6 +27,7 @@
     // Extensions
     "git.autofetch": true,
     "code-runner.enableAppInsights": false
+    
     // HTTP
     //"http.proxy": "http:link.com:port",
     // "http.proxyStrictSSL": false
