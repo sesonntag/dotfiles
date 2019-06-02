@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-04-08
+# Date: 2019-06-02
 # License:
 #*******************************************************************************
 
@@ -108,6 +108,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # alias to use ctags from Homebrew
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
+
+    # added by Miniconda3 installer
+    export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"
 
 elif [[ "$OSTYPE" == "linux"* ]]; then
 
