@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-06-02
+# Date: 2019-06-17
 # License:
 #*******************************************************************************
 
@@ -12,7 +12,7 @@
 export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="af-magic" # hyperzsh bira geoffgarside josh ys
+ZSH_THEME="hyperzsh" # af-magic bira geoffgarside josh ys
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -32,7 +32,7 @@ dirhistory
 extract
 git
 history
-last-working-dir
+#last-working-dir
 osx
 pep8
 pip
