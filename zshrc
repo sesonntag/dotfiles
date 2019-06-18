@@ -76,9 +76,6 @@ export EDITOR='vim'
 # alias for neovim
 alias vim='nvim'
 
-# alias for pipenv
-alias prp='pipenv run python'
-
 # define the command line language
 export LANG=en_US.UTF-8
 
