@@ -1,0 +1,12 @@
+#*******************************************************************************
+# Title: condarc
+# Description: conda Python configuration file
+# Author: Sebastian Sonntag
+# Date: 2019-06-18
+# License:
+#*******************************************************************************
+
+channels:
+  - defaults
+  - conda-forge
+  - defaults
