@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2019-04-08
+" Date: 2019-06-18
 " License:
 "*******************************************************************************
 
@@ -178,9 +178,6 @@ Plug 'machakann/vim-highlightedyank'
 
 " python language agnostic tools (goto, completion, ...)
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-
-" use anaconda python installation
-Plug 'cjrh/vim-conda'
 
 " do calculations inside of vim
 Plug 'gregsexton/VimCalc'
@@ -503,7 +500,7 @@ nnoremap Ü <C-O>
 inoremap kj <Esc>
 inoremap ,, <Esc>
 
-" Force saving files that require root permission 
+" Force saving files that require root permission
 cnoremap w!! w !sudo tee > /dev/null %
 
 " Map the underscore to un-highlight after searching
