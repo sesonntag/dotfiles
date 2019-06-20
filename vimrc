@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2019-06-18
+" Date: 2019-06-20
 " License:
 "*******************************************************************************
 
@@ -278,7 +278,12 @@ nmap <leader>w :w!<CR>
 nmap <leader>x :x<CR>
 
 " Word completion in list
-set completeopt=longest,menuone
+if has('nvim')
+  set completeopt=longest,menuone
+else
+  set completeopt-=preview
+  set completeopt=longest,menuone,noselect
+endif
 
 " Activate mouse support
 set mouse=a
@@ -620,7 +625,7 @@ let g:jedi#show_call_signatures = 2
 let g:jedi#force_py_version = 3
 
 " deoplete and neosnippet settings
-if has ('nvim')
+if has('nvim')
   let g:deoplete#enable_at_startup = 1
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -638,8 +643,16 @@ if has ('nvim')
   if has("mac") || has("macunix") || has("unix")
     "let g:python3_host_prog = '~/.opt/miniconda3/bin/python' "necessary?
   elseif has("win32") || has("gui_win32")
-    let g:python3_host_prog = 'C:\Users\desonnse\AppData\Local\Continuum\anaconda3\envs\myenv37\python.exe'
+    let g:python3_host_prog = 'C:\Users\desonnse\AppData\Local\Continuum\miniconda\envs\myenv\python.exe'
   endif
+endif
+
+"# mucomplete settings
+if !has('nvim')
+  let g:jedi#popup_on_dot = 0  " It may be 1 as well
+  let g:mucomplete#enable_auto_at_startup = 1
+  set shortmess+=c   " Shut off completion messages
+  set belloff+=ctrlg " If Vim beeps during completion
 endif
 
 " highlight yanks

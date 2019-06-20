@@ -79,9 +79,6 @@ alias content='for t in files links directories; do echo `find . -type ${t:0:1} 
 # export editor variable
 export EDITOR='vim'
 
-# alias for neovim
-alias vim='nvim'
-
 # alias for pipenv
 alias prp='pipenv run python'
 
