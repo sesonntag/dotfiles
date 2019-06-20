@@ -61,6 +61,12 @@ alias la='ls -AG'
 alias ll='ls -alhG'
 alias lt='ls -althG'
 
+# aliases for weather news
+alias weather='curl http://wttr\.in/'
+alias weather_in_siegen='curl http://wttr\.in/Siegen'
+alias weather_in_stavoren='curl http://wttr\.in/Stavoren'
+alias weather_in_hebsack='curl http://wttr\.in/Hebsack'
+
 #alias to extend the ln command
 alias ln='ln -v'
 
