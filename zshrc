@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-06-20
+# Date: 2019-06-25
 # License:
 #*******************************************************************************
 
@@ -116,6 +116,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux"* ]]; then
 
     # alias for debian based system updates
-    alias sudo_update='sudo apt update && sudo apt full-upgrade  && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
+    alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
 
+    # miniconda3 path
+    export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
+    
 fi
