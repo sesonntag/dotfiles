@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2019-06-20
+" Date: 2019-07-07
 " License:
 "*******************************************************************************
 
@@ -49,7 +49,7 @@ if has ('nvim')
   Plug 'Shougo/neosnippet-snippets'
 else
   " completions
-  Plug 'lifepillar/vim-mucomplete'
+  Plug 'maralla/completor.vim'
 endif
 
 " file and folder tree on the left side
@@ -281,7 +281,6 @@ nmap <leader>x :x<CR>
 if has('nvim')
   set completeopt=longest,menuone
 else
-  set completeopt-=preview
   set completeopt=longest,menuone,noselect
 endif
 
@@ -647,13 +646,12 @@ if has('nvim')
   endif
 endif
 
-"# mucomplete settings
-if !has('nvim')
-  let g:jedi#popup_on_dot = 0  " It may be 1 as well
-  let g:mucomplete#enable_auto_at_startup = 1
-  set shortmess+=c   " Shut off completion messages
-  set belloff+=ctrlg " If Vim beeps during completion
-endif
+"# completor settings
+"if !has('nvim')
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+"endif
 
 " highlight yanks
 let g:highlightedyank_highlight_duration = 250
