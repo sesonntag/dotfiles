@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-06-26
+# Date: 2019-07-08
 # License:
 #*******************************************************************************
 
@@ -117,6 +117,9 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 
     # alias for debian based system updates
     alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
+
+    # alias for using users vim setup when being root/sudo
+    alias rvim='sudo -E vim'
 
     # miniconda3 path
     export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
