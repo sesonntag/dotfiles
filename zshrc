@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-07-08
+# Date: 2019-07-09
 # License:
 #*******************************************************************************
 
@@ -138,4 +138,5 @@ else
     
     else
         echo OS not determined - some aliases cannot be defined accordingly
+    fi
 fi
