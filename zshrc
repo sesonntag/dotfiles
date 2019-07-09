@@ -118,7 +118,7 @@ else
     if [ -f /etc/os-release ]; then
         # freedesktop.org and systemd
         . /etc/os-release
-        OS=$N   AME
+        OS=$NAME
         VER=$VERSION_ID
     fi
     
