@@ -113,15 +113,29 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
 
 # linux specific parts
-elif [[ "$OSTYPE" == "linux"* ]]; then
-
-    # alias for debian based system updates
-    alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
-
-    # alias for using users vim setup when being root/sudo
-    alias rvim='sudo -E vim'
-
-    # miniconda3 path
-    export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
+else
+    # check linux distro used
+    if [ -f /etc/os-release ]; then
+        # freedesktop.org and systemd
+        . /etc/os-release
+        OS=$N   AME
+        VER=$VERSION_ID
+    fi
     
+    if [[ "$OS" == "Debian"* ]]; then
+        # alias for debian system updates
+        alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
+
+        # alias for using users vim setup when being root/sudo
+        alias rvim='sudo -E vim'
+
+        # miniconda3 path
+        export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
+      
+    elif [[ "$OS" == "Ubuntu"* ]]; then
+        # alias for ubuntu based system updates
+        alias sudo_update='sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
+    
+    else
+        echo OS not determined - some aliases cannot be defined accordingly
 fi
