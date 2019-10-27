@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-07-17
+# Date: 2019-10-27
 # License:
 #*******************************************************************************
 
@@ -38,7 +38,6 @@ pep8
 pip
 python
 sudo
-terminalapp
 tmux
 web-search
 )
@@ -121,7 +120,7 @@ else
         OS=$NAME
         VER=$VERSION_ID
     fi
-    
+
     if [[ "$OS" == "Debian"* ]]; then
         # alias for debian system updates
         alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
@@ -131,16 +130,16 @@ else
 
         # miniconda3 path
         export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
-      
+
     elif [[ "$OS" == "Ubuntu"* ]]; then
         # alias for ubuntu based system updates
         alias sudo_update='sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
-        
-      
+
+
     elif [[ "$OS" == "Fedora"* ]]; then
         # alias for fedora based system updates
         alias sudo_update='sudo dnf upgrade && sudo dnf autoremove && sudo dnf clean all'
-    
+
     else
         echo OS not determined - some aliases cannot be defined accordingly
     fi
