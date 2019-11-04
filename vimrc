@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2019-07-07
+" Date: 2019-11-04
 " License:
 "*******************************************************************************
 
@@ -373,11 +373,11 @@ set background=dark
 colorscheme jellybeans
 
 " set gui options when being in classical vim
-if has("gui_running") && !has('nvim')
-  set guioptions-=T
-  set guioptions+=e
-  set guitablabel=%M\ %t
-endif
+"if has("gui_running") && !has('nvim')
+"  set guioptions-=T
+"  set guioptions+=e
+"  set guitablabel=%M\ %t
+"endif
 
 " Set nicer font in Windows GUI
 if !has('nvim') && has("gui_win32")
