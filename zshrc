@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-10-27
+# Date: 2019-10-28
 # License:
 #*******************************************************************************
 
@@ -32,7 +32,6 @@ dirhistory
 extract
 git
 history
-#last-working-dir
 osx
 pep8
 pip
@@ -93,8 +92,8 @@ export LANG=en_US.UTF-8
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # aliases for rsync scripts
-    alias backup_home_to_synology='/Users/sebastiansonntag/System/shell_scripts/backup_home_to_synology.sh'
-    alias backup_synology_to_wd2000='/Users/sebastiansonntag/System/shell_scripts/backup_synology_to_wd2000.sh'
+    alias backup_home_to_synology='/Users/sebastiansonntag/iCloud/System/shell_scripts/backup_home_to_synology.sh'
+    alias backup_synology_to_wd2000='/Users/sebastiansonntag/iCloud/System/shell_scripts/backup_synology_to_wd2000.sh'
 
     # aliases for keeping brew clean
     alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew cask upgrade'
