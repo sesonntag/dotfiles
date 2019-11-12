@@ -2,7 +2,7 @@
 # Title: .gitconfig
 # Description: git configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-05-06
+# Date: 2019-11-12
 # License:
 #*******************************************************************************
 
@@ -16,7 +16,18 @@
 [color]
         ui = true
 [alias]
+	# alias for nicely formatted logs
         lg = log --date=human --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit
+	
+	# alias to delete all local branches but master and the current one, only if they are fully merged with master.
+        br-delete-useless = "!f(){\
+            git branch | grep -v "master" | grep -v ^* | xargs git branch -d;\
+        }; f"
+        
+        # alias to delete all local branches but master and the current one.
+        br-delete-useless-force = "!f(){\
+            git branch | grep -v "master" | grep -v ^* | xargs git branch -D;\
+        }; f"
 [merge]
         ff = only
 [fetch]
