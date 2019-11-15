@@ -12,7 +12,7 @@
 export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="af-magic" # hyperzsh bira geoffgarside josh ys
+ZSH_THEME="hyperzsh" # af-magic bira geoffgarside josh ys
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -77,9 +77,6 @@ alias content='for t in files links directories; do echo `find . -type ${t:0:1} 
 # export editor variable
 export EDITOR='vim'
 
-# alias for pipenv
-alias prp='pipenv run python'
-
 # define the command line language
 export LANG=en_US.UTF-8
 
@@ -109,6 +106,22 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # alias to use ctags from Homebrew
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
+
+    # alias and init for miniconda3
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/sebastiansonntag/.opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/Users/sebastiansonntag/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/sebastiansonntag/.opt/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
 
 # linux specific parts
 else
