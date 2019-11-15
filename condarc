@@ -2,11 +2,15 @@
 # Title: condarc
 # Description: conda Python configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-06-18
+# Date: 2019-11-11
 # License:
 #*******************************************************************************
 
+# do not load base as default channel on shell startup
+auto_activate_base: false
+
+# list of channels where packages are grabbed
 channels:
   - defaults
+  - anaconda
   - conda-forge
-  - defaults
