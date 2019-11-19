@@ -74,9 +74,11 @@ alias mkdir='mkdir -p'
 # alias for content of folder recursively
 alias content='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
 
-# export editor variable and add alias for non gui emacs
+# export editor variable
+export EDITOR='emacs -nw'
+
+# alias for emacs without gui
 alias enw='emacs -nw'
-export EDITOR='enw'
 
 # define the command line language
 export LANG=en_US.UTF-8
