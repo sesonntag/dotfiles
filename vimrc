@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2019-11-04
+" Date: 2019-11-26
 " License:
 "*******************************************************************************
 
@@ -655,9 +655,6 @@ endif
 
 " highlight yanks
 let g:highlightedyank_highlight_duration = 250
-if !has('nvim')
-  map y <Plug>(highlightyank)
-endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
