@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-11-17
+# Date: 2019-11-29
 # License:
 #*******************************************************************************
 
@@ -75,7 +75,7 @@ alias mkdir='mkdir -p'
 alias content='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
 
 # export editor variable
-export EDITOR='emacs -nw'
+export EDITOR='vim'
 
 # alias for emacs without gui
 alias enw='emacs -nw'
