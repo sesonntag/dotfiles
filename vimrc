@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2019-11-26
+" Date: 2019-12-04
 " License:
 "*******************************************************************************
 
@@ -34,11 +34,7 @@ endif
 " => vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set the runtime path to include Vim-plug and initialize
-if has("mac") || has("macunix") || has("unix")
-  call plug#begin('~/.vim/plugged')
-elseif has("win32") || has("gui_win32")
-  call plug#begin('~/AppData/Local/nvim/plugged')
-endif
+call plug#begin('~/.vim/plugged')
 
 if has ('nvim')
   " completions
@@ -397,15 +393,9 @@ set colorcolumn=+1
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Define dirs for undo, backup and swap
-if has("mac") || has("macunix") || has("unix")
-  set undodir=~/.vim/undo//
-  set backupdir=~/.vim/backup//
-  set directory=~/.vim/swp//
-elseif has("win32") || has("gui_win32")
-  set undodir=~/AppData/Local/nvim/undo//
-  set backupdir=~/AppData/Local/nvim/backup//
-  set directory=~/AppData/Local/nvim/swp//
-endif
+set undodir=~/.vim/undo//
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
 set undofile
 set undolevels=1000
 set undoreload=10000
@@ -642,7 +632,7 @@ if has('nvim')
   if has("mac") || has("macunix") || has("unix")
     "let g:python3_host_prog = '~/.opt/miniconda3/bin/python' "necessary?
   elseif has("win32") || has("gui_win32")
-    let g:python3_host_prog = 'C:\Users\desonnse\AppData\Local\Continuum\miniconda\envs\myenv\python.exe'
+    let g:python3_host_prog = 'D:\desonnse\Code\git_repos\python\my_python\myenv\Scripts\python.exe'
   endif
 endif
 
