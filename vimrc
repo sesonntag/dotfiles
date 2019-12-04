@@ -375,9 +375,10 @@ colorscheme jellybeans
 "  set guitablabel=%M\ %t
 "endif
 
-" Set nicer font in Windows GUI
+" Set nicer font in GUI
 if !has('nvim') && has("gui_win32")
-  set guifont=Consolas:h10.5:cANSI
+  set guifont=Consolas:h10:cANSI
+  set lines=55 columns=88
 elseif !has('nvim') && has("gui_macvim")
   set guifont=Menlo:h11
 endif
