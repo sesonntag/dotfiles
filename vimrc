@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2019-12-09
+" Date: 2019-12-20
 " License:
 "*******************************************************************************
 
@@ -437,7 +437,7 @@ vnoremap > >gv
 " => Moving around, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Close the current buffer
-map <silent> <leader>k :Bd<CR>
+map <silent> <leader>k :bd<CR>
 map <silent> <leader>K :bd!<CR>
 
 " Close all the buffers
@@ -455,7 +455,7 @@ autocmd FileType qf nnoremap <buffer> <silent> q :bd<CR>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Remember info about open buffers on close
-set viminfo^=%
+"set viminfo^=%
 
 " Copy to clipboard
 vnoremap  <leader>y  "+y
