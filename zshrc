@@ -12,7 +12,7 @@
 export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="hyperzsh" # af-magic bira geoffgarside josh ys
+ZSH_THEME="powerlevel10k/powerlevel10k" # kbira" # af-magic bira geoffgarside josh ys
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
