@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2019-12-20
+" Date: 2020-01-12
 " License:
 "*******************************************************************************
 
@@ -170,6 +170,8 @@ Plug 'gregsexton/VimCalc'
 " github colors (light)
 Plug 'cormacrelf/vim-colors-github'
 
+" xcode colors
+Plug 'arzg/vim-colors-xcode'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -355,7 +357,7 @@ syntax enable
 " Set color schemes
 set t_Co=256
 set background=dark
-colorscheme jellybeans
+colorscheme onedark
 
 " set gui options when being in classical vim
 "if has("gui_running") && !has('nvim')
