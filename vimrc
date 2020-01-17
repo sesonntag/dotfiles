@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2020-01-12
+" Date: 2020-01-17
 " License:
 "*******************************************************************************
 
@@ -562,8 +562,9 @@ let g:ale_linters = {
 
 " Define powerline theme from airline extension
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='jellybeans'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_theme='onedark'
+let g:airline_powerline_fonts = 1
 
 " Have always the gutter-bar activated
 set signcolumn=yes
