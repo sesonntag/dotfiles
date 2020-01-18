@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2020-01-17
+" Date: 2020-01-18
 " License:
 "*******************************************************************************
 
@@ -374,7 +374,7 @@ if !has('nvim') && has("gui_win32")
   set guifont=Source\ Code\ Pro\ for\ Powerline:h10:cANSI
   set lines=55 columns=88
 elseif !has('nvim') && has("gui_macvim")
-  set guifont=Menlo:h11
+  set guifont=MesloLGSNer-Regular:h11
 endif
 
 " Make it obvious where 80 characters is
