@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2020-01-18
+" Date: 2020-02-05
 " License:
 "*******************************************************************************
 
@@ -191,7 +191,7 @@ endif
 " Detect markdown language and activate syntax highlighting
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" Automaticall switch on spell checking for some file types
+" Automatically switch on spell checking for some file types
 autocmd FileType Markdown,markdown,latex,text setlocal spell
 
 " Enable tab/spaces settings
