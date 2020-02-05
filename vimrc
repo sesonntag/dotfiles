@@ -191,6 +191,9 @@ endif
 " Detect markdown language and activate syntax highlighting
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+" Automaticall switch on spell checking for some file types
+autocmd FileType Markdown,markdown,latex,text setlocal spell
+
 " Enable tab/spaces settings
 autocmd Filetype c,cpp,markdown,latex,ruby,vim,xml,html,xhtml setlocal ts=2 sw=2 sts=0 expandtab
 autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
