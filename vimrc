@@ -383,9 +383,10 @@ elseif !has('nvim') && has("gui_macvim")
   set guifont=MesloLGSNer-Regular:h11
 endif
 
-" Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
+" Make it obvious where 80 characters is but do not hard break lines
+set colorcolumn=81
+set textwidth=0 
+set wrapmargin=0
 
 " Apply a color column in light grey in the 81st and from 121st column on
 "let &colorcolumn="81,".join(range(121,9999),",")
