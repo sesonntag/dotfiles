@@ -173,6 +173,9 @@ Plug 'cormacrelf/vim-colors-github'
 " xcode colors
 Plug 'arzg/vim-colors-xcode'
 
+" plugin for fancy start-up screen
+Plug 'mhinz/vim-startify'
+
 " All of your Plugins must be added before the following line
 call plug#end()
 filetype plugin indent on
@@ -641,6 +644,9 @@ endif
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 "endif
+
+" vim startify settings
+let g:startify_custom_header =[]
 
 " highlight yanks
 let g:highlightedyank_highlight_duration = 250
