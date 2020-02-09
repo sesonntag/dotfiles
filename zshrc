@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2019-12-29
+# Date: 2020-02-09
 # License:
 #*******************************************************************************
 
@@ -89,6 +89,9 @@ alias enw='emacs -nw'
 
 # define the command line language
 export LANG=en_US.UTF-8
+
+# youtube-dl alias
+alias youtube-dl_best_option='youtube-dl -f best -ciw -o "%(title)s.%(ext)s" -v'
 
 
 ###################################
