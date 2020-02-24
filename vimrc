@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2020-02-05
+" Date: 2020-02-24
 " License:
 "*******************************************************************************
 
@@ -385,7 +385,7 @@ endif
 
 " Make it obvious where 80 characters is but do not hard break lines
 set colorcolumn=81
-set textwidth=0 
+set textwidth=0
 set wrapmargin=0
 
 " Apply a color column in light grey in the 81st and from 121st column on
@@ -574,7 +574,7 @@ let g:ale_linters = {
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_theme='onedark'
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 
 " Have always the gutter-bar activated
 set signcolumn=yes
