@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2020-02-24
+" Date: 2020-02-25
 " License:
 "*******************************************************************************
 
@@ -637,7 +637,7 @@ if has('nvim')
   if has("mac") || has("macunix") || has("unix")
     "let g:python3_host_prog = '~/.opt/miniconda3/bin/python' "necessary?
   elseif has("win32") || has("gui_win32")
-    let g:python3_host_prog = 'D:\desonnse\Code\git_repos\python\my_python\myenv\Scripts\python.exe'
+    let g:python3_host_prog = 'C:\Users\desonnse\Code\git_repos\python\my_python\myenv\Scripts\python.exe'
   endif
 endif
 
