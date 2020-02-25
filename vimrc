@@ -650,6 +650,7 @@ endif
 
 " vim startify settings
 let g:startify_custom_header =[]
+let g:startify_disable_at_vimenter = 1
 
 " highlight yanks
 let g:highlightedyank_highlight_duration = 250
