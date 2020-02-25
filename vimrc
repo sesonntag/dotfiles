@@ -377,10 +377,12 @@ colorscheme onedark
 
 " Set nicer font in GUI
 if !has('nvim') && has("gui_win32")
-  set guifont=Source\ Code\ Pro\ for\ Powerline:h10:cANSI
+  "set guifont=Source\ Code\ Pro\ for\ Powerline:h10:cANSI
+  set guifont=Consolas:h10:cANSI
   set lines=55 columns=88
 elseif !has('nvim') && has("gui_macvim")
-  set guifont=MesloLGSNer-Regular:h11
+  "set guifont=MesloLGSNer-Regular:h11
+  set guifont=Menlo:h11
 endif
 
 " Make it obvious where 80 characters is but do not hard break lines
