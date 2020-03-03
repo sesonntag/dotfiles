@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2020-02-25
+" Date: 2020-03-03
 " License:
 "*******************************************************************************
 
@@ -16,6 +16,15 @@ if !has("gui_win32")
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   endif
+endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => os specific stuff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("win32")
+  " set python dll for plugins and internal hooks
+  set pythonthreedll=python37.dll
 endif
 
 
