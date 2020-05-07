@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2020-02-24
+# Date: 2020-05-07
 # License:
 #*******************************************************************************
 
@@ -102,8 +102,8 @@ alias youtube-dl_best_option='youtube-dl -f best -ciw -o "%(title)s.%(ext)s" -v'
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # aliases for rsync scripts
-    alias backup_home_to_synology='/Users/sebastiansonntag/iCloud/System/shell_scripts/backup_home_to_synology.sh'
-    alias backup_synology_to_wd2000='/Users/sebastiansonntag/iCloud/System/shell_scripts/backup_synology_to_wd2000.sh'
+    alias backup_home_to_synology='/Users/sebastiansonntag/OneDrive/System/shell_scripts/backup_home_to_synology.sh'
+    alias backup_synology_to_wd2000='/Users/sebastiansonntag/OneDrive/System/shell_scripts/backup_synology_to_wd2000.sh'
 
     # aliases for keeping brew clean
     alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew cask upgrade'
