@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2020-05-07
+# Date: 2020-09-08
 # License:
 #*******************************************************************************
 
@@ -106,7 +106,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias backup_synology_to_wd2000='/Users/sebastiansonntag/OneDrive/System/shell_scripts/backup_synology_to_wd2000.sh'
 
     # aliases for keeping brew clean
-    alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew cask upgrade'
+    alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew upgrade --cask'
 
     # add path for zsh
     export PATH="/usr/local/sbin:$PATH"
