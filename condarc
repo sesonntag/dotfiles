@@ -14,3 +14,4 @@ channels:
   - defaults
   - anaconda
   - conda-forge
+ssl_verify: true
