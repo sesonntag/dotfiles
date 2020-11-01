@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2020-09-08
+# Date: 2020-11-01
 # License:
 #*******************************************************************************
 
@@ -154,7 +154,7 @@ else
         alias rvim='sudo -E vim'
 
         # miniconda3 path
-        export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
+        export PATH="opt/anaconda3/bin:$PATH"
 
     elif [[ "$OS" == "Ubuntu"* ]]; then
         # alias for ubuntu based system updates
