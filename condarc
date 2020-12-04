@@ -8,7 +8,7 @@
 
 # Do not load base as default channel on shell startup
 auto_activate_base: false
-  
+
 # Security settings to check the ssl certificate
 ssl_verify: true
 
@@ -19,4 +19,4 @@ channels:
   - anaconda
 
 # Use a strict channel priority
-channel_priority: strict
+channel_priority: true
