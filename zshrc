@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2020-11-01
+# Date: 2020-12-17
 # License:
 #*******************************************************************************
 
@@ -121,7 +121,23 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
 
     # alias and init for miniconda3
-    export PATH="/opt/anaconda3/bin:$PATH"
+# export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"  # commented out by conda initialize
+
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/sebastiansonntag/.opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/Users/sebastiansonntag/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/sebastiansonntag/.opt/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+
 # linux specific parts
 else
     # check linux distro used
@@ -140,7 +156,7 @@ else
         alias rvim='sudo -E vim'
 
         # miniconda3 path
-        export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
+# export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"  # commented out by conda initialize
 
     elif [[ "$OS" == "Ubuntu"* ]]; then
         # alias for ubuntu based system updates
@@ -156,5 +172,3 @@ else
     fi
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
