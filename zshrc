@@ -19,7 +19,7 @@ export ZSH=~/.oh-my-zsh
 #fi
 
 # Set name of the theme to load.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="af-magic"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
