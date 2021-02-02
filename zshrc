@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2020-12-17
+# Date: 2021-02-02
 # License:
 #*******************************************************************************
 
