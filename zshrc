@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2021-02-02
+# Date: 2021-02-03
 # License:
 #*******************************************************************************
 
@@ -121,7 +121,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
 
     # alias and init for miniconda3
-# export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"  # commented out by conda initialize
+    # export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"  # commented out by conda initialize
 
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
@@ -140,6 +140,22 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
 # linux specific parts
 else
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/home/desonnse/.opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
+
+
     # check linux distro used
     if [ -f /etc/os-release ]; then
         # freedesktop.org and systemd
@@ -155,8 +171,6 @@ else
         # alias for using users vim setup when being root/sudo
         alias rvim='sudo -E vim'
 
-        # miniconda3 path
-# export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"  # commented out by conda initialize
 
     elif [[ "$OS" == "Ubuntu"* ]]; then
         # alias for ubuntu based system updates
@@ -171,4 +185,19 @@ else
         echo OS not determined - some aliases cannot be defined accordingly
     fi
 fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/desonnse/.opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
