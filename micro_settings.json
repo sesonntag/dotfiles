@@ -1,0 +1,6 @@
+{
+    "*.py": {
+        "tabsize": 4
+    },
+    "tabsize": 2
+} 
