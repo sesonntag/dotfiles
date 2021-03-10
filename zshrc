@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2021-03-04
+# Date: 2021-03-10
 # License:
 #*******************************************************************************
 
@@ -188,19 +188,3 @@ else
         echo OS not determined - some aliases cannot be defined accordingly
     fi
 fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/desonnse/.opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
