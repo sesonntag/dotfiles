@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2021-03-10
+# Date: 2021-03-13
 # License:
 #*******************************************************************************
 
@@ -89,6 +89,9 @@ alias youtube-dl_best_option='youtube-dl -f best -ciw -o "%(title)s.%(ext)s" -v'
 
 # alias for conda updates
 alias condaup='nocorrect conda update conda && conda update --all'
+
+# alias for oh-my-zsh update
+alias omzup='omz update'
 
 # export editor variable
 export EDITOR='vim'
