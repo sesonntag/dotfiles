@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2021-03-13
+# Date: 2021-10-03
 # License:
 #*******************************************************************************
 
@@ -92,6 +92,9 @@ alias condaup='nocorrect conda update conda && conda update --all'
 
 # alias for oh-my-zsh update
 alias omzup='omz update'
+
+# alias to update all services
+alias allup='brewup && condaup && omzup'
 
 # export editor variable
 export EDITOR='vim'
