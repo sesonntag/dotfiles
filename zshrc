@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2021-10-03
+# Date: 2021-10-06
 # License:
 #*******************************************************************************
 
@@ -93,9 +93,6 @@ alias condaup='nocorrect conda update conda && conda update --all'
 # alias for oh-my-zsh update
 alias omzup='omz update'
 
-# alias to update all services
-alias allup='brewup && condaup && omzup'
-
 # export editor variable
 export EDITOR='vim'
 
@@ -128,6 +125,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # alias to use ctags from Homebrew
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
+
+    # alias to update all services
+    alias allup='brewup && condaup && omzup'
 
     # alias and init for miniconda3
     # export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"  # commented out by conda initialize
@@ -179,6 +179,9 @@ else
 
         # alias for using users vim setup when being root/sudo
         alias rvim='sudo -E vim'
+        
+        # alias to update all services
+        alias allup='sudo_update && condaup && omzup'
 
 
     elif [[ "$OS" == "Ubuntu"* ]]; then
