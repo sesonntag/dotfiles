@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2021-10-06
+# Date: 2021-11-23
 # License:
 #*******************************************************************************
 
@@ -39,7 +39,7 @@ dirhistory
 extract
 git
 history
-osx
+macos
 pep8
 pip
 python
@@ -179,7 +179,7 @@ else
 
         # alias for using users vim setup when being root/sudo
         alias rvim='sudo -E vim'
-        
+
         # alias to update all services
         alias allup='sudo_update && condaup && omzup'
 
