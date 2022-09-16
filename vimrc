@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2020-05-04
+" Date: 2022-09-16
 " License:
 "*******************************************************************************
 
@@ -10,13 +10,13 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Install vim-plug in case it is not installed already
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !has("gui_win32")
-  if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  endif
-endif
+"if !has("gui_win32")
+"  if empty(glob('~/.vim/autoload/plug.vim'))
+"    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"  endif
+"endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -43,7 +43,9 @@ if has ('nvim')
   Plug 'Shougo/neosnippet-snippets'
 else
   " completions
-  Plug 'maralla/completor.vim'
+  "Plug 'maralla/completor.vim'
+  "Plug 'oblitum/youcompleteme'
+  Plug 'lifepillar/vim-mucomplete'
 endif
 
 " file and folder tree on the left side
@@ -55,9 +57,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 " easy alignment of trailing comments
 Plug 'junegunn/vim-easy-align'
 
-" adding airline engine and themes
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" adding light engine
+Plug 'itchyny/lightline.vim'
 
 " commenting of lines or blocks
 Plug 'scrooloose/nerdcommenter'
@@ -171,7 +172,9 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'machakann/vim-highlightedyank'
 
 " python language agnostic tools (goto, completion, ...)
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+if !has("win32")
+  Plug 'davidhalter/jedi-vim', { 'for': 'python' } 
+endif
 
 " do calculations inside of vim
 Plug 'gregsexton/VimCalc'
@@ -227,6 +230,15 @@ autocmd Filetype * AnyFoldActivate
 
 " Automaically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set langmenu=en_US
+let $LANG = 'en_US'
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -567,7 +579,6 @@ let g:vim_search_pulse_duration = 200
 
 " ale settings for linting
 let g:ale_sign_column_always = 1
-let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_echo_msg_error_str = 'Error'
@@ -581,39 +592,17 @@ let g:ale_linters = {
   \ 'python': ['flake8'] ,
   \ }
 
-" Define powerline theme from airline extension
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_theme='onedark'
-
-" Enable powerline if possible
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" Airline unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-"let g:airline_symbols.whitespace = 'Ξ'
-
-" Airline default symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+" lightline settings
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
 " Have always the gutter-bar activated
 set signcolumn=yes
@@ -674,16 +663,24 @@ if has('nvim')
   if has("mac") || has("macunix") || has("unix")
     "let g:python3_host_prog = '~/.opt/miniconda3/bin/python' "necessary?
   elseif has("win32") || has("gui_win32")
-    let g:python3_host_prog = 'C:\Users\desonnse\Code\git_repos\python\my_python\myenv\Scripts\python.exe'
+    "let g:python3_host_prog = 'C:\Users\desonnse\Data\PythonEnvs\my_env\Scripts\python.exe'
   endif
 endif
 
 "# completor settings
 "if !has('nvim')
-  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+  "inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  "inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 "endif
+
+" mucomplete settings
+set completeopt+=menuone
+set completeopt+=noselect
+" set completeopt+=noinsert
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " Add only if Vim beeps during completion
+let g:mucomplete#enable_auto_at_startup = 1
 
 " vim startify settings
 let g:startify_custom_header =[]
@@ -738,6 +735,16 @@ endfunction
 nnoremap <silent> <Leader>s :call ToggleSpellCheck()<CR>
 
 
+" statusline formatting
+function! HasPaste()
+        if &paste
+            return 'PASTE MODE  '
+        else
+            return ''
+        endif
+endfunction
+
+
 " Setup a Tig command that opens tig in a terminal
 if has('nvim')
     function! s:tig()
@@ -758,6 +765,46 @@ endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Sandbox area for testing
+" => Gvim settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set t_u7=
+" Use the internal diff if available.
+" Otherwise use the special 'diffexpr' for Windows.
+if &diffopt !~# 'internal'
+  set diffexpr=MyDiff()
+endif
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg1 = substitute(arg1, '!', '\!', 'g')
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg2 = substitute(arg2, '!', '\!', 'g')
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let arg3 = substitute(arg3, '!', '\!', 'g')
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      if empty(&shellxquote)
+        let l:shxq_sav = ''
+        set shellxquote&
+      endif
+      let cmd = '"' . $VIMRUNTIME . '\diff"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  let cmd = substitute(cmd, '!', '\!', 'g')
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+  if exists('l:shxq_sav')
+    let &shellxquote=l:shxq_sav
+  endif
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Sandbox area for testing
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
