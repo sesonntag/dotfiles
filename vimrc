@@ -375,13 +375,6 @@ set t_Co=256
 set background=dark
 colorscheme onedark
 
-" set gui options when being in classical vim
-"if has("gui_running") && !has('nvim')
-"  set guioptions-=T
-"  set guioptions+=e
-"  set guitablabel=%M\ %t
-"endif
-
 " Set nicer font in GUI
 if !has('nvim') && has("gui_win32")
   "set guifont=Source\ Code\ Pro\ for\ Powerline:h10:cANSI
