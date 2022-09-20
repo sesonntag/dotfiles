@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2022-09-16
+" Date: 2022-09-20
 " License:
 "*******************************************************************************
 
@@ -31,8 +31,6 @@ if has ('nvim')
   Plug 'Shougo/neosnippet-snippets'
 else
   " completions
-  "Plug 'maralla/completor.vim'
-  "Plug 'oblitum/youcompleteme'
   Plug 'lifepillar/vim-mucomplete'
 endif
 
