@@ -620,8 +620,10 @@ let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 1
 
 " jedi settings
-let g:jedi#show_call_signatures = 2
-let g:jedi#force_py_version = 3
+if !has('win32')
+  let g:jedi#show_call_signatures = 2
+  let g:jedi#force_py_version = 3
+endif
 
 " deoplete and neosnippet settings
 if has('nvim')
