@@ -219,7 +219,7 @@ autocmd VimResized * :wincmd =
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
+" => Language
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set langmenu=en_US
 let $LANG = 'en_US'
@@ -310,6 +310,9 @@ endif
 if has('nvim')
   set inccommand=nosplit
 endif
+
+" do not go into insert mode on startup due to win internal settings
+set t_u7=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
