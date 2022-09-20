@@ -159,7 +159,7 @@ Plug 'machakann/vim-highlightedyank'
 
 " python language agnostic tools (goto, completion, ...)
 if !has("win32")
-  Plug 'davidhalter/jedi-vim', { 'for': 'python' } 
+  Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 endif
 
 " do calculations inside of vim
@@ -653,10 +653,9 @@ endif
 
 " mucomplete settings
 set completeopt+=menuone
-set completeopt+=noselect
-" set completeopt+=noinsert
+"set completeopt+=noselect
+set completeopt+=noinsert
 set shortmess+=c   " Shut off completion messages
-set belloff+=ctrlg " Add only if Vim beeps during completion
 let g:mucomplete#enable_auto_at_startup = 1
 
 " vim startify settings
@@ -782,6 +781,7 @@ function MyDiff()
   endif
 endfunction
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sandbox area for testing
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
