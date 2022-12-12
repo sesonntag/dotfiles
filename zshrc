@@ -196,6 +196,9 @@ else
     elif [[ "$OS" == "openSUSE Leap"* ]]; then
         # alias for opensuse based system updates
         alias sudo_update='sudo zypper refresh && sudo zypper update'
+        
+        # alias for python version
+        alias python='python3.10'
 
     else
         echo OS not determined - some aliases cannot be defined accordingly
