@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2022-12-12
+# Date: 2023-01-24
 # License:
 #*******************************************************************************
 
@@ -19,7 +19,8 @@ export ZSH=~/.oh-my-zsh
 #fi
 
 # Set name of the theme to load.
-ZSH_THEME="af-magic"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="af-magic"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -193,12 +194,24 @@ else
         # alias for fedora based system updates
         alias sudo_update='sudo dnf upgrade && sudo dnf autoremove && sudo dnf clean all'
 
+
     elif [[ "$OS" == "openSUSE Leap"* ]]; then
         # alias for opensuse based system updates
         alias sudo_update='sudo zypper refresh && sudo zypper update'
-        
+
         # alias for python version
-        alias python='python3.10'
+        alias python='python3.7'
+
+	# alias for activation of the pmd_env environment
+	alias activate_pmd_env='source ~/Code/git/python/maddie/envs/pmd_env/bin/activate
+'
+
+	# alias for starting the NoiseExtractor webserver
+	alias start_ne='bokeh serve --show ~/Code/git/python/maddie/NEWeb'
+
+        # define Chiffre path
+        export PMDTECPY="$HOME/Code/git/python/chiffre/40_Code"
+
 
     else
         echo OS not determined - some aliases cannot be defined accordingly
