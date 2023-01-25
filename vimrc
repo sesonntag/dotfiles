@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2022-09-20
+" Date: 2023-01-25
 " License:
 "*******************************************************************************
 
@@ -376,7 +376,7 @@ syntax enable
 " Set color schemes
 set t_Co=256
 set background=dark
-colorscheme onedark
+colorscheme jellybeans
 
 " Set nicer font in GUI
 if !has('nvim') && has("gui_win32")
@@ -576,7 +576,7 @@ let g:ale_linters = {
 
 " lightline settings
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'jellybeans',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
