@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2023-01-24
+# Date: 2023-11-29
 # License:
 #*******************************************************************************
 
@@ -30,7 +30,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Load following plugins. Add wisely, as too many plugins slow down shell startup.
 plugins=(
-adb
+#adb
 colored-man-pages
 colorize
 command-not-found
@@ -41,11 +41,11 @@ extract
 git
 history
 macos
-pep8
+#pep8
 pip
 python
 sudo
-tmux
+#tmux
 web-search
 )
 
@@ -114,6 +114,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # aliases for keeping brew clean
     alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew upgrade --cask'
+
+    # alias for git needed for apple silicon
+    #alias git='/opt/homebrew/bin/git'
 
     # add path for zsh
     export PATH="/usr/local/sbin:$PATH"
@@ -217,3 +220,5 @@ else
         echo OS not determined - some aliases cannot be defined accordingly
     fi
 fi
+export PATH=/opt/homebrew/bin:/Users/sebastiansonntag/.opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin
+export PATH="/opt/homebrew/sbin:$PATH"
