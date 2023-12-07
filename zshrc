@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2023-11-29
+# Date: 2023-12-06
 # License:
 #*******************************************************************************
 
@@ -70,7 +70,7 @@ alias lt='ls -althG'
 # aliases for weather news
 alias weather='curl http://wttr\.in/'
 alias weather_in_siegen='curl http://wttr\.in/Siegen'
-alias weather_in_stavoren='curl http://wttr\.in/Stavoren'
+alias weather_in_oberagger='curl http://wttr\.in/Eckenhagen'
 alias weather_in_hebsack='curl http://wttr\.in/Hebsack'
 
 #alias to extend the ln command
@@ -85,8 +85,8 @@ alias content='for t in files links directories; do echo `find . -type ${t:0:1} 
 # alias for emacs without gui
 alias enw='emacs -nw'
 
-# youtube-dl alias
-alias youtube-dl_best_option='youtube-dl -f best -ciw -o "%(title)s.%(ext)s" -v'
+# yt-dlp alias
+yt_dlp_best='yt-dlp -S res,ext:mp4:m4a --recode mp4'
 
 # alias for conda updates
 alias condaup='nocorrect conda update conda && conda update --all'
