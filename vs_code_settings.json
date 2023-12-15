@@ -1,9 +1,9 @@
 {
     // Editor
-    "editor.tabCompletion": false,
+    "editor.tabCompletion": "off",
     "editor.rulers": [80, 120],
     "editor.wordWrap": "on",
-    "editor.fontSize": 11,
+    "editor.fontSize": 14,
 
     // Workbench
     "workbench.commandPalette.history": 1000,
@@ -21,24 +21,13 @@
     // Terminal
     "terminal.integrated.inheritEnv": false,
     "terminal.integrated.fontFamily":"MesloLGS NF",
-    "terminal.integrated.fontSize": 11,
+    "terminal.integrated.fontSize": 14,
 
     // Privacy
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
+    "telemetry.telemetryLevel": "off",
 
     // Extensions
     "git.autofetch": true,
     "code-runner.enableAppInsights": false,
-    "python.pythonPath": "/Users/sebastiansonntag/.local/share/virtualenvs/python_fuer_laura-8BPhv4cf/bin/python",
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true,
-    "cSpell.userWords": [
-        "sonntag"
-    ],
-
-    // HTTP
-    //"http.proxy": "http:link.com:port",
-    // "http.proxyStrictSSL": false
+    "code-runner.runInTerminal": true
 }
