@@ -2,8 +2,8 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2023-01-25
-" License:
+" Date: 2024-01-03
+" License: MIT
 "*******************************************************************************
 
 
@@ -288,7 +288,7 @@ else
 endif
 
 " Activate mouse support
-set mouse=a
+set mouse=r
 
 " Set utf8 as standard encoding
 set encoding=utf8
@@ -299,6 +299,8 @@ set ffs=unix,dos,mac
 " activate clipboard on widows
 if has('win32')
   set clipboard=unnamed
+elseif has('unix')
+  set clipboard+=unnamedplus
 endif
 
 " Use Silver Searcher instead of grep
@@ -376,7 +378,8 @@ syntax enable
 " Set color schemes
 set t_Co=256
 set background=dark
-colorscheme jellybeans
+"colorscheme jellybeans
+colorscheme onedark
 
 " Set nicer font in GUI
 if !has('nvim') && has("gui_win32")
