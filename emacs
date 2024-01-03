@@ -2,8 +2,8 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2019-11-19
-;; License:
+;; Date: 2024-01-03
+;; License: MIT
 ;;*****************************************************************************
 
 
@@ -132,30 +132,30 @@
 
 
 ;; === evil settings ==========================================================
-;;  (use-package evil
-;;    :ensure t
-;;    :config
-;;    (evil-mode 1)
+  (use-package evil
+    :ensure t
+    :config
+    (evil-mode 1))
 
-;;  (use-package evil-surround
-;;    :ensure t
-;;    :config
-;;    (global-evil-surround-mode))
+  (use-package evil-surround
+    :ensure t
+    :config
+    (global-evil-surround-mode))
 
-;;  (use-package evil-indent-textobject
-;;    :ensure t))
+  (use-package evil-indent-textobject
+    :ensure t)
 
-;;  (dolist (mode '(magit-mode
-;;                  flycheck-error-list-mode
-;;                  git-rebase-mode))
-;;    (add-to-list 'evil-emacs-state-modes mode))
+  (dolist (mode '(magit-mode
+                  flycheck-error-list-mode
+                  git-rebase-mode))
+    (add-to-list 'evil-emacs-state-modes mode))
 
-;;  (use-package evil-leader
-;;    :ensure t
-;;    :config
-;;    (global-evil-leader-mode)
-;;    (evil-leader/set-leader "<SPC>")
-;;    (evil-leader/set-key "w" 'save-buffer))
+  (use-package evil-leader
+    :ensure t
+    :config
+    (global-evil-leader-mode)
+    (evil-leader/set-leader "<SPC>")
+    (evil-leader/set-key "w" 'save-buffer))
 
 
 ;; === neotree settings =======================================================
