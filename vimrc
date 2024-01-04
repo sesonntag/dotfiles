@@ -288,7 +288,7 @@ else
 endif
 
 " Activate mouse support
-set mouse=r
+set mouse=a
 
 " Set utf8 as standard encoding
 set encoding=utf8
