@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2023-12-06
+# Date: 2024-01-04
 # License:
 #*******************************************************************************
 
@@ -23,7 +23,7 @@ ZSH_THEME="robbyrussell"
 #ZSH_THEME="af-magic"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -40,7 +40,7 @@ dirhistory
 extract
 git
 history
-macos
+#macos
 #pep8
 pip
 python
@@ -94,8 +94,9 @@ alias condaup='nocorrect conda update conda && conda update --all'
 # alias for oh-my-zsh update
 alias omzup='omz update'
 
-# export editor variable
-export EDITOR='vim'
+# export editor variable and make nvim default
+export EDITOR='nvim'
+alias vim='nvim'
 
 # define the command line language
 export LANG=en_US.UTF-8
