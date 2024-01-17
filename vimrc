@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2024-01-03
+" Date: 2024-01-16
 " License: MIT
 "*******************************************************************************
 
@@ -174,6 +174,9 @@ Plug 'arzg/vim-colors-xcode'
 " plugin for fancy start-up screen
 Plug 'mhinz/vim-startify'
 
+" plufing for material colorscheme
+Plug 'hzchirs/vim-material'
+
 " All of your Plugins must be added before the following line
 call plug#end()
 filetype plugin indent on
@@ -276,6 +279,8 @@ set autoread
 
 " Fast saving
 nmap <leader>w :w!<CR>
+
+nmap <leader>q :q!<CR>
 
 " Fast quitting
 nmap <leader>x :x<CR>
@@ -579,7 +584,8 @@ let g:ale_linters = {
 
 " lightline settings
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      "\ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
