@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2024-01-04
+# Date: 2024-01-16
 # License:
 #*******************************************************************************
 
@@ -221,5 +221,3 @@ else
         echo OS not determined - some aliases cannot be defined accordingly
     fi
 fi
-export PATH=/opt/homebrew/bin:/Users/sebastiansonntag/.opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/TeX/texbin
-export PATH="/opt/homebrew/sbin:$PATH"
