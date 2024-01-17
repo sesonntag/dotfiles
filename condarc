@@ -2,7 +2,7 @@
 # Title: condarc
 # Description: conda Python configuration file
 # Author: Sebastian Sonntag
-# Date: 2022-01-09
+# Date: 2024-01-16
 # License:
 #*******************************************************************************
 
@@ -19,4 +19,7 @@ channels:
   - anaconda
 
 # Use a strict channel priority
-channel_priority: false
+channel_priority: strict
+
+# Use libmamba over the classic dependency solver
+solver: libmamba
