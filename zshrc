@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2024-01-16
+# Date: 2024-04-25
 # License:
 #*******************************************************************************
 
@@ -196,7 +196,7 @@ else
 
     elif [[ "$OS" == "Fedora"* ]]; then
         # alias for fedora based system updates
-        alias sudo_update='sudo dnf upgrade && sudo dnf autoremove && sudo dnf clean all'
+        alias sudo_update='sudo dnf update --refresh && sudo dnf autoremove && sudo dnf clean all'
 
 
     elif [[ "$OS" == "openSUSE Leap"* ]]; then
