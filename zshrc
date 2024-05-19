@@ -19,8 +19,8 @@ export ZSH=~/.oh-my-zsh
 #fi
 
 # Set name of the theme to load.
-ZSH_THEME="robbyrussell"
-#ZSH_THEME="af-magic"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="af-magic"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="false"
@@ -112,7 +112,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # aliases for rsync scripts
     alias backup_home_to_synology='/Users/sebastiansonntag/OneDrive/System/shell_scripts/backup_home_to_synology.sh'
     alias backup_synology_to_wd2000='/Users/sebastiansonntag/OneDrive/System/shell_scripts/backup_synology_to_wd2000.sh'
-    
+
     # initialize homebrew
     eval "$(/opt/homebrew/bin/brew shellenv)" >> /Users/sebastian/.zprofile
 
@@ -136,7 +136,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # alias to update all services
     alias allup='brewup && condaup && omzup'
-    
+
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
     __conda_setup="$('/Users/sebastian/.opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
