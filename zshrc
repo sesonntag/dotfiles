@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2024-04-25
+# Date: 2024-05-18
 # License:
 #*******************************************************************************
 
@@ -112,12 +112,15 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # aliases for rsync scripts
     alias backup_home_to_synology='/Users/sebastiansonntag/OneDrive/System/shell_scripts/backup_home_to_synology.sh'
     alias backup_synology_to_wd2000='/Users/sebastiansonntag/OneDrive/System/shell_scripts/backup_synology_to_wd2000.sh'
+    
+    # initialize homebrew
+    eval "$(/opt/homebrew/bin/brew shellenv)" >> /Users/sebastian/.zprofile
 
     # aliases for keeping brew clean
     alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew upgrade --cask'
 
     # alias for git needed for apple silicon
-    #alias git='/opt/homebrew/bin/git'
+    #alias git='/opt/	homebrew/bin/git'
 
     # add path for zsh
     export PATH="/usr/local/sbin:$PATH"
@@ -133,20 +136,17 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # alias to update all services
     alias allup='brewup && condaup && omzup'
-
-    # alias and init for miniconda3
-    # export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"  # commented out by conda initialize
-
+    
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/Users/sebastiansonntag/.opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    __conda_setup="$('/Users/sebastian/.opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "/Users/sebastiansonntag/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/Users/sebastiansonntag/.opt/miniconda3/etc/profile.d/conda.sh"
+        if [ -f "/Users/sebastian/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/sebastian/.opt/miniconda3/etc/profile.d/conda.sh"
         else
-            export PATH="/Users/sebastiansonntag/.opt/miniconda3/bin:$PATH"
+            export PATH="/Users/sebastian/.opt/miniconda3/bin:$PATH"
         fi
     fi
     unset __conda_setup
@@ -161,9 +161,9 @@ else
         eval "$__conda_setup"
     else
         if [ -f "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh"
+# . "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
         else
-            export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
+# export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"  # commented out by conda initialize
         fi
     fi
     unset __conda_setup
