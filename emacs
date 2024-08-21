@@ -2,7 +2,7 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2024-01-03
+;; Date: 2024-08-21
 ;; License: MIT
 ;;*****************************************************************************
 
@@ -132,30 +132,30 @@
 
 
 ;; === evil settings ==========================================================
-  (use-package evil
-    :ensure t
-    :config
-    (evil-mode 1))
+;;  (use-package evil
+;;    :ensure t
+;;    :config
+;;    (evil-mode 1))
 
-  (use-package evil-surround
-    :ensure t
-    :config
-    (global-evil-surround-mode))
+;;  (use-package evil-surround
+;;    :ensure t
+;;    :config
+ ;;   (global-evil-surround-mode))
 
-  (use-package evil-indent-textobject
-    :ensure t)
+;;  (use-package evil-indent-textobject
+;;    :ensure t)
 
-  (dolist (mode '(magit-mode
-                  flycheck-error-list-mode
-                  git-rebase-mode))
-    (add-to-list 'evil-emacs-state-modes mode))
+;; (dolist (mode '(magit-mode
+;;                  flycheck-error-list-mode
+;;                 git-rebase-mode))
+;;    (add-to-list 'evil-emacs-state-modes mode))
 
-  (use-package evil-leader
-    :ensure t
-    :config
-    (global-evil-leader-mode)
-    (evil-leader/set-leader "<SPC>")
-    (evil-leader/set-key "w" 'save-buffer))
+;;  (use-package evil-leader
+;;    :ensure t
+;;    :config
+;;    (global-evil-leader-mode)
+;;    (evil-leader/set-leader "<SPC>")
+;;    (evil-leader/set-key "w" 'save-buffer))
 
 
 ;; === neotree settings =======================================================
@@ -259,6 +259,38 @@
     :ensure t
     :config
     (ido-mode t))
+    
+    
+;; === rust ===================================================================
+(use-package rustic
+  :ensure
+  :bind (:map rustic-mode-map
+              ("M-j" . lsp-ui-imenu)
+              ("M-?" . lsp-find-references)
+              ("C-c C-c l" . flycheck-list-errors)
+              ("C-c C-c a" . lsp-execute-code-action)
+              ("C-c C-c r" . lsp-rename)
+              ("C-c C-c q" . lsp-workspace-restart)
+              ("C-c C-c Q" . lsp-workspace-shutdown)
+              ("C-c C-c s" . lsp-rust-analyzer-status))
+  :config
+  ;; uncomment for less flashiness
+  ;; (setq lsp-eldoc-hook nil)
+  ;; (setq lsp-enable-symbol-highlighting nil)
+  ;; (setq lsp-signature-auto-activate nil)
+
+  ;; comment to disable rustfmt on save
+  (setq rustic-format-on-save t)
+  (add-hook 'rustic-mode-hook 'rk/rustic-mode-hook))
+
+(defun rk/rustic-mode-hook ()
+  ;; so that run C-c C-c C-r works without having to confirm, but don't try to
+  ;; save rust buffers that are not file visiting. Once
+  ;; https://github.com/brotzeit/rustic/issues/253 has been resolved this should
+  ;; no longer be necessary.
+  (when buffer-file-name
+    (setq-local buffer-save-without-query t))
+  (add-hook 'before-save-hook 'lsp-format-buffer nil t))
 
 
 

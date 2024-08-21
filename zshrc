@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2024-05-18
+# Date: 2024-08-21
 # License:
 #*******************************************************************************
 
@@ -94,9 +94,8 @@ alias condaup='nocorrect conda update conda && conda update --all'
 # alias for oh-my-zsh update
 alias omzup='omz update'
 
-# export editor variable and make nvim default
-export EDITOR='nvim'
-alias vim='nvim'
+# export editor variable and make vim default
+export EDITOR='vim'
 
 # define the command line language
 export LANG=en_US.UTF-8
