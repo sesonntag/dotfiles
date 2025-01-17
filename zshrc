@@ -86,7 +86,7 @@ alias content='for t in files links directories; do echo `find . -type ${t:0:1} 
 alias enw='emacs -nw'
 
 # yt-dlp alias
-yt_dlp_best='yt-dlp -S res,ext:mp4:m4a --recode mp4'
+alias yt_dlp_best='yt-dlp -S res,ext:mp4:m4a --recode mp4'
 
 # alias for conda updates
 alias condaup='nocorrect conda update conda && conda update --all'
