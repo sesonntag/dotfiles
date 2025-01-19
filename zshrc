@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2024-08-21
+# Date: 2025-01-19
 # License:
 #*******************************************************************************
 
@@ -42,10 +42,10 @@ git
 history
 #macos
 #pep8
-pip
-python
+#pip
+#python
 sudo
-#tmux
+#tmur
 web-search
 )
 
@@ -69,7 +69,6 @@ alias lt='ls -althG'
 
 # aliases for weather news
 alias weather='curl http://wttr\.in/'
-alias weather_in_siegen='curl http://wttr\.in/Siegen'
 alias weather_in_oberagger='curl http://wttr\.in/Eckenhagen'
 alias weather_in_hebsack='curl http://wttr\.in/Hebsack'
 
