@@ -2,7 +2,7 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2024-08-21
+;; Date: 2025-03-10
 ;; License: MIT
 ;;*****************************************************************************
 
@@ -166,11 +166,11 @@
 
 
 ;; === relative line number settings ===========================================
-  (use-package linum-relative
-    :ensure t
-    :config
-    (linum-relative-global-mode)
-    (setq linum-relative-current-symbol ""))
+  ;; set type of line numbering (global variable)
+  (setq display-line-numbers-type 'relative)
+
+  ;; activate line numbering in all buffers/modes
+  (global-display-line-numbers-mode)
 
 
 ;; === indent guides ==========================================================
@@ -259,8 +259,8 @@
     :ensure t
     :config
     (ido-mode t))
-    
-    
+
+
 ;; === rust ===================================================================
 (use-package rustic
   :ensure
