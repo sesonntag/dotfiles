@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2025-01-22
+# Date: 2025-03-11
 # License:
 #*******************************************************************************
 
@@ -82,7 +82,7 @@ alias mkdir='mkdir -p'
 alias content='for t in files links directories; do echo `find . -type ${t:0:1} | wc -l` $t; done 2> /dev/null'
 
 # alias for emacs without gui
-alias enw='emacs -nw'
+alias emacs='emacs -nw'
 
 # yt-dlp alias
 alias yt_dlp_best='yt-dlp -S res,ext:mp4:m4a --recode mp4'
@@ -94,7 +94,7 @@ alias condaup='nocorrect conda update conda && conda update --all'
 alias omzup='omz update'
 
 # export editor variable and make vim default
-export EDITOR='vim'
+export EDITOR='emacs'
 
 # define the command line language
 export LANG=en_US.UTF-8
