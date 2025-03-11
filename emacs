@@ -34,7 +34,7 @@
     (setq default-directory "~/"))
 
   (if (eq system-type 'windows-nt)
-    (setq default-directory "D:/desonnse/"))
+    (setq default-directory "C:\Users\desonnse\"))
 
 ;; scroll three lines with mouse, and one line with keyboard
   (setq mouse-wheel-scroll-amount '(3 ((shift) . 1)))
