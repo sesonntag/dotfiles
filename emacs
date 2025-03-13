@@ -34,7 +34,7 @@
     (setq default-directory "~/"))
 
   (if (eq system-type 'windows-nt)
-    (setq default-directory "C:\Users\desonnse\"))
+    (setq default-directory "C:\\Users\\desonnse\\"))
 
 ;; scroll three lines with mouse, and one line with keyboard
   (setq mouse-wheel-scroll-amount '(3 ((shift) . 1)))
@@ -140,7 +140,7 @@
 ;;  (use-package evil-surround
 ;;    :ensure t
 ;;    :config
- ;;   (global-evil-surround-mode))
+;;   (global-evil-surround-mode))
 
 ;;  (use-package evil-indent-textobject
 ;;    :ensure t)
