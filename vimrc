@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2024-06-02
+" Date: 2025-03-16
 " License: MIT
 "*******************************************************************************
 
@@ -12,7 +12,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("win32")
   " set python dll for plugins and internal hooks
-  set pythonthreedll=python37.dll
+  set pythonthreedll=python310.dll
 endif
 
 
@@ -136,11 +136,11 @@ Plug 'majutsushi/tagbar'
 " gitk lik evim tool to dig into commits
 Plug 'gregsexton/gitv'
 
-if !has("win32")
+"if !has("win32")
   " ctag support for vim
-  Plug 'xolox/vim-easytags'
-  Plug 'xolox/vim-misc'
-endif
+  "Plug 'xolox/vim-easytags'
+  "Plug 'xolox/vim-misc'
+"endif
 
 " fold setup to work with various different languages
 Plug 'pseewald/vim-anyfold'
