@@ -2,7 +2,7 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2025-03-10
+;; Date: 2025-03-17
 ;; License: MIT
 ;;*****************************************************************************
 
@@ -30,11 +30,14 @@
 
 ;; === global settings ========================================================
 ;; set default dir for emacs
-  (if (eq system-type 'darwin)
-    (setq default-directory "~/"))
+  ;;(if (eq system-type 'darwin)
+    ;;(setq default-directory "~/"))
 
-  (if (eq system-type 'windows-nt)
-    (setq default-directory "C:\\Users\\desonnse\\"))
+  ;;(if (eq system-type 'windows-nt)
+    ;;(setq default-directory "C:\Users\desonnse\"))
+  (setq default-directory "~/")
+  (setq command-line-default-directory "~/")
+
 
 ;; scroll three lines with mouse, and one line with keyboard
   (setq mouse-wheel-scroll-amount '(3 ((shift) . 1)))
@@ -66,7 +69,7 @@
   (electric-pair-mode 1)
 
 ;; deactivate splash and startup stuff
-(setq inhibit-splash-screen t
+  (setq inhibit-splash-screen t
       inhibit-startup-message t
       inhibit-startup-echo-area-message t)
 
@@ -132,15 +135,15 @@
 
 
 ;; === evil settings ==========================================================
-;;  (use-package evil
-;;    :ensure t
-;;    :config
-;;    (evil-mode 1))
+  (use-package evil
+    :ensure t
+    :config
+    (evil-mode 1))
 
-;;  (use-package evil-surround
-;;    :ensure t
-;;    :config
-;;   (global-evil-surround-mode))
+  (use-package evil-surround
+    :ensure t
+    :config
+    (global-evil-surround-mode))
 
 ;;  (use-package evil-indent-textobject
 ;;    :ensure t)
