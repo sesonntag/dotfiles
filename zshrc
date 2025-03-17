@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2025-03-11
+# Date: 2025-03-17
 # License:
 #*******************************************************************************
 
@@ -178,9 +178,7 @@ else
 
     if [[ "$OS" == "Debian"* ]]; then
         # alias for debian system updates
-        #alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
-
-        alias sudo_update='sudo nala update && sudo nala upgrade && sudo nala autoremove && sudo nala clean'
+        alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
 
         # alias for using users vim setup when being root/sudo
         alias rvim='sudo -E vim'
