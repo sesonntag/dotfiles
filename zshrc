@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2025-03-17
+# Date: 2025-04-22
 # License:
 #*******************************************************************************
 
@@ -189,7 +189,11 @@ else
 
     elif [[ "$OS" == "Ubuntu"* ]]; then
         # alias for ubuntu based system updates
-        alias sudo_update='sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
+        alias sudo_update='sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'   
+
+    elif [[ "$OS" == "Linux Mint"* ]]; then
+        # alias for debian system updates
+        alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
 
 
     elif [[ "$OS" == "Fedora"* ]]; then
