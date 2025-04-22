@@ -2,7 +2,7 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2025-03-17
+;; Date: 2025-04-07
 ;; License: MIT
 ;;*****************************************************************************
 
@@ -10,6 +10,10 @@
 ;; === save custom settings in separate file ==================================
   (setq custom-file "~/.emacs-custom.el")
   (load custom-file)
+
+
+;; === security settings ======================================================
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 
 ;; === repo settings ==========================================================
