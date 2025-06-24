@@ -154,11 +154,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/home/desonnse/.opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    __conda_setup="$('/home/desonnse/.opt/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        if [ -f "/home/desonnse/.opt/anaconda3/etc/profile.d/conda.sh" ]; then
 # . "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
         else
 # export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"  # commented out by conda initialize
@@ -189,7 +189,7 @@ else
 
     elif [[ "$OS" == "Ubuntu"* ]]; then
         # alias for ubuntu based system updates
-        alias sudo_update='sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'   
+        alias sudo_update='sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
 
     elif [[ "$OS" == "Linux Mint"* ]]; then
         # alias for debian system updates
