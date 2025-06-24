@@ -207,6 +207,7 @@
     :ensure t
     :config
     (global-undo-tree-mode t))
+    (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
 
 ;; === magit ==================================================================
