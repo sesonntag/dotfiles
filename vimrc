@@ -1,19 +1,10 @@
 "*******************************************************************************
 " Title: vimrc
-" Description: vim configuration file
+" Description: (n)vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2025-03-16
+" Date: 2025-06-29
 " License: MIT
 "*******************************************************************************
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => os specific stuff
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("win32")
-  " set python dll for plugins and internal hooks
-  set pythonthreedll=python310.dll
-endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -84,9 +75,6 @@ Plug 'w0rp/ale'
 
 " showing file changes in the gutter in case it is handeld by vcs
 Plug 'mhinz/vim-signify'
-
-" jellybeans colorscheme
-Plug 'nanotech/jellybeans.vim'
 
 " one dark colorscheme
 Plug 'joshdick/onedark.vim'
@@ -165,17 +153,8 @@ endif
 " do calculations inside of vim
 Plug 'gregsexton/VimCalc'
 
-" github colors (light)
-Plug 'cormacrelf/vim-colors-github'
-
-" xcode colors
-Plug 'arzg/vim-colors-xcode'
-
 " plugin for fancy start-up screen
 Plug 'mhinz/vim-startify'
-
-" plufing for material colorscheme
-Plug 'hzchirs/vim-material'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -383,7 +362,6 @@ syntax enable
 " Set color schemes
 set t_Co=256
 set background=dark
-"colorscheme jellybeans
 colorscheme onedark
 
 " Set nicer font in GUI
@@ -661,11 +639,11 @@ if has('nvim')
 endif
 
 " mucomplete settings
-set completeopt+=menuone
-"set completeopt+=noselect
-set completeopt+=noinsert
-set shortmess+=c   " Shut off completion messages
-let g:mucomplete#enable_auto_at_startup = 1
+"set completeopt+=menuone
+""set completeopt+=noselect
+"set completeopt+=noinsert
+"set shortmess+=c   " Shut off completion messages
+"let g:mucomplete#enable_auto_at_startup = 1
 
 " vim startify settings
 let g:startify_custom_header =[]
