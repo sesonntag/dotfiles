@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: (n)vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2025-06-29
+" Date: 2025-06-30
 " License: MIT
 "*******************************************************************************
 
@@ -632,7 +632,7 @@ if has('nvim')
 
   " define python3 path
   if has("mac") || has("macunix") || has("unix")
-    let g:python3_host_prog = '~/.opt/miniconda3/bin/python' "necessary?
+    let g:python3_host_prog = '~/.opt/anaconda3/bin/python' "necessary?
   elseif has("win32") || has("gui_win32")
     "let g:python3_host_prog = 'C:\Users\desonnse\Data\PythonEnvs\my_env\Scripts\python.exe'
   endif
