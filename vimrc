@@ -2,7 +2,7 @@
 " Title: vimrc
 " Description: (n)vim configuration file
 " Author: Sebastian Sonntag
-" Date: 2025-06-30
+" Date: 2025-08-11
 " License: MIT
 "*******************************************************************************
 
@@ -604,7 +604,7 @@ nmap <silent> <leader>g :TestVisit<CR>
 " set folding methods
 set foldlevel=1
 
-" settings for python and vim tmux runner
+" settings for python and vim tmux run_ner
 let g:VtrStripLeadingWhitespace = 0
 let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 1
@@ -632,7 +632,7 @@ if has('nvim')
 
   " define python3 path
   if has("mac") || has("macunix") || has("unix")
-    let g:python3_host_prog = '~/.opt/anaconda3/bin/python' "necessary?
+    let g:python3_host_prog = 'python3' "necessary?
   elseif has("win32") || has("gui_win32")
     "let g:python3_host_prog = 'C:\Users\desonnse\Data\PythonEnvs\my_env\Scripts\python.exe'
   endif

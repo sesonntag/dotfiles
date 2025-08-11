@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2025-06-30
+# Date: 2025-08-11
 # License:
 #*******************************************************************************
 
@@ -96,6 +96,9 @@ alias condaup='nocorrect conda update conda && conda update --all'
 # alias for oh-my-zsh update
 alias omzup='omz update'
 
+# export for calvados env
+export PMDTECPY='/home/desonnse/Code/calvados/chiffre/40_Code'
+
 # export editor variable and make vim default
 export EDITOR='nvim'
 
@@ -135,43 +138,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # alias to use ctags from Homebrew
     alias ctags='alias ctags=`brew --prefix`/bin/ctags'
 
-    # alias to update all services
-    alias allup='brewup && condaup && omzup'
-
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/Users/sebastian/.opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/Users/sebastian/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/Users/sebastian/.opt/miniconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="/Users/sebastian/.opt/miniconda3/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
-
 # linux specific parts
 else
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/home/desonnse/.opt/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/home/desonnse/.opt/anaconda3/etc/profile.d/conda.sh" ]; then
-# . "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
-        else
-# export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"  # commented out by conda initialize
-        fi
-    fi
-    unset __conda_setup
-    # <<< conda initialize <<<
 
-
-    # check linux distro used
+   # check linux distro used
     if [ -f /etc/os-release ]; then
         # freedesktop.org and systemd
         . /etc/os-release
@@ -186,10 +156,6 @@ else
         # alias for using users vim setup when being root/sudo
         alias rvim='sudo -E vim'
 
-        # alias to update all services
-        alias allup='sudo_update && condaup && omzup'
-
-
     elif [[ "$OS" == "Ubuntu"* ]]; then
         # alias for ubuntu based system updates
         alias sudo_update='sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
@@ -198,29 +164,13 @@ else
         # alias for debian system updates
         alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
 
-
     elif [[ "$OS" == "Fedora"* ]]; then
         # alias for fedora based system updates
         alias sudo_update='sudo dnf update --refresh && sudo dnf autoremove && sudo dnf clean all'
 
-
     elif [[ "$OS" == "openSUSE Leap"* ]]; then
         # alias for opensuse based system updates
         alias sudo_update='sudo zypper refresh && sudo zypper update'
-
-        # alias for python version
-        alias python='python3.7'
-
-	# alias for activation of the pmd_env environment
-	alias activate_pmd_env='source ~/Code/git/python/maddie/envs/pmd_env/bin/activate
-'
-
-	# alias for starting the NoiseExtractor webserver
-	alias start_ne='bokeh serve --show ~/Code/git/python/maddie/NEWeb'
-
-        # define Chiffre path
-        export PMDTECPY="$HOME/Code/git/python/chiffre/40_Code"
-
 
     else
         echo OS not determined - some aliases cannot be defined accordingly
