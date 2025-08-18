@@ -143,7 +143,7 @@ else
 	export PMDTECPY='/home/desonnse/Code/calvados/chiffre/40_Code'
 
     # alias for pulling of all git repos
-    alias pull_all_gits='./home/desonnse/Code/pull_all_gits.sh'
+    alias pull_all_gits='./.pull_all_gits.sh'
     
     # alias for using users vim setup when being root/sudo
     alias rvim='sudo -E vim'
