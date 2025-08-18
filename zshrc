@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2025-08-11
+# Date: 2025-08-18
 # License:
 #*******************************************************************************
 
@@ -91,16 +91,13 @@ alias vim='nvim'
 alias yt_dlp_best='yt-dlp -S res,ext:mp4:m4a --recode mp4'
 
 # alias for conda updates
-alias condaup='nocorrect conda update conda && conda update --all'
+#alias condaup='nocorrect conda update conda && conda update --all'
 
 # alias for oh-my-zsh update
 alias omzup='omz update'
 
-# export for calvados env
-export PMDTECPY='/home/desonnse/Code/calvados/chiffre/40_Code'
-
 # export editor variable and make vim default
-export EDITOR='nvim'
+export EDITOR='micro'
 
 # define the command line language
 export LANG=en_US.UTF-8
@@ -113,18 +110,11 @@ export LANG=en_US.UTF-8
 # mac os specific parts
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
-    # aliases for rsync scripts
-    alias backup_home_to_synology='/Users/sebastiansonntag/OneDrive/System/shell_scripts/backup_home_to_synology.sh'
-    alias backup_synology_to_wd2000='/Users/sebastiansonntag/OneDrive/System/shell_scripts/backup_synology_to_wd2000.sh'
-
     # initialize homebrew
     eval "$(/opt/homebrew/bin/brew shellenv)" >> /Users/sebastian/.zprofile
 
     # aliases for keeping brew clean
     alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; brew upgrade --cask'
-
-    # alias for git needed for apple silicon
-    #alias git='/opt/	homebrew/bin/git'
 
     # add path for zsh
     export PATH="/usr/local/sbin:$PATH"
@@ -148,13 +138,19 @@ else
         OS=$NAME
         VER=$VERSION_ID
     fi
+	
+	# export for calvados env
+	export PMDTECPY='/home/desonnse/Code/calvados/chiffre/40_Code'
+
+    # alias for pulling of all git repos
+    alias pull_all_gits='./home/desonnse/Code/pull_all_gits.sh'
+    
+    # alias for using users vim setup when being root/sudo
+    alias rvim='sudo -E vim'
 
     if [[ "$OS" == "Debian"* ]]; then
         # alias for debian system updates
         alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
-
-        # alias for using users vim setup when being root/sudo
-        alias rvim='sudo -E vim'
 
     elif [[ "$OS" == "Ubuntu"* ]]; then
         # alias for ubuntu based system updates
