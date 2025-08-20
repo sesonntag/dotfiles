@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2025-08-18
+# Date: 2025-08-20
 # License:
 #*******************************************************************************
 
@@ -86,6 +86,9 @@ alias emacs='emacs -nw'
 
 # alias for neovim as vim
 alias vim='nvim'
+
+# alias for micro
+alias mic='micro'
 
 # yt-dlp alias
 alias yt_dlp_best='yt-dlp -S res,ext:mp4:m4a --recode mp4'
