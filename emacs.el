@@ -84,7 +84,7 @@
   (global-auto-revert-mode t)
 
 ;; Put backup files neatly away
-  (setq backup-directory-alist 
+  (setq backup-directory-alist
   '(("." . "~/.emacs.d/file-backups")))
 
 ;; comment or un-comment the current line or selection
@@ -292,3 +292,123 @@
 ;            ;(global-set-key (kbd "M-y") helm-show-kill-ring)
 ;            ;(global-set-key (kbd "C-x C-f") helm-find-files))
 ;        ;(helm-mode 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;; Transfer from VIM to Emacs
+
+;;""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+;;Plugins
+;;""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+;;word completion
+;;code snippets
+;;file and folder tree on the left side
+;;fuzzy file search
+;;powerline
+;;add surroundings with vim style commands
+;;add plugin for smooth scrolling
+;;hex features
+;;showing file changes in the gutter in case it is handeld by vcs
+;;jellybeans colorscheme
+;;showing indent lines
+;;add closing brackets, quotation marks, and co automatically
+;;adding latex features
+;;highlighting trailling white spaces
+;;graphical undo tree
+;;tab completion on search
+;;octave/matlab syntax highlighting
+;;running code tests (e.g. pytest, rspec, ...)
+;;managing to-do lists
+;;'pseewald/vim-anyfold'
+;;plugin for pulsing on searches
+;;rearrange python code to meet the pep8 standards
+
+
+;;""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+;;" => General
+;;""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+;;" Sets how many lines of history VIM has to remember
+;;set history=1000
+
+;;" With a map leader it's possible to do extra key combinations
+;;" like <leader>w saves the current file
+;;let mapleader = " "
+;;let g:mapleader = " "
+
+;;" Keep cursor away from top/bottom
+;;set scrolloff=5
+
+;;" Enable autosave on vim startup
+;;let g:auto_save = 1
+
+;;" Always show the status line
+;;set laststatus=2
+
+;;" Set to auto read when a file is changed from the outside
+;;set autoread
+
+;;" Fast saving
+;;nmap <leader>w :w!<CR>
+
+;;nmap <leader>q :q!<CR>
+
+;;" Fast quitting
+;;nmap <leader>x :x<CR>
+
+;;" Activate mouse support
+;;set mouse=a
+
+;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+;;" => VIM user interface
+;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+;;" Highlight search results
+;;set hlsearch
+
+;;" Makes search act like search in modern browsers
+;;set incsearch
+
+;;" Show matching brackets when text indicator is over them
+;;set showmatch
+;;" How many tenths of a second to blink when matching brackets
+;;set mat=2
+
+
+;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+;;" => Colors and Fonts
+;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+;;" Enable syntax highlighting
+;;syntax enable
+
+;;" Make it obvious where 80 characters is but do not hard break lines
+;;set colorcolumn=81
+;;set textwidth=0
+;;set wrapmargin=0
+
+
+;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+;;" => Editing mappings / additional mappings
+;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+;;" Map the ESC key sequence to jk for faster leaving the insert mode
+;;inoremap kj <Esc>
+;;inoremap ,, <Esc>
+
+;;" Map the underscore to un-highlight after searching
+;;nnoremap <silent> _ :nohl<CR>
+
+;;" Fix "spelling" errors
+;;cnoremap Q q
+;;cnoremap Q! q!
+;;cnoremap W w
+;;cnoremap Wq wq
