@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2025-08-20
+# Date: 2025-08-23
 # License:
 #*******************************************************************************
 
@@ -30,7 +30,6 @@ COMPLETION_WAITING_DOTS="true"
 
 # Load following plugins. Add wisely, as too many plugins slow down shell startup.
 plugins=(
-#adb
 colored-man-pages
 colorize
 command-not-found
@@ -40,12 +39,7 @@ dirhistory
 extract
 git
 history
-#macos
-#pep8
-#pip
-#python
 sudo
-#tmur
 web-search
 )
 
@@ -93,8 +87,8 @@ alias mic='micro'
 # yt-dlp alias
 alias yt_dlp_best='yt-dlp -S res,ext:mp4:m4a --recode mp4'
 
-# alias for conda updates
-#alias condaup='nocorrect conda update conda && conda update --all'
+# alias for pulling of all git repos
+alias pull_all_gits='./.pull_all_gits.sh'
 
 # alias for oh-my-zsh update
 alias omzup='omz update'
@@ -141,13 +135,10 @@ else
         OS=$NAME
         VER=$VERSION_ID
     fi
-	
+
 	# export for calvados env
 	export PMDTECPY='/home/desonnse/Code/calvados/chiffre/40_Code'
 
-    # alias for pulling of all git repos
-    alias pull_all_gits='./.pull_all_gits.sh'
-    
     # alias for using users vim setup when being root/sudo
     alias rvim='sudo -E vim'
 
