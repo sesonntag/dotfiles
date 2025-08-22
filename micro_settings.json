@@ -4,11 +4,11 @@
 	// Title: settings.json
 	// Description: micro configuration file
 	// Author: Sebastian Sonntag
-	// Date: 2025-08-18
+	// Date: 2025-08-23
 	// License:
 	//******************************************************************
-	
-	
+
+
 	// tab sizes for file type and generally
     "*.py": {
         "tabsize": 4
@@ -42,9 +42,6 @@
     // create paths if not existing on file save
     "mkparents": true,
 
-    // use relative line numbers
-    //"relativeruler": true,
-
     // save undo options also when files are closed
     "saveundo": true,
 
@@ -52,5 +49,8 @@
     "scrollbar": true,
 
     // soft wrap lines that are too long for the window
-    "softwrap": true
+    "softwrap": true,
+
+    // wrap whole words
+    "wordwrap": true
 }
