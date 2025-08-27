@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2025-08-23
+# Date: 2025-08-27
 # License:
 #*******************************************************************************
 
@@ -138,7 +138,7 @@ else
 
 	# export for calvados env
 	export PMDTECPY='/home/desonnse/Code/calvados/chiffre/40_Code'
-
+	
     # alias for using users vim setup when being root/sudo
     alias rvim='sudo -E vim'
 
