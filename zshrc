@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2025-08-27
+# Date: 2025-09-08
 # License:
 #*******************************************************************************
 
@@ -88,7 +88,7 @@ alias mic='micro'
 alias yt_dlp_best='yt-dlp -S res,ext:mp4:m4a --recode mp4'
 
 # alias for pulling of all git repos
-alias pull_all_gits='./.pull_all_gits.sh'
+#alias pull_all_gits='~/.pull_all_gits.sh'
 
 # alias for oh-my-zsh update
 alias omzup='omz update'
@@ -138,7 +138,7 @@ else
 
 	# export for calvados env
 	export PMDTECPY='/home/desonnse/Code/calvados/chiffre/40_Code'
-	
+
     # alias for using users vim setup when being root/sudo
     alias rvim='sudo -E vim'
 
