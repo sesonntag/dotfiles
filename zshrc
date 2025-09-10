@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2025-09-08
+# Date: 2025-09-10
 # License:
 #*******************************************************************************
 
@@ -88,7 +88,7 @@ alias mic='micro'
 alias yt_dlp_best='yt-dlp -S res,ext:mp4:m4a --recode mp4'
 
 # alias for pulling of all git repos
-#alias pull_all_gits='~/.pull_all_gits.sh'
+alias pull_all_gits='~/Code/own/shell_scripts/pull_all_gits.sh'
 
 # alias for oh-my-zsh update
 alias omzup='omz update'
