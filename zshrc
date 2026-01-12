@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2025-12-28
+# Date: 2026-01-12
 # License:
 #*******************************************************************************
 
@@ -85,7 +85,7 @@ alias vim='nvim'
 alias mic='micro'
 
 # yt-dlp alias
-alias yt_dlp_best='yt-dlp -S res,ext:mp4:m4a --recode mp4'
+alias yt_dlp_best='yt-dlp -S res,codec:h264,codec:aac --merge-output-format mkv'
 
 # alias for pulling of all git repos
 alias pull_all_gits='~/Code/own/shell_scripts/pull_all_gits.sh --no-stash'
