@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2026-01-12
+# Date: 2026-02-02
 # License:
 #*******************************************************************************
 
@@ -134,9 +134,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
           eval "$__conda_setup"
       else
           if [ -f "/Users/sebastian/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
-# . "/opt/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+            #. "/opt/anaconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
           else
-              export PATH="/Users/sebastian/.opt/miniconda3/bin:$PATH"
+            export PATH="/Users/sebastian/.opt/miniconda3/bin:$PATH"
           fi
       fi
       unset __conda_setup
@@ -162,6 +162,22 @@ else
     if [[ "$OS" == "Debian"* ]]; then
         # alias for debian system updates
         alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
+
+        # conda related stuff
+
+        # >>> conda initialize >>>
+        # !! Contents within this block are managed by 'conda init' !!
+        __conda_setup="$('/home/desonnse/.opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+        if [ $? -eq 0 ]; then
+            eval "$__conda_setup"
+        else
+            if [ -f "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
+            else
+                export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
+            fi
+        fi
+        unset __conda_setup
+        # <<< conda initialize <<<
 
     elif [[ "$OS" == "Ubuntu"* ]]; then
         # alias for ubuntu based system updates
