@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/sebastian/.zsh/completions:"* ]]; then export FPATH="/Users/sebastian/.zsh/completions:$FPATH"; fi
 #!/bin/zsh
 #
 #*******************************************************************************
@@ -85,7 +87,7 @@ alias vim='nvim'
 alias mic='micro'
 
 # yt-dlp alias
-alias yt_dlp_best='yt-dlp -S res,codec:h264,codec:aac --merge-output-format mkv'
+alias yt_dlp_best='yt-dlp -S res,codec:h264,codec:aac --merge-output-format mkv --cookies-from-browser edge'
 
 # alias for pulling of all git repos
 alias pull_all_gits='~/Code/own/shell_scripts/pull_all_gits.sh --no-stash'
@@ -199,3 +201,7 @@ else
         echo OS not determined - some aliases cannot be defined accordingly
     fi
 fi
+. "/Users/sebastian/.deno/env"
+# Initialize zsh completions (added by deno install script)
+autoload -Uz compinit
+compinit
