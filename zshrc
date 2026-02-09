@@ -137,7 +137,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
       unset __conda_setup
       # <<< conda initialize <<<
 
-    . "/Users/sebastian/.deno/eqnv"
+    . "/Users/sebastian/.deno/env"
     # Initialize zsh completions (added by deno install script)
     autoload -Uz compinit
     compinit
