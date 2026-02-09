@@ -6,19 +6,12 @@ if [[ ":$FPATH:" != *":/Users/sebastian/.zsh/completions:"* ]]; then export FPAT
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2026-02-02
-# License:
+# Date: 2026-02-09
+# License:MIT
 #*******************************************************************************
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-
-## Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-## Initialization code that may require console input (password prompts, [y/n]
-## confirmations, etc.) must go above this block, everything else may go below.
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  #source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
 
 # Set name of the theme to load.
 #ZSH_THEME="robbyrussell"
@@ -144,6 +137,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
       unset __conda_setup
       # <<< conda initialize <<<
 
+    . "/Users/sebastian/.deno/eqnv"
+    # Initialize zsh completions (added by deno install script)
+    autoload -Uz compinit
+    compinit
+
 # linux specific parts
 else
 
@@ -201,7 +199,3 @@ else
         echo OS not determined - some aliases cannot be defined accordingly
     fi
 fi
-. "/Users/sebastian/.deno/env"
-# Initialize zsh completions (added by deno install script)
-autoload -Uz compinit
-compinit

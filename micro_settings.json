@@ -1,56 +1,19 @@
 {
-	//
-	//******************************************************************
-	// Title: settings.json
-	// Description: micro configuration file
-	// Author: Sebastian Sonntag
-	// Date: 2025-08-23
-	// License:
-	//******************************************************************
-
-
-	// tab sizes for file type and generally
     "*.py": {
         "tabsize": 4
     },
-    "tabsize": 2,
-
-    // make tabs to spaces
-    "tabstospaces": true,
-
-	// use auto save to store files every 8 secs
     "autosave": 1,
-
-	// ask if sudo rights required for saving
     "autosu": true,
-
-	// use color column to show 80th line
     "colorcolumn": 80,
-
-	// viusally highlight diffs
     "diffgutter": true,
-
-    // highlight search visually
     "hlsearch": true,
-
-    // show trailling white spaces
     "hltrailingws": true,
-
-    // delete trailling white spaces on save
-    "rmtrailingws": true,
-
-    // create paths if not existing on file save
     "mkparents": true,
-
-    // save undo options also when files are closed
+    "rmtrailingws": true,
     "saveundo": true,
-
-    // show a scrollbar
     "scrollbar": true,
-
-    // soft wrap lines that are too long for the window
     "softwrap": true,
-
-    // wrap whole words
+    "tabsize": 2,
+    "tabstospaces": true,
     "wordwrap": true
 }
