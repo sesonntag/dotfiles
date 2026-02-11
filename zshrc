@@ -6,7 +6,7 @@ if [[ ":$FPATH:" != *":/Users/sebastian/.zsh/completions:"* ]]; then export FPAT
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2026-02-09
+# Date: 2026-02-11
 # License:MIT
 #*******************************************************************************
 
@@ -188,6 +188,10 @@ else
         alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
 
     elif [[ "$OS" == "Fedora"* ]]; then
+        # alias for fedora based system updates
+        alias sudo_update='sudo dnf update --refresh && sudo dnf autoremove && sudo dnf clean all'
+
+    elif [[ "$OS" == "Rocky Linux"* ]]; then
         # alias for fedora based system updates
         alias sudo_update='sudo dnf update --refresh && sudo dnf autoremove && sudo dnf clean all'
 
