@@ -1,12 +1,10 @@
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/Users/sebastian/.zsh/completions:"* ]]; then export FPATH="/Users/sebastian/.zsh/completions:$FPATH"; fi
 #!/bin/zsh
 #
 #*******************************************************************************
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2026-02-11
+# Date: 2026-02-18
 # License:MIT
 #*******************************************************************************
 
@@ -74,7 +72,7 @@ alias content='for t in files links directories; do echo `find . -type ${t:0:1} 
 alias emacs='emacs -nw'
 
 # alias for neovim as vim
-alias vim='nvim'
+#alias vim='nvim'
 
 # alias for micro
 alias mic='micro'
@@ -89,7 +87,7 @@ alias pull_all_gits='~/Code/own/shell_scripts/pull_all_gits.sh --no-stash'
 alias omzup='omz update'
 
 # export editor variable and make vim default
-export EDITOR='micro'
+export EDITOR='vim'
 
 # define the command line language
 export LANG=en_US.UTF-8
@@ -136,6 +134,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
       fi
       unset __conda_setup
       # <<< conda initialize <<<
+    
+    # Add deno completions to search path
+    if [[ ":$FPATH:" != *":/Users/sebastian/.zsh/completions:"* ]]; then export FPATH="/Users/sebastian/.zsh/completions:$FPATH"; fi
 
     . "/Users/sebastian/.deno/env"
     # Initialize zsh completions (added by deno install script)
