@@ -15,11 +15,11 @@ filetype off                  " Required before plugin loading
 
 let mapleader = " "           " Use space as leader key
 
-" Improve startup performance
+" Performance tuning
 set hidden                    " Allow switching buffers without saving
-set updatetime=300            " Faster completion & git updates
-set timeoutlen=500            " Faster mapped sequence timeout
-set lazyredraw                " Do not redraw during macros
+set updatetime=300            " Faster git/LSP updates
+set timeoutlen=500            " Faster mapped key timeout
+set lazyredraw                " Improve macro performance
 set ttyfast                   " Faster terminal redraw
 
 " ------------------------------------------------------------
@@ -28,19 +28,22 @@ set ttyfast                   " Faster terminal redraw
 
 call plug#begin('~/.vim/plugged')
 
+" Colorscheme
+Plug 'joshdick/onedark.vim'
+
 " File navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 
-" Status line
+" Statusline
 Plug 'itchyny/lightline.vim'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 
-" LSP (native Vim async support)
+" Native Vim 8 LSP
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 
@@ -56,67 +59,73 @@ filetype plugin indent on
 syntax enable
 
 " ------------------------------------------------------------
-" 3. General Settings
+" 3. Colorscheme Configuration
 " ------------------------------------------------------------
-
-set encoding=utf-8
-set fileencoding=utf-8
-
-set number                    " Show absolute line numbers
-set relativenumber            " Show relative line numbers
-set cursorline                " Highlight current line
-set scrolloff=5               " Keep context above/below cursor
-set splitbelow                " Horizontal splits open below
-set splitright                " Vertical splits open right
-set signcolumn=yes            " Always show sign column
-set colorcolumn=81            " Visual column marker
-set showcmd                   " Show partial command
-set ruler                     " Show cursor position
-set laststatus=2              " Always show statusline
 
 if has("termguicolors")
-  set termguicolors           " Enable 24-bit colors if supported
+  set termguicolors
 endif
 
+let g:onedark_style = 'darker'          " dark | darker | cool | deep | warm
+let g:onedark_terminal_italics = 1
+let g:onedark_hide_endofbuffer = 1
+
+colorscheme onedark
+
 " ------------------------------------------------------------
-" 4. Editing Behavior
+" 4. UI Settings
 " ------------------------------------------------------------
 
-set expandtab                 " Use spaces instead of tabs
-set smartindent               " Smarter auto indentation
-set shiftround                " Round indent to multiple of shiftwidth
+set number
+set relativenumber
+set cursorline
+set scrolloff=5
+set splitbelow
+set splitright
+set signcolumn=yes
+set colorcolumn=81
+set showcmd
+set ruler
+set laststatus=2
+
+set nowrap
+set breakindent
+
+" ------------------------------------------------------------
+" 5. Editing Behavior
+" ------------------------------------------------------------
+
+set expandtab
+set smartindent
+set shiftround
 set tabstop=4
 set shiftwidth=4
 
-" Language-specific indentation
 augroup Indentation
   autocmd!
   autocmd FileType python setlocal tabstop=4 shiftwidth=4
   autocmd FileType c,cpp,html,xml,markdown,latex,ruby,vim setlocal tabstop=2 shiftwidth=2
 augroup END
 
-set nowrap                    " Disable line wrapping
-set breakindent               " Wrapped lines maintain indentation
-
 " ------------------------------------------------------------
-" 5. Search Behavior
+" 6. Search Behavior
 " ------------------------------------------------------------
 
-set ignorecase                " Case-insensitive search...
-set smartcase                 " ...unless uppercase is used
-set incsearch                 " Show matches while typing
-set hlsearch                  " Highlight search matches
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
 
 " ------------------------------------------------------------
-" 6. Clipboard
+" 7. Clipboard
 " ------------------------------------------------------------
 
 if has('unnamedplus')
-  set clipboard=unnamedplus   " Use system clipboard
+  set clipboard=unnamedplus
 endif
 
 " ------------------------------------------------------------
-" 7. Backup, Swap & Persistent Undo
+" 8. Backup / Swap / Persistent Undo
 " ------------------------------------------------------------
 
 set backup
@@ -131,19 +140,18 @@ if has("persistent_undo")
 endif
 
 " ------------------------------------------------------------
-" 8. Plugin Configuration
+" 9. Plugin Configuration
 " ------------------------------------------------------------
 
 " ----- Lightline -----
 let g:lightline = {
-      \ 'colorscheme': 'default'
+      \ 'colorscheme': 'onedark',
       \ }
 
 " ----- LSP -----
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 
-" LSP key bindings
 nnoremap <leader>gd :LspDefinition<CR>
 nnoremap <leader>gr :LspReferences<CR>
 nnoremap <leader>rn :LspRename<CR>
@@ -154,15 +162,16 @@ let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 
 " ------------------------------------------------------------
-" 9. Autocommands
+" 10. Autocommands
 " ------------------------------------------------------------
 
 augroup Core
   autocmd!
+
   " Remove trailing whitespace on save
   autocmd BufWritePre * %s/\s\+$//e
 
-  " Restore cursor position when reopening file
+  " Restore last cursor position
   autocmd BufReadPost *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
         \   execute "normal! g`\"" |
@@ -170,7 +179,7 @@ augroup Core
 augroup END
 
 " ------------------------------------------------------------
-" 10. Keymaps
+" 11. Keymaps
 " ------------------------------------------------------------
 
 " Basic
