@@ -2,413 +2,223 @@
 ;; Title: emacs
 ;; Description: emacs configuration file
 ;; Author: Sebastian Sonntag
-;; Date: 2025-04-07
+;; Date: 2026-02-11
 ;; License: MIT
 ;;*****************************************************************************
 
+;; --------------------------------------------------
+;; Early Performance Optimizations
+;; --------------------------------------------------
 
-;; === save custom settings in separate file ==================================
-  (setq custom-file "~/.emacs-custom.el")
-  (load custom-file)
+(setq gc-cons-threshold (* 50 1000 1000))
+(setq read-process-output-max (* 1024 1024))
+(setq inhibit-startup-screen t)
 
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 2 1000 1000))))
+
+;; --------------------------------------------------
+;; Package Setup
+;; --------------------------------------------------
+
+(require 'package)
+
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ("gnu"   . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+(setq use-package-expand-minimally t)
+
+;; --------------------------------------------------
+;; Core UI (GUI + Terminal Safe)
+;; --------------------------------------------------
+
+(when (fboundp 'menu-bar-mode)
+  (menu-bar-mode -1))
+
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (with-selected-frame frame
+              (when (display-graphic-p)
+                (when (fboundp 'tool-bar-mode)
+                  (tool-bar-mode -1))
+                (when (fboundp 'scroll-bar-mode)
+                  (scroll-bar-mode -1))))))
+
+(global-display-line-numbers-mode t)
+(setq display-line-numbers-type 'relative)
+
+(global-hl-line-mode 1)
+(setq scroll-margin 5)
+(setq ring-bell-function 'ignore)
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
+(global-auto-revert-mode 1)
+(setq select-enable-clipboard t)
+
+;; Backups
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq auto-save-default t)
+
+;; Column indicator
+(setq-default fill-column 80)
+(global-display-fill-column-indicator-mode 1)
+
+(set-language-environment "UTF-8")
 
-;; === security settings ======================================================
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+;; --------------------------------------------------
+;; Theme (OneDark)
+;; --------------------------------------------------
 
+(use-package doom-themes
+  :init
+  (load-theme 'doom-one t))
 
-;; === repo settings ==========================================================
-  (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                           ("marmalade" . "https://marmalade-repo.org/packages/")
-                           ("melpa" . "https://melpa.org/packages/")))
+;; --------------------------------------------------
+;; Evil (Vim Emulation)
+;; --------------------------------------------------
 
+(use-package evil
+  :init
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
 
-;; === package manager settings ===============================================
-  (package-initialize)
-  (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
+;; --------------------------------------------------
+;; Leader Key (Space)
+;; --------------------------------------------------
 
-  (eval-when-compile
-    (require 'use-package))
+(use-package general
+  :after evil
+  :config
+  ;; Make SPC a prefix key in normal & visual state
+  (general-override-mode)
 
+  (general-create-definer my/leader
+    :states '(normal visual motion)
+    :keymaps 'override
+    :prefix "SPC")
 
-;; === global settings ========================================================
-;; set default dir for emacs
-  ;;(if (eq system-type 'darwin)
-    ;;(setq default-directory "~/"))
+  ;; Define leader bindings
+  (my/leader
+    "w" '(save-buffer :which-key "Save")
+    "q" '(kill-buffer :which-key "Kill buffer")
+    "x" '(save-buffers-kill-terminal :which-key "Exit Emacs")
+    "f" '(treemacs :which-key "File tree")
+    "b" '(ivy-switch-buffer :which-key "Switch buffer")
+    "g" '(magit-status :which-key "Magit")
+    "u" '(undo-tree-visualize :which-key "Undo tree")
+    "s" '(flyspell-mode :which-key "Spell toggle")))
 
-  ;;(if (eq system-type 'windows-nt)
-    ;;(setq default-directory "C:\Users\desonnse\"))
-  (setq default-directory "~/")
-  (setq command-line-default-directory "~/")
+(use-package which-key
+  :init (which-key-mode))
 
+;; --------------------------------------------------
+;; Completion + Search (CtrlP Replacement)
+;; --------------------------------------------------
 
-;; scroll three lines with mouse, and one line with keyboard
-  (setq mouse-wheel-scroll-amount '(3 ((shift) . 1)))
-  (setq mouse-wheel-progressive-speed nil)
-  (setq mouse-wheel-follow-mouse 't)
-  (setq scroll-step 1)
+(use-package ivy
+  :init (ivy-mode 1)
+  :custom
+  (ivy-use-virtual-buffers t))
 
-;; do not show new line symbols
-  (setf (cdr (assq 'continuation fringe-indicator-alist))
-    '(nil nil) ;; no continuation indicators
-    ;; '(nil right-curly-arrow) ;; right indicator only
-    ;; '(left-curly-arrow nil) ;; left indicator only
-    ;; '(left-curly-arrow right-curly-arrow) ;; default
-    )
+(use-package counsel
+  :after ivy
+  :bind (("C-p" . counsel-find-file)))
 
-;; no alarm bell
-  (setq ring-bell-function 'ignore)
+(use-package swiper
+  :after ivy
+  :bind (("C-s" . swiper)))
 
-;; remove trailing white spaces
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; --------------------------------------------------
+;; File Tree
+;; --------------------------------------------------
 
-;; always use y-or-n as answer
-  (defalias 'yes-or-no-p 'y-or-n-p)
+(use-package treemacs
+  :defer t)
 
-;; show matching brackets
-  (show-paren-mode 1)
+;; --------------------------------------------------
+;; Git
+;; --------------------------------------------------
 
-;; auto pair brackets and others
-  (electric-pair-mode 1)
+(use-package magit
+  :defer t)
 
-;; deactivate splash and startup stuff
-  (setq inhibit-splash-screen t
-      inhibit-startup-message t
-      inhibit-startup-echo-area-message t)
+(use-package git-gutter
+  :init (global-git-gutter-mode +1))
 
-;; use spaces instead of tabs
-  (setq-default indent-tabs-mode nil)
+;; --------------------------------------------------
+;; Linting
+;; --------------------------------------------------
 
-;; detect file changes and reload file
-  (global-auto-revert-mode t)
+(use-package flycheck
+  :init (global-flycheck-mode))
 
-;; Put backup files neatly away
-  (setq backup-directory-alist
-  '(("." . "~/.emacs.d/file-backups")))
+;; --------------------------------------------------
+;; Completion Engine
+;; --------------------------------------------------
 
-;; comment or un-comment the current line or selection
-  (global-set-key (kbd "C-,") 'comment-line)
+(use-package company
+  :init (global-company-mode 1))
 
-;; highlight current line (Setting)
-  (global-hl-line-mode 1)
-  (set-face-foreground 'highlight nil)
+;; --------------------------------------------------
+;; Snippets
+;; --------------------------------------------------
 
+(use-package yasnippet
+  :init (yas-global-mode 1))
 
-;; === Key bindings ===========================================================
-  ;; Windows movement
-    (global-set-key (kbd "C-x <up>") 'windmove-up)
-    (global-set-key (kbd "C-x <down>") 'windmove-down)
-    (global-set-key (kbd "C-x <left>") 'windmove-left)
-    (global-set-key (kbd "C-x <right>") 'windmove-right)
+;; --------------------------------------------------
+;; Undo Tree
+;; --------------------------------------------------
 
+(use-package undo-tree
+  :init (global-undo-tree-mode))
 
-;; === color settings =========================================================
-  ; set background color
-    (set-frame-parameter nil 'background-mode 'dark)
+;; --------------------------------------------------
+;; Folding
+;; --------------------------------------------------
 
-  ; color theme
-    (use-package atom-one-dark-theme
-      :ensure t
-      :config
-      (load-theme 'atom-one-dark t))
-
-
-;; === git gutter =============================================================
-  (use-package git-gutter-fringe
-    :ensure t
-    :config
-    (global-git-gutter-mode +1)
-    (set-face-foreground 'git-gutter-fr:modified "yellow")
-    (set-face-foreground 'git-gutter-fr:added    "green")
-    (set-face-foreground 'git-gutter-fr:deleted  "red"))
-
-
-;; === evil settings ==========================================================
-  (use-package evil
-    :ensure t
-    :config
-    (evil-mode 1))
-
-  (use-package evil-surround
-    :ensure t
-    :config
-    (global-evil-surround-mode))
-
-;;  (use-package evil-indent-textobject
-;;    :ensure t)
-
-;; (dolist (mode '(magit-mode
-;;                  flycheck-error-list-mode
-;;                 git-rebase-mode))
-;;    (add-to-list 'evil-emacs-state-modes mode))
-
-;;  (use-package evil-leader
-;;    :ensure t
-;;    :config
-;;    (global-evil-leader-mode)
-;;    (evil-leader/set-leader "<SPC>")
-;;    (evil-leader/set-key "w" 'save-buffer))
-
-
-;; === neotree settings =======================================================
-  (use-package neotree
-    :ensure t
-    :config
-    (setq neo-smart-open t))
-
+(add-hook 'prog-mode-hook 'hs-minor-mode)
 
-;; === relative line number settings ===========================================
-  ;; set type of line numbering (global variable)
-  (setq display-line-numbers-type 'relative)
+;; --------------------------------------------------
+;; Whitespace Cleanup
+;; --------------------------------------------------
 
-  ;; activate line numbering in all buffers/modes
-  (global-display-line-numbers-mode)
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
 
+;; --------------------------------------------------
+;; Start Screen
+;; --------------------------------------------------
 
-;; === indent guides ==========================================================
-  (use-package highlight-indent-guides
-    :ensure t
-    :config
-    (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-    (setq highlight-indent-guides-method 'character))
-
-
-;; === word wrapping ==========================================================
-  (use-package adaptive-wrap
-    :ensure t
-    :config
-    (defun turn-on-adaptive-wrap-prefix-mode (&optional arg)
-      (interactive)
-      (adaptive-wrap-prefix-mode (or arg 1)))
-    (defun turn-off-adaptive-wrap-prefix-mode (&optional arg)
-      (interactive)
-      (adaptive-wrap-prefix-mode (or arg -1)))
-    (defun adaptive-wrap-initialize ()
-      (unless (minibufferp)
-        (progn
-          (adaptive-wrap-prefix-mode 1)
-          (setq word-wrap t))))
-    (define-globalized-minor-mode adaptive-wrap-mode
-      adaptive-wrap-prefix-mode adaptive-wrap-initialize)
-    (adaptive-wrap-mode))
-
-
-;; === highlight multiple occurrences =========================================
-  (use-package highlight-symbol
-    :ensure t
-    :config
-    (highlight-symbol-mode t)
-    (global-set-key (kbd "C-x C-h") 'highlight-symbol))
+(use-package dashboard
+  :init
+  (dashboard-setup-startup-hook))
 
+;; --------------------------------------------------
+;; Auto reload init.el
+;; --------------------------------------------------
 
-;; === undo tree ==============================================================
-  (use-package undo-tree
-    :ensure t
-    :config
-    (global-undo-tree-mode t))
-    (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+(defun my/reload-init-file ()
+  (interactive)
+  (load-file user-init-file)
+  (message "Config reloaded."))
 
-
-;; === magit ==================================================================
-  (use-package magit
-    :ensure t
-    :config
-    (global-set-key (kbd "C-x g") 'magit-status))
-
-
-;; === markdown support =======================================================
-  (use-package markdown-mode
-  :ensure t)
-
-
-;; === trim trailing white spaces =============================================
-  (use-package whitespace-cleanup-mode
-    :ensure t
-    :config
-    (global-whitespace-cleanup-mode t))
-
-
-;; === spellchecking ==========================================================
-  (use-package flyspell
-    :ensure t
-    :config
-    (setq ispell-program-name "/usr/local/bin/ispell")
-    (add-hook 'text-mode-hook 'flyspell-mode)
-    (add-hook 'prog-mode-hook 'flyspell-prog-mode))
-
-
-;; === auto completion ========================================================
-  (use-package company
-    :ensure t
-    :config
-    (add-hook 'after-init-hook 'global-company-mode)
-    (setq company-minimum-prefix-length 1)
-    (setq company-selection-wrap-around t)
-    (company-tng-configure-default))
-
-
-;; === ido ====================================================================
-  (use-package ido
-    :ensure t
-    :config
-    (ido-mode t))
-
-
-
-
-
-
-;; ============================================================================
-;; === OLD STUFF - NOT YET DONE ===============================================
-;; ============================================================================
-;; list the packages you want
-;(setq package-list '(tabbar
-;                     flycheck
-;                     projectile
-;                     helm
-;                     yasnippet
-;                     bind-key
-; ))
-;
-;    ;; use flycheck to check code against coding standards
-;        (require 'flycheck)
-;        (global-flycheck-mode)
-;
-;    ;; use yasnippet
-;        (require 'yasnippet)
-;        (yas-global-mode 1)
-
-
-;; === ToDo =================================================================;;
-;        ;; Use fuzzy file search on start up ;
-;        ;(add-to-list 'load-path "~/.emacs.d/helm")
-;        ;(require 'helm-config)
-;        ;(with-eval-after-load "helm.el"
-;           ;(define-key helm-map (kbd "<tab>") 'helm-execute-persistant-action)
-;            ;(global-set-key (kbd "C-x b") helm-buffers-list)
-;            ;(global-set-key (kbd "C-x r b") helm-bookmarks)
-;            ;(global-set-key (kbd "M-y") helm-M-x)
-;            ;(global-set-key (kbd "M-y") helm-show-kill-ring)
-;            ;(global-set-key (kbd "C-x C-f") helm-find-files))
-;        ;(helm-mode 1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;; Transfer from VIM to Emacs
-
-;;""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-;;Plugins
-;;""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-;;word completion
-;;code snippets
-;;file and folder tree on the left side
-;;fuzzy file search
-;;powerline
-;;add surroundings with vim style commands
-;;add plugin for smooth scrolling
-;;hex features
-;;showing file changes in the gutter in case it is handeld by vcs
-;;jellybeans colorscheme
-;;showing indent lines
-;;add closing brackets, quotation marks, and co automatically
-;;adding latex features
-;;highlighting trailling white spaces
-;;graphical undo tree
-;;tab completion on search
-;;octave/matlab syntax highlighting
-;;running code tests (e.g. pytest, rspec, ...)
-;;managing to-do lists
-;;'pseewald/vim-anyfold'
-;;plugin for pulsing on searches
-;;rearrange python code to meet the pep8 standards
-
-
-;;""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-;;" => General
-;;""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-;;" Sets how many lines of history VIM has to remember
-;;set history=1000
-
-;;" With a map leader it's possible to do extra key combinations
-;;" like <leader>w saves the current file
-;;let mapleader = " "
-;;let g:mapleader = " "
-
-;;" Keep cursor away from top/bottom
-;;set scrolloff=5
-
-;;" Enable autosave on vim startup
-;;let g:auto_save = 1
-
-;;" Always show the status line
-;;set laststatus=2
-
-;;" Set to auto read when a file is changed from the outside
-;;set autoread
-
-;;" Fast saving
-;;nmap <leader>w :w!<CR>
-
-;;nmap <leader>q :q!<CR>
-
-;;" Fast quitting
-;;nmap <leader>x :x<CR>
-
-;;" Activate mouse support
-;;set mouse=a
-
-;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-;;" => VIM user interface
-;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-;;" Highlight search results
-;;set hlsearch
-
-;;" Makes search act like search in modern browsers
-;;set incsearch
-
-;;" Show matching brackets when text indicator is over them
-;;set showmatch
-;;" How many tenths of a second to blink when matching brackets
-;;set mat=2
-
-
-;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-;;" => Colors and Fonts
-;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-;;" Enable syntax highlighting
-;;syntax enable
-
-;;" Make it obvious where 80 characters is but do not hard break lines
-;;set colorcolumn=81
-;;set textwidth=0
-;;set wrapmargin=0
-
-
-;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-;;" => Editing mappings / additional mappings
-;;"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-;;" Map the ESC key sequence to jk for faster leaving the insert mode
-;;inoremap kj <Esc>
-;;inoremap ,, <Esc>
-
-;;" Map the underscore to un-highlight after searching
-;;nnoremap <silent> _ :nohl<CR>
-
-;;" Fix "spelling" errors
-;;cnoremap Q q
-;;cnoremap Q! q!
-;;cnoremap W w
-;;cnoremap Wq wq
+(add-hook 'after-save-hook
+          (lambda ()
+            (when (string-equal (file-truename user-init-file)
+                                (file-truename buffer-file-name))
+              (my/reload-init-file))))
