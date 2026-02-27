@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2026-02-18
+# Date: 2026-02-27
 # License:MIT
 #*******************************************************************************
 
@@ -187,6 +187,26 @@ else
     elif [[ "$OS" == "Linux Mint"* ]]; then
         # alias for debian system updates
         alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
+
+    elif [[ "$OS" == "LMDE"* ]]; then
+        # alias for lmde system updates
+        alias sudo_update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean && sudo apt clean'
+
+        # conda related stuff
+
+        # >>> conda initialize >>>
+        # !! Contents within this block are managed by 'conda init' !!
+        __conda_setup="$('/home/desonnse/.opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+        if [ $? -eq 0 ]; then
+            eval "$__conda_setup"
+        else
+            if [ -f "/home/desonnse/.opt/miniconda3/etc/profile.d/conda.sh" ]; then
+            else
+                export PATH="/home/desonnse/.opt/miniconda3/bin:$PATH"
+            fi
+        fi
+        unset __conda_setup
+        # <<< conda initialize <<<
 
     elif [[ "$OS" == "Fedora"* ]]; then
         # alias for fedora based system updates
