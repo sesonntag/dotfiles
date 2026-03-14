@@ -4,7 +4,7 @@
 # Title: zshrc
 # Description: zsh configuration file
 # Author: Sebastian Sonntag
-# Date: 2026-02-27
+# Date: 2026-03-14
 # License:MIT
 #*******************************************************************************
 
@@ -87,7 +87,7 @@ alias pull_all_gits='~/Code/own/shell_scripts/pull_all_gits.sh --no-stash'
 alias omzup='omz update'
 
 # export editor variable and make vim default
-export EDITOR='vim'
+export EDITOR='micro'
 
 # define the command line language
 export LANG=en_US.UTF-8
@@ -134,7 +134,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
       fi
       unset __conda_setup
       # <<< conda initialize <<<
-    
+
     # Add deno completions to search path
     if [[ ":$FPATH:" != *":/Users/sebastian/.zsh/completions:"* ]]; then export FPATH="/Users/sebastian/.zsh/completions:$FPATH"; fi
 

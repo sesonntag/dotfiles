@@ -2,6 +2,7 @@
     "*.py": {
         "tabsize": 4
     },
+    "colorscheme": "atom-dark",
     "autosave": 1,
     "autosu": true,
     "colorcolumn": 80,
